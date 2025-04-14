@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "rainbow-wood",
+	"version": "${modVersion}",
+	"name": "Rainbow Wood",
+	"description": "Allows coloring wood like leather armor",
+	"authors": [
+		"OffsetMonkey538"
+	],
+	"contact": {
+		"sources": "git@github.com:OffsetMods538/Rainbow-Wood",
+		"issues": "git@github.com:OffsetMods538/Rainbow-Wood/issues",
+		"homepage": "https://modrinth.com/mod/rainbow-wood"
+	},
+	"license": "MIT",
+	"icon": "assets/rainbow-wood/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-datagen": [
+			"top.offsetmonkey538.rainbowwood.datagen.RainbowWoodDatagen"
+		],
+		"main": [
+			"top.offsetmonkey538.rainbowwood.RainbowWood"
+		],
+		"client": [
+			"top.offsetmonkey538.rainbowwood.RainbowWoodClient"
+		]
+	},
+	"mixins": [
+		"rainbow-wood.mixins.json",
+		{
+			"config": "rainbow-wood.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"accessWidener": "rainbow-wood.accesswidener",
+	"depends": {
+		"fabric-api": "*",
+		"minecraft": "${supportedMinecraftVersions}"
+	}
+}
