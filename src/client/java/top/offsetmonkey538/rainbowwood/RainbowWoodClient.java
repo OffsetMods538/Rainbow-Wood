@@ -2,8 +2,6 @@ package top.offsetmonkey538.rainbowwood;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.MinecraftClient;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 
 public class RainbowWoodClient implements ClientModInitializer {
