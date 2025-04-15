@@ -1,6 +1,8 @@
 package top.offsetmonkey538.rainbowwood.block;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
@@ -10,6 +12,8 @@ public final class ModBlocks {
     private ModBlocks() {
 
     }
+
+    public static final Block RAINBOW_PLANKS = register(new Block(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
 
     /*
      Example usage:
