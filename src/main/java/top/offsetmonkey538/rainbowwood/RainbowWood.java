@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 
+import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 
 public class RainbowWood implements ModInitializer {
@@ -16,6 +17,7 @@ public class RainbowWood implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModBlocks.register();
+		ModComponents.register();
 		ModItems.register();
 	}
 

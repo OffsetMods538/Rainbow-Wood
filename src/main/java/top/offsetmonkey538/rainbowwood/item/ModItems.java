@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.component.ModComponents;
 
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
@@ -13,7 +14,7 @@ public final class ModItems {
 
     }
 
-    public static final Item RAINBOW_PLANKS = register(new BlockItem(ModBlocks.RAINBOW_PLANKS, new Item.Settings()), "rainbow_planks");
+    public static final Item RAINBOW_PLANKS = register(new BlockItem(ModBlocks.RAINBOW_PLANKS, new Item.Settings().component(ModComponents.TINT_COLOR, 0xFFFFFF)), "rainbow_planks");
 
     /*
      Example usage:
