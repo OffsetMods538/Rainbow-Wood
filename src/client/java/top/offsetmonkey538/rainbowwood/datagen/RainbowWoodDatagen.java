@@ -22,14 +22,15 @@ public class RainbowWoodDatagen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         final FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-        //pack.addProvider(ModModelProvider::new);
-        pack.addProvider(TestBlockModel::new);
+        pack.addProvider(ModModelProvider::new);
+        //pack.addProvider(TestBlockModel::new);
         /*
         Example:
         pack.addProvider(MyEnglishLanguageProvider::new)
          */
     }
 
+    /*
     private static class TestBlockModel extends FabricModelProvider {
         private static final Model TINTABLE_CUBE_ALL = new Model(Optional.of(Identifier.ofVanilla("block/block")), Optional.empty(), TextureKey.TEXTURE);
 
@@ -95,4 +96,5 @@ public class RainbowWoodDatagen implements DataGeneratorEntrypoint {
             return json;
         }
     }
+    */
 }

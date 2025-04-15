@@ -1,8 +1,5 @@
 {
   "parent": "minecraft:block/block",
-  "textures": {
-    "all": "rainbow-wood:block/rainbow_planks"
-  },
   "elements": [
     {
       "from": [ 0, 0, 0 ],
