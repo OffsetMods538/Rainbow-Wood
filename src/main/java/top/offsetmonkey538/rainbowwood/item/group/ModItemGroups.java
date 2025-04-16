@@ -1,12 +1,14 @@
 package top.offsetmonkey538.rainbowwood.item.group;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import top.offsetmonkey538.rainbowwood.item.ModItems;
+import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
 
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
@@ -17,12 +19,14 @@ public final class ModItemGroups {
 
     public static final ItemGroup RAINBOW_WOOD_ITEM_GROUP = register("rainbow_wood_item_group",
             FabricItemGroup.builder()
-                    .icon(() -> ModItems.RAINBOW_PLANKS.getStackWithTint(0xFF00FF)) // Find some nice color for mod and item group icon.
+                    .icon(() -> ((TintedBlockItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(0xFF00FF)) // Find some nice color for mod and item group icon.
                     .displayName(Text.translatable("itemGroup.rainbow_wood.main_group"))
                     .entries((displayContext, entries) -> {
                         for (Formatting formatting : Formatting.values()) {
                             if (!formatting.isColor() || formatting.getColorValue() == null) continue;
-                            entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(formatting.getColorValue()));
+                            for (Block block : ModBlocks.BLOCKS) {
+                                entries.add(((TintedBlockItem) block.asItem()).getStackWithTint(formatting.getColorValue()));
+                            }
                         }
 
                         //for (int i = 0; i <= 0xFFFFFF; i++) {

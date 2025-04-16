@@ -14,8 +14,13 @@ public final class ModBlocks {
     }
     //TODO: figure out if map color can somehow be set to the actual color based on the block entity. No way to get be from block state :( Maybe mixin somewhere?
 
-    //public static final Block RAINBOW_LOG = register(new TintedBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)), "rainbow_log");
+    public static final Block RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)), "rainbow_log");
     public static final Block RAINBOW_PLANKS = register(new TintedBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
+
+    public static final Block[] BLOCKS = new Block[] {
+            RAINBOW_LOG,
+            RAINBOW_PLANKS
+    };
 
     /*
      Example usage:

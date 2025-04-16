@@ -14,12 +14,12 @@ public class RainbowWoodClient implements ClientModInitializer {
 		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
 			if (world == null) return 0;
             return world.getBlockEntity(pos, ModBlockEntities.TINTED_BLOCK_ENTITY).map(TintedBlockEntity::getTint).orElse(0);
-        }, ModBlocks.RAINBOW_PLANKS);
+        }, ModBlocks.BLOCKS);
 
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
 			final Integer tintColor = stack.get(ModComponents.TINT_COLOR);
 			if (tintColor == null) return 0;
 			return tintColor;
-		}, ModBlocks.RAINBOW_PLANKS);
+		}, ModBlocks.BLOCKS);
 	}
 }
