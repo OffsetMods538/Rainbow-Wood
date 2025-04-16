@@ -6,7 +6,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
-import top.offsetmonkey538.rainbowwood.component.ModComponents;
 
 public final class ModItems {
     private ModItems() {
@@ -15,7 +14,7 @@ public final class ModItems {
 
     static {
         for (Block block : ModBlocks.BLOCKS) {
-            register(new TintedBlockItem(block, new Item.Settings().component(ModComponents.TINT_COLOR, 0xFFFFFF)), Registries.BLOCK.getId(block));
+            register(new TintedBlockItem(block, new Item.Settings()), Registries.BLOCK.getId(block));
         }
     }
 

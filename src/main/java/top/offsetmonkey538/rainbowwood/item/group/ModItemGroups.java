@@ -22,6 +22,10 @@ public final class ModItemGroups {
                     .icon(() -> ((TintedBlockItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(0xFF00FF)) // Find some nice color for mod and item group icon.
                     .displayName(Text.translatable("itemGroup.rainbow_wood.main_group"))
                     .entries((displayContext, entries) -> {
+                        for (Block block : ModBlocks.BLOCKS) {
+                            entries.add(block.asItem().getDefaultStack());
+                        }
+
                         for (DyeColor dyeColor : DyeColor.values()) {
                             for (Block block : ModBlocks.BLOCKS) {
                                 entries.add(((TintedBlockItem) block.asItem()).getStackWithTint(dyeColor.getSignColor()));

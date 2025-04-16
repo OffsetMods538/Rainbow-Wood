@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 public class TintedBlockEntity extends BlockEntity {
     public static final String BLOCK_TINT_KEY = "BlockTint";
 
-    public int blockTint = 0;
+    public int blockTint = -1;
 
     public TintedBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.TINTED_BLOCK_ENTITY, pos, state);

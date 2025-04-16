@@ -13,6 +13,8 @@ import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
 
+import java.util.Objects;
+
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
 public class ColoringRecipe extends SpecialCraftingRecipe {
@@ -27,13 +29,14 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
     public boolean matches(CraftingRecipeInput input, World world) {
         int forItemCount = 0;
         boolean foundDye = false;
+        boolean forItemsEqual = true;
 
         for (int i = 0; i < input.getStacks().size(); i++) {
             final ItemStack stack = input.getStacks().get(i);
             if (stack.isEmpty()) continue;
 
             if (stack.isOf(forItem)) {
-                if (stack.get(ModComponents.TINT_COLOR) == null) return false;
+                forItemsEqual = forItemsEqual && Objects.equals(stack.get(ModComponents.TINT_COLOR), input.getStacks().get(0).get(ModComponents.TINT_COLOR));
                 forItemCount++;
                 continue;
             }
@@ -49,7 +52,7 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
         // Matches if:
         //  1) Doesn't have dye but has at least 2 of the item. Can't combine em if there's nothing to combine xD
         //  2) Found a dye and has at least 1 of the item.
-        return (!foundDye && forItemCount >= 2) || (foundDye && forItemCount >= 1);
+        return (!foundDye && forItemCount >= 2 && !forItemsEqual) || (foundDye && forItemCount >= 1);
     }
 
     @Override
@@ -61,7 +64,11 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
 
             if (stack.isOf(forItem)) {
                 final Integer color = stack.get(ModComponents.TINT_COLOR);
-                assert color != null;
+
+                if (color == null) {
+                    forItemAmount++;
+                    continue;
+                }
 
                 colorAmount++;
                 forItemAmount++;

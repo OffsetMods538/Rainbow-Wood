@@ -16,11 +16,13 @@ import java.util.Optional;
 
 public interface ITintedBlock extends BlockEntityProvider {
     default void placeTinted(World world, BlockPos pos, BlockState state, ItemStack itemStack) {
+        final Integer color = itemStack.get(ModComponents.TINT_COLOR);
+        if (color == null) return;
+
         final Optional<TintedBlockEntity> optionalBlockEntity = world.getBlockEntity(pos, ModBlockEntities.TINTED_BLOCK_ENTITY);
         if (optionalBlockEntity.isEmpty()) return;
 
-        optionalBlockEntity.get().blockTint = itemStack.getOrDefault(ModComponents.TINT_COLOR, 0);
-        System.out.println("tint: " + optionalBlockEntity.get().blockTint);
+        optionalBlockEntity.get().blockTint = color;
 
         optionalBlockEntity.get().markDirty();
         world.updateListeners(pos, state, state, Block.NOTIFY_ALL_AND_REDRAW);
