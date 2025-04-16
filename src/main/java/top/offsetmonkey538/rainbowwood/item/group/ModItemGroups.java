@@ -6,7 +6,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.minecraft.util.DyeColor;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
 
@@ -22,10 +22,9 @@ public final class ModItemGroups {
                     .icon(() -> ((TintedBlockItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(0xFF00FF)) // Find some nice color for mod and item group icon.
                     .displayName(Text.translatable("itemGroup.rainbow_wood.main_group"))
                     .entries((displayContext, entries) -> {
-                        for (Formatting formatting : Formatting.values()) {
-                            if (!formatting.isColor() || formatting.getColorValue() == null) continue;
+                        for (DyeColor dyeColor : DyeColor.values()) {
                             for (Block block : ModBlocks.BLOCKS) {
-                                entries.add(((TintedBlockItem) block.asItem()).getStackWithTint(formatting.getColorValue()));
+                                entries.add(((TintedBlockItem) block.asItem()).getStackWithTint(dyeColor.getSignColor()));
                             }
                         }
 
