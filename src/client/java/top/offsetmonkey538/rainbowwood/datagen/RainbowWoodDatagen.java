@@ -10,6 +10,7 @@ public class RainbowWoodDatagen implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         final FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(ModBlockLootTableProvider::new);
+        pack.addProvider(ModBlockTagProvider::new);
         pack.addProvider(ModModelProvider::new);
         pack.addProvider(ModRecipeProvider::new);
 

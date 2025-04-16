@@ -12,6 +12,7 @@ import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.item.group.ModItemGroups;
 import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
+import top.offsetmonkey538.rainbowwood.tag.ModBlockTags;
 
 public class RainbowWood implements ModInitializer {
 	public static final String MOD_ID = "rainbow-wood";
@@ -25,6 +26,7 @@ public class RainbowWood implements ModInitializer {
 		ModItems.register();
 		ModItemGroups.register();
 		ModRecipes.register();
+		ModBlockTags.register();
 	}
 
 	public static Identifier id(String path) {
