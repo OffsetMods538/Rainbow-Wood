@@ -74,7 +74,6 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
                 final int color = dye.getColor().getSignColor();
 
                 colorAmount++;
-                forItemAmount++;
                 colorR += ColorHelper.Argb.getRed(color);
                 colorG += ColorHelper.Argb.getGreen(color);
                 colorB += ColorHelper.Argb.getBlue(color);
