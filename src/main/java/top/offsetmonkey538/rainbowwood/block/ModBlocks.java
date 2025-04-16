@@ -13,7 +13,7 @@ public final class ModBlocks {
 
     }
 
-    public static final Block RAINBOW_PLANKS = register(new Block(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
+    public static final BlockWithTint RAINBOW_PLANKS = register(new BlockWithTint(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
 
     /*
      Example usage:
