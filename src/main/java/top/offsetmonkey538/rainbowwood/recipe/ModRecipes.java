@@ -1,11 +1,14 @@
 package top.offsetmonkey538.rainbowwood.recipe;
 
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -22,10 +25,22 @@ public final class ModRecipes {
 
     public static final SpecialRecipeSerializer<PlanksFromLog> PLANKS_FROM_LOG = register("planks_from_log", PlanksFromLog::new);
 
-    @SuppressWarnings("SameParameterValue")
+    // Coloring
+    public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_LOG_COLORING = registerColoring(ModBlocks.RAINBOW_LOG);
+    public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_PLANKS_COLORING = registerColoring(ModBlocks.RAINBOW_PLANKS);
+
+
     private static <T extends SpecialCraftingRecipe> SpecialRecipeSerializer<T> register(String name, Function<CraftingRecipeCategory, T> recipeFactory) {
         RECIPES.add(Pair.of(recipeFactory, name));
         return Registry.register(Registries.RECIPE_SERIALIZER, id(name), new SpecialRecipeSerializer<>(recipeFactory::apply));
+    }
+
+    private static SpecialRecipeSerializer<ColoringRecipe> registerColoring(ItemConvertible forItem) {
+        if (!(forItem.asItem() instanceof TintedBlockItem tintedForItem)) {
+            throw new IllegalArgumentException("Expected 'Item' for '%s' to be a 'TintedBlockItem', got '%s'!".formatted(forItem, forItem.asItem()));
+        }
+
+        return register("%s_coloring".formatted(Registries.ITEM.getId(tintedForItem).getPath()), craftingRecipeCategory -> new ColoringRecipe(craftingRecipeCategory, tintedForItem));
     }
 
     @SuppressWarnings("EmptyMethod")
