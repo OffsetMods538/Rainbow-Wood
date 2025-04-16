@@ -10,6 +10,7 @@ import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
+import top.offsetmonkey538.rainbowwood.item.group.ModItemGroups;
 
 public class RainbowWood implements ModInitializer {
 	public static final String MOD_ID = "rainbow-wood";
@@ -21,6 +22,7 @@ public class RainbowWood implements ModInitializer {
 		ModBlockEntities.register();
 		ModComponents.register();
 		ModItems.register();
+		ModItemGroups.register();
 	}
 
 	public static Identifier id(String path) {

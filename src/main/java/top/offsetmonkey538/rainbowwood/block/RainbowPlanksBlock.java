@@ -24,9 +24,15 @@ public class RainbowPlanksBlock extends Block implements BlockEntityProvider {
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
+
         final Optional<TintedBlockEntity> optionalBlockEntity = world.getBlockEntity(pos, ModBlockEntities.TINTED_BLOCK_ENTITY);
         if (optionalBlockEntity.isEmpty()) return;
-        optionalBlockEntity.get().setTint(itemStack.getOrDefault(ModComponents.TINT_COLOR, 0));
+
+        optionalBlockEntity.get().blockTint = itemStack.getOrDefault(ModComponents.TINT_COLOR, 0);
+        System.out.println("tint: " + optionalBlockEntity.get().blockTint);
+
+        optionalBlockEntity.get().markDirty();
+        world.updateListeners(pos, state, state, Block.NOTIFY_ALL_AND_REDRAW);
     }
 
     @Override

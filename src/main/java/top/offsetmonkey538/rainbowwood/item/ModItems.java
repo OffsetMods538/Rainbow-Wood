@@ -1,6 +1,5 @@
 package top.offsetmonkey538.rainbowwood.item;
 
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -14,7 +13,7 @@ public final class ModItems {
 
     }
 
-    public static final Item RAINBOW_PLANKS = register(new BlockItem(ModBlocks.RAINBOW_PLANKS, new Item.Settings().component(ModComponents.TINT_COLOR, 0xFFFFFF)), "rainbow_planks");
+    public static final TintedBlockItem RAINBOW_PLANKS = register(new TintedBlockItem(ModBlocks.RAINBOW_PLANKS, new Item.Settings().component(ModComponents.TINT_COLOR, 0xFFFFFF)), "rainbow_planks");
 
     /*
      Example usage:
