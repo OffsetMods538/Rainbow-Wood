@@ -3,6 +3,7 @@
     "package": "top.offsetmonkey538.rainbowwood.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "AxeItemMixin",
         "EntityMixin"
     ],
     "injectors": {

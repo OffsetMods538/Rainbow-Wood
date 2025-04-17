@@ -16,7 +16,7 @@ public class PlanksFromLog extends SpecialCraftingRecipe {
 
     @Override
     public boolean matches(CraftingRecipeInput input, World world) {
-        return input.getStackCount() == 1 && input.getStacks().get(0).isOf(ModBlocks.RAINBOW_LOG.asItem());
+        return input.getStackCount() == 1 && input.getStacks().get(0).isOf(ModBlocks.RAINBOW_LOG.asItem() /* TODO: .isIn(ModItemTags.RAINBOW_LOGS */);
     }
 
     @Override

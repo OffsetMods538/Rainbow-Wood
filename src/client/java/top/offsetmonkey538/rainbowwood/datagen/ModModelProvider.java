@@ -28,6 +28,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSingleton(ModBlocks.RAINBOW_PLANKS, TextureMap.all(ModBlocks.RAINBOW_PLANKS), TINTED_CUBE_ALL);
 
         generateLog(ModBlocks.RAINBOW_LOG, TextureMap.sideAndEndForTop(ModBlocks.RAINBOW_LOG), blockStateModelGenerator);
+        generateLog(ModBlocks.STRIPPED_RAINBOW_LOG, TextureMap.sideAndEndForTop(ModBlocks.STRIPPED_RAINBOW_LOG), blockStateModelGenerator);
 
         final TextureMap plankTexture = TextureMap.texture(ModBlocks.RAINBOW_PLANKS);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
