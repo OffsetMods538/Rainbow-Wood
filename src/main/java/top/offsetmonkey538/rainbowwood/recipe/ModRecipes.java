@@ -2,8 +2,7 @@ package top.offsetmonkey538.rainbowwood.recipe;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.recipe.SpecialCraftingRecipe;
-import net.minecraft.recipe.SpecialRecipeSerializer;
+import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -25,8 +24,10 @@ public final class ModRecipes {
 
     public static final List<Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String>> RECIPES = new LinkedList<>();
 
-    public static final SpecialRecipeSerializer<PlanksFromLog> PLANKS_FROM_LOG = register("planks_from_log", PlanksFromLog::new);
-    public static final SpecialRecipeSerializer<ButtonFromPlanks> BUTTON_FROM_PLANKS = register("button_from_planks", ButtonFromPlanks::new);
+    public static final RecipeSerializer<TintedShapedRecipe> TINTED_SHAPED = register("crafting_tinted_shaped", new TintedShapedRecipe.Serializer());
+
+    //public static final SpecialRecipeSerializer<PlanksFromLog> PLANKS_FROM_LOG = registerSpecial("planks_from_log", PlanksFromLog::new);
+    //public static final SpecialRecipeSerializer<ButtonFromPlanks> BUTTON_FROM_PLANKS = registerSpecial("button_from_planks", ButtonFromPlanks::new);
 
     // Coloring
     static {
@@ -34,9 +35,13 @@ public final class ModRecipes {
     }
 
 
-    private static <T extends SpecialCraftingRecipe> SpecialRecipeSerializer<T> register(String name, Function<CraftingRecipeCategory, T> recipeFactory) {
+    private static <T extends RecipeSerializer<?>> T register(String name, T serializer) {
+        return Registry.register(Registries.RECIPE_SERIALIZER, id(name), serializer);
+    }
+
+    private static <T extends SpecialCraftingRecipe> SpecialRecipeSerializer<T> registerSpecial(String name, Function<CraftingRecipeCategory, T> recipeFactory) {
         RECIPES.add(Pair.of(recipeFactory, name));
-        return Registry.register(Registries.RECIPE_SERIALIZER, id(name), new SpecialRecipeSerializer<>(recipeFactory::apply));
+        return register(name, new SpecialRecipeSerializer<>(recipeFactory::apply));
     }
 
     private static void registerColoring(ItemConvertible forItem) {
@@ -44,7 +49,7 @@ public final class ModRecipes {
             throw new IllegalArgumentException("Expected 'Item' for '%s' to be a 'TintedBlockItem', got '%s'!".formatted(forItem, forItem.asItem()));
         }
 
-        register(COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(tintedForItem).getPath()), craftingRecipeCategory -> new ColoringRecipe(craftingRecipeCategory, tintedForItem));
+        registerSpecial(COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(tintedForItem).getPath()), craftingRecipeCategory -> new ColoringRecipe(craftingRecipeCategory, tintedForItem));
     }
 
     @SuppressWarnings("EmptyMethod")

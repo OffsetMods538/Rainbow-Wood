@@ -8,7 +8,7 @@ import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
-
+/*
 public class ButtonFromPlanks extends SpecialCraftingRecipe {
     public ButtonFromPlanks(CraftingRecipeCategory category) {
         super(category);
@@ -34,3 +34,4 @@ public class ButtonFromPlanks extends SpecialCraftingRecipe {
         return ModRecipes.BUTTON_FROM_PLANKS;
     }
 }
+*/

@@ -10,7 +10,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
-
+/*
 public class PlanksFromLog extends SpecialCraftingRecipe {
     public PlanksFromLog(CraftingRecipeCategory category) {
         super(category);
@@ -36,3 +36,4 @@ public class PlanksFromLog extends SpecialCraftingRecipe {
         return ModRecipes.PLANKS_FROM_LOG;
     }
 }
+*/
