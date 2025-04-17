@@ -102,6 +102,6 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return Registries.RECIPE_SERIALIZER.get(id("%s_coloring".formatted(Registries.ITEM.getId(forItem).getPath())));
+        return Registries.RECIPE_SERIALIZER.get(id(ModRecipes.COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem).getPath())));
     }
 }

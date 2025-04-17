@@ -21,15 +21,17 @@ public final class ModRecipes {
 
     }
 
+    public static final String COLORING_ID_FORMATTING = "coloring/%s";
+
     public static final List<Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String>> RECIPES = new LinkedList<>();
 
     public static final SpecialRecipeSerializer<PlanksFromLog> PLANKS_FROM_LOG = register("planks_from_log", PlanksFromLog::new);
     public static final SpecialRecipeSerializer<ButtonFromPlanks> BUTTON_FROM_PLANKS = register("button_from_planks", ButtonFromPlanks::new);
 
-    // Coloring TODO: probably do this using the block list from ModBlocks?
-    public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_LOG_COLORING = registerColoring(ModBlocks.RAINBOW_LOG);
-    public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_PLANKS_COLORING = registerColoring(ModBlocks.RAINBOW_PLANKS);
-    public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_BUTTON_COLORING = registerColoring(ModBlocks.RAINBOW_BUTTON);
+    // Coloring
+    static {
+        ModBlocks.BLOCKS.forEach(ModRecipes::registerColoring);
+    }
 
 
     private static <T extends SpecialCraftingRecipe> SpecialRecipeSerializer<T> register(String name, Function<CraftingRecipeCategory, T> recipeFactory) {
@@ -37,12 +39,12 @@ public final class ModRecipes {
         return Registry.register(Registries.RECIPE_SERIALIZER, id(name), new SpecialRecipeSerializer<>(recipeFactory::apply));
     }
 
-    private static SpecialRecipeSerializer<ColoringRecipe> registerColoring(ItemConvertible forItem) {
+    private static void registerColoring(ItemConvertible forItem) {
         if (!(forItem.asItem() instanceof TintedBlockItem tintedForItem)) {
             throw new IllegalArgumentException("Expected 'Item' for '%s' to be a 'TintedBlockItem', got '%s'!".formatted(forItem, forItem.asItem()));
         }
 
-        return register("%s_coloring".formatted(Registries.ITEM.getId(tintedForItem).getPath()), craftingRecipeCategory -> new ColoringRecipe(craftingRecipeCategory, tintedForItem));
+        register(COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(tintedForItem).getPath()), craftingRecipeCategory -> new ColoringRecipe(craftingRecipeCategory, tintedForItem));
     }
 
     @SuppressWarnings("EmptyMethod")
