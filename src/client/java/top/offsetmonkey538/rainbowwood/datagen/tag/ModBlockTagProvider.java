@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.datagen;
+package top.offsetmonkey538.rainbowwood.datagen.tag;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -15,7 +15,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         super(output, registriesFuture);
     }
 
-    // TODO: also add the same item tags, that'll make the wood usable in furnaces and stuff
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(ModBlocks.BLOCKS.toArray(new Block[0]));

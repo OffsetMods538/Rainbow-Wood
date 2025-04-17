@@ -2,12 +2,14 @@ package top.offsetmonkey538.rainbowwood.recipe;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
 
 public class PlanksFromLog extends SpecialCraftingRecipe {
     public PlanksFromLog(CraftingRecipeCategory category) {
@@ -16,7 +18,7 @@ public class PlanksFromLog extends SpecialCraftingRecipe {
 
     @Override
     public boolean matches(CraftingRecipeInput input, World world) {
-        return input.getStackCount() == 1 && input.getStacks().get(0).isOf(ModBlocks.RAINBOW_LOG.asItem() /* TODO: .isIn(ModItemTags.RAINBOW_LOGS */);
+        return input.getStackCount() == 1 && input.getStacks().get(0).isIn(ModItemTags.RAINBOW_LOGS);
     }
 
     @Override
