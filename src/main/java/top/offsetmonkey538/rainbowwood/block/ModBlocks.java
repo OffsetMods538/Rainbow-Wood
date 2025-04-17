@@ -2,6 +2,7 @@ package top.offsetmonkey538.rainbowwood.block;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSetType;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -16,6 +17,7 @@ public final class ModBlocks {
 
     public static final Block RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)), "rainbow_log");
     public static final Block RAINBOW_PLANKS = register(new TintedBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
+    //public static final Block RAINBOW_BUTTON = register(new TintedButtonBlock(BlockSetType.ACACIA AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)), "rainbow_button");
 
     public static final Block[] BLOCKS = new Block[] {
             RAINBOW_LOG,
