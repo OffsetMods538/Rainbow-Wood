@@ -2,7 +2,7 @@ package top.offsetmonkey538.rainbowwood.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.data.server.tag.vanilla.VanillaBlockTagProvider;
+import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
@@ -17,14 +17,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(ModBlocks.BLOCKS);
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(ModBlocks.BLOCKS.toArray(new Block[0]));
 
         getOrCreateTagBuilder(ModBlockTags.RAINBOW_LOGS).add(ModBlocks.RAINBOW_LOG /* TODO: stripped, wood, stripped wood */);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(ModBlockTags.RAINBOW_LOGS);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(ModBlocks.RAINBOW_PLANKS);
-
-        // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add();
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(ModBlocks.RAINBOW_BUTTON);
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add();

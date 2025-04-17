@@ -24,10 +24,12 @@ public final class ModRecipes {
     public static final List<Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String>> RECIPES = new LinkedList<>();
 
     public static final SpecialRecipeSerializer<PlanksFromLog> PLANKS_FROM_LOG = register("planks_from_log", PlanksFromLog::new);
+    public static final SpecialRecipeSerializer<ButtonFromPlanks> BUTTON_FROM_PLANKS = register("button_from_planks", ButtonFromPlanks::new);
 
-    // Coloring
+    // Coloring TODO: probably do this using the block list from ModBlocks?
     public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_LOG_COLORING = registerColoring(ModBlocks.RAINBOW_LOG);
     public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_PLANKS_COLORING = registerColoring(ModBlocks.RAINBOW_PLANKS);
+    public static final SpecialRecipeSerializer<ColoringRecipe> RAINBOW_BUTTON_COLORING = registerColoring(ModBlocks.RAINBOW_BUTTON);
 
 
     private static <T extends SpecialCraftingRecipe> SpecialRecipeSerializer<T> register(String name, Function<CraftingRecipeCategory, T> recipeFactory) {

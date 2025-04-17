@@ -14,7 +14,7 @@ public final class ModBlockEntities {
 
     }
 
-    public static final BlockEntityType<TintedBlockEntity> TINTED_BLOCK_ENTITY = register(TintedBlockEntity::new, "rainbow_planks", ModBlocks.BLOCKS);
+    public static final BlockEntityType<TintedBlockEntity> TINTED_BLOCK_ENTITY = register(TintedBlockEntity::new, "rainbow_planks", ModBlocks.BLOCKS.toArray(new Block[0]));
 
     /*
      Example usage:

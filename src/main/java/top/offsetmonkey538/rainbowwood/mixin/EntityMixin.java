@@ -44,16 +44,16 @@ public abstract class EntityMixin {
         if (item.getItem() instanceof TintedBlockItem tintedBlockItem) return tintedBlockItem;
         if (item.isIn(ItemTags.LOGS)) return ModBlocks.RAINBOW_LOG.asItem();
         if (item.isIn(ItemTags.PLANKS)) return ModBlocks.RAINBOW_PLANKS.asItem();
-        //TODO: if (item.isIn(ItemTags.SIGNS)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.HANGING_SIGNS)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_BUTTONS)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_DOORS)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_STAIRS)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_SLABS)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_FENCES)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_PRESSURE_PLATES)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_TRAPDOORS)) return ModBlocks.RAINBOW_LOG.asItem();
-        //TODO: if (item.isIn(ItemTags.FENCE_GATES)) return ModBlocks.RAINBOW_LOG.asItem();
+        //TODO: if (item.isIn(ItemTags.SIGNS)) return ModBlocks.RAINBOW_SIGN.asItem();
+        //TODO: if (item.isIn(ItemTags.HANGING_SIGNS)) return ModBlocks.RAINBOW_HANGING_SIGN.asItem();
+        if (item.isIn(ItemTags.WOODEN_BUTTONS)) return ModBlocks.RAINBOW_BUTTON.asItem();
+        //TODO: if (item.isIn(ItemTags.WOODEN_DOORS)) return ModBlocks.RAINBOW_DOOR.asItem();
+        //TODO: if (item.isIn(ItemTags.WOODEN_STAIRS)) return ModBlocks.RAINBOW_STAIRS.asItem();
+        //TODO: if (item.isIn(ItemTags.WOODEN_SLABS)) return ModBlocks.RAINBOW_SLAB.asItem();
+        //TODO: if (item.isIn(ItemTags.WOODEN_FENCES)) return ModBlocks.RAINBOW_FENCE.asItem();
+        //TODO: if (item.isIn(ItemTags.FENCE_GATES)) return ModBlocks.RAINBOW_FENCE_GATE.asItem();
+        //TODO: if (item.isIn(ItemTags.WOODEN_PRESSURE_PLATES)) return ModBlocks.RAINBOW_PRESSURE_PLATE.asItem();
+        //TODO: if (item.isIn(ItemTags.WOODEN_TRAPDOORS)) return ModBlocks.RAINBOW_TRAPDOOR.asItem();
         return null;
     }
 }

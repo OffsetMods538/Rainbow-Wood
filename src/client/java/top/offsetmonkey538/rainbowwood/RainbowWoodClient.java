@@ -2,6 +2,7 @@ package top.offsetmonkey538.rainbowwood;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.block.Block;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
 import top.offsetmonkey538.rainbowwood.block.entity.TintedBlockEntity;
@@ -14,12 +15,12 @@ public class RainbowWoodClient implements ClientModInitializer {
 		ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
 			if (world == null) return 0;
             return world.getBlockEntity(pos, ModBlockEntities.TINTED_BLOCK_ENTITY).map(TintedBlockEntity::getTint).orElse(-1);
-        }, ModBlocks.BLOCKS);
+        }, ModBlocks.BLOCKS.toArray(new Block[0]));
 
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
 			final Integer tintColor = stack.get(ModComponents.TINT_COLOR);
 			if (tintColor == null) return -1;
 			return tintColor;
-		}, ModBlocks.BLOCKS);
+		}, ModBlocks.BLOCKS.toArray(new Block[0]));
 	}
 }
