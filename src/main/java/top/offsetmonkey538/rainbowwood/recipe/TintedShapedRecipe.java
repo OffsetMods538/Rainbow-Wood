@@ -19,6 +19,7 @@ import net.minecraft.util.Util;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -53,13 +54,14 @@ public class TintedShapedRecipe implements CraftingRecipe {
 
     @Override
     public boolean matches(CraftingRecipeInput input, World world) {
-        if (input.getStackCount() != pattern.size()) return false;
-
         final String[] patternNoPadding = RawShapedRecipe.removePadding(pattern);
         final int width = patternNoPadding[0].length();
         final int height = patternNoPadding.length;
+
+        if (input.getStackCount() != Arrays.stream(patternNoPadding).flatMapToInt(String::chars).filter(character -> character == '#').count()) return false;
+
         if (input.getWidth() == width && input.getHeight() == height) {
-            if (!Util.isSymmetrical(pattern.get(0).length(), pattern.size(), pattern) && this.matches(input, true)) return true;
+            if (!Util.isSymmetrical(width, height, Arrays.stream(patternNoPadding).flatMapToInt(String::chars).boxed().toList()) && this.matches(input, true)) return true;
 
             return this.matches(input, false);
         }
