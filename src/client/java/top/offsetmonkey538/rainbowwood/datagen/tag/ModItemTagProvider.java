@@ -21,11 +21,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         addBlockItemToItemTag(ModItemTags.RAINBOW_LOGS, ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_WOOD);
-
+//TODO: add to conventiontags as well
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(ModItemTags.RAINBOW_LOGS);
 
         addBlockItemToItemTag(ItemTags.PLANKS, ModBlocks.RAINBOW_PLANKS);
-        // TODO: addBlockItemToItemTag(ItemTags.WOODEN_STAIRS, );
+        addBlockItemToItemTag(ItemTags.WOODEN_STAIRS, ModBlocks.RAINBOW_STAIRS);
         addBlockItemToItemTag(ItemTags.WOODEN_SLABS, ModBlocks.RAINBOW_SLAB);
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_FENCES, );
         // TODO: addBlockItemToItemTag(ItemTags.FENCE_GATES, );

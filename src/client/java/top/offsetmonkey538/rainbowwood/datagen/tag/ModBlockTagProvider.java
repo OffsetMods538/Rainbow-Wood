@@ -18,12 +18,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(ModBlocks.BLOCKS.toArray(new Block[0]));
-
+//TODO: add to conventiontags as well
         getOrCreateTagBuilder(ModBlockTags.RAINBOW_LOGS).add(ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_WOOD);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(ModBlockTags.RAINBOW_LOGS);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(ModBlocks.RAINBOW_PLANKS);
-        // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add();
+        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(ModBlocks.RAINBOW_STAIRS);
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(ModBlocks.RAINBOW_SLAB);
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add();
         // TODO: getOrCreateTagBuilder(BlockTags.FENCE_GATES).add();

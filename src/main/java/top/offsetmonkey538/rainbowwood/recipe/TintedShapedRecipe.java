@@ -50,6 +50,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
         return category;
     }
 
+    // TODO: mirrored recipe doesn't work (stairs)
     @Override
     public boolean matches(CraftingRecipeInput input, World world) {
         final String[] patternNoPadding = RawShapedRecipe.removePadding(pattern);

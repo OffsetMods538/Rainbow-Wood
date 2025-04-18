@@ -13,14 +13,17 @@ import java.util.Optional;
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
 public class ModModelProvider extends FabricModelProvider {
-    private static final Model TINTED_CUBE_ALL =               createModel("tinted_cube_all"   , ""           , TextureKey.ALL);
-    private static final Model TINTED_CUBE_COLUMN =            createModel("tinted_cube_column", ""           , TextureKey.END, TextureKey.SIDE);
+    private static final Model TINTED_CUBE_ALL               = createModel("tinted_cube_all"   , ""           , TextureKey.ALL);
+    private static final Model TINTED_CUBE_COLUMN            = createModel("tinted_cube_column", ""           , TextureKey.END, TextureKey.SIDE);
     private static final Model TINTED_CUBE_COLUMN_HORIZONTAL = createModel("tinted_cube_column", "_horizontal", TextureKey.END, TextureKey.SIDE);
-    private static final Model TINTED_BUTTON =                 createModel("tinted_button"     , ""           , TextureKey.TEXTURE);
-    private static final Model TINTED_BUTTON_PRESSED =         createModel("tinted_button"     , "_pressed"   , TextureKey.TEXTURE);
-    private static final Model TINTED_BUTTON_INVENTORY =       createModel("tinted_button"     , "_inventory" , TextureKey.TEXTURE);
-    private static final Model TINTED_SLAB             =       createModel("tinted_slab"       , ""           , TextureKey.TEXTURE);
-    private static final Model TINTED_SLAB_TOP         =       createModel("tinted_slab"       , "_top"       , TextureKey.TEXTURE);
+    private static final Model TINTED_BUTTON                 = createModel("tinted_button"     , ""           , TextureKey.TEXTURE);
+    private static final Model TINTED_BUTTON_PRESSED         = createModel("tinted_button"     , "_pressed"   , TextureKey.TEXTURE);
+    private static final Model TINTED_BUTTON_INVENTORY       = createModel("tinted_button"     , "_inventory" , TextureKey.TEXTURE);
+    private static final Model TINTED_SLAB                   = createModel("tinted_slab"       , ""           , TextureKey.TEXTURE);
+    private static final Model TINTED_SLAB_TOP               = createModel("tinted_slab"       , "_top"       , TextureKey.TEXTURE);
+    private static final Model TINTED_STAIRS                 = createModel("tinted_stairs"     , ""           , TextureKey.TEXTURE);
+    private static final Model TINTED_STAIRS_INNER           = createModel("tinted_stairs"     , "_inner"     , TextureKey.TEXTURE);
+    private static final Model TINTED_STAIRS_OUTER           = createModel("tinted_stairs"     , "_outer"     , TextureKey.TEXTURE);
 
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -38,6 +41,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         final TextureMap plankTexture = TextureMap.texture(ModBlocks.RAINBOW_PLANKS);
         generateSlab(ModBlocks.RAINBOW_SLAB, plankTexture, blockStateModelGenerator, baseModelId);
+        generateStairs(ModBlocks.RAINBOW_STAIRS, plankTexture, blockStateModelGenerator);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
     }
 
@@ -54,10 +58,18 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     private void generateSlab(final Block slabBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator, final Identifier baseModel) {
-        Identifier mainId = TINTED_SLAB.upload(slabBlock, textures, blockStateModelGenerator.modelCollector);
-        Identifier topId = TINTED_SLAB_TOP.upload(slabBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier mainId = TINTED_SLAB.upload(slabBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier topId = TINTED_SLAB_TOP.upload(slabBlock, textures, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSlabBlockState(slabBlock, mainId, topId, baseModel));
         blockStateModelGenerator.registerParentedItemModel(slabBlock, mainId);
+    }
+
+    private void generateStairs(final Block stairsBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {
+        final Identifier mainId = TINTED_STAIRS.upload(stairsBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier innerId = TINTED_STAIRS_INNER.upload(stairsBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier outerId = TINTED_STAIRS_OUTER.upload(stairsBlock, textures, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createStairsBlockState(stairsBlock, innerId, mainId, outerId));
+        blockStateModelGenerator.registerParentedItemModel(stairsBlock, mainId);
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {
