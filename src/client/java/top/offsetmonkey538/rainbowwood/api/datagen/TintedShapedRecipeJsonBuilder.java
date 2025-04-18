@@ -26,7 +26,7 @@ public class TintedShapedRecipeJsonBuilder implements CraftingRecipeJsonBuilder 
     private final List<String> pattern = Lists.newArrayList();
     public final Map<String, AdvancementCriterion<?>> criteria = new LinkedHashMap<>();
     @Nullable public String group;
-    public Map<Character, Ingredient> inputs = new HashMap<>();
+    public final Map<Character, Ingredient> inputs = new HashMap<>();
 
     public TintedShapedRecipeJsonBuilder(RecipeCategory category, ItemConvertible output, int count) {
         this.category = category;

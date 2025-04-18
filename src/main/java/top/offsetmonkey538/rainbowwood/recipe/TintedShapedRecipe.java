@@ -100,8 +100,6 @@ public class TintedShapedRecipe implements CraftingRecipe {
     }
 
     private boolean matches(CraftingRecipeInput input, boolean mirrored) {
-
-        boolean tintedItemsEqual = true;
         ItemStack firstTintedItem = null;
 
         for (int y = 0; y < height; y++) {
@@ -116,15 +114,14 @@ public class TintedShapedRecipe implements CraftingRecipe {
                 if (stack.getItem() instanceof TintedBlockItem) {
                     if (firstTintedItem == null) firstTintedItem = stack;
 
-                    tintedItemsEqual = Objects.equals(stack.get(ModComponents.TINT_COLOR), firstTintedItem.get(ModComponents.TINT_COLOR));
-                    if (!tintedItemsEqual) return false;
+                    if (!Objects.equals(stack.get(ModComponents.TINT_COLOR), firstTintedItem.get(ModComponents.TINT_COLOR))) return false;
                 }
 
                 if (!ingredient.test(stack)) return false;
             }
         }
 
-        return tintedItemsEqual;
+        return true;
     }
 
     @Override
