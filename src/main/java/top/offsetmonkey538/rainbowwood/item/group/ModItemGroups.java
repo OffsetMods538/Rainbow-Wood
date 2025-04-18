@@ -31,20 +31,6 @@ public final class ModItemGroups {
                                 entries.add(((TintedBlockItem) block.asItem()).getStackWithTint(dyeColor.getSignColor()));
                             }
                         }
-
-                        //for (int i = 0; i <= 0xFFFFFF; i++) {
-                        //    entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(i));
-                        //}
-
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0x000000));
-
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0xFF0000));
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0xFFFF00));
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0xFF00FF));
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0x00FF00));
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0x00FFFF));
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0x0000FF));
-                        //entries.add(ModItems.RAINBOW_PLANKS.getStackWithTint(0xFFFFFF));
                     })
                     .build()
     );

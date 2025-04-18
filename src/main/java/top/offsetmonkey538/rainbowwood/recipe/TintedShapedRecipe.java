@@ -5,10 +5,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
-import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.input.CraftingRecipeInput;
@@ -80,14 +78,6 @@ public class TintedShapedRecipe implements CraftingRecipe {
                 if (mirrored) ingredientChar = pattern.get(y).charAt(width - x - 1);
                 else ingredientChar = pattern.get(y).charAt(x);
 
-                //switch (ingredientChar) {
-                //    case ' ':
-                //        if (!input.getStackInSlot(x, y).isEmpty()) return false;
-                //        break;
-                //    case 'i':
-                //        if (!ingredient.test(input.getStackInSlot(x, y))) return false;
-                //        break;
-                //}
                 final ItemStack stack = input.getStackInSlot(x, y);
                 if (ingredientChar == ' ' ? !stack.isEmpty() : !ingredient.test(stack)) return false;
             }
@@ -171,83 +161,4 @@ public class TintedShapedRecipe implements CraftingRecipe {
             return PACKET_CODEC;
         }
     }
-
-    /*
-    public TintedShapedRecipe(String group, CraftingRecipeCategory category, RawShapedRecipe raw, ItemStack result) {
-        super(group, category, raw, result);
-    }
-
-    @Override
-    public boolean matches(CraftingRecipeInput input, World world) {
-        if (!super.matches(input, world)) return false;
-
-        boolean tintsEqual;
-        for (int i = 0; i < input.getStacks().size(); i++) {
-            final ItemStack stack = input.getStacks().get(i);
-            if (stack.isEmpty()) continue;
-
-
-            tintsEqual = Objects.equals(stack.get(ModComponents.TINT_COLOR), input.getStacks().get(0).get(ModComponents.TINT_COLOR));
-            if (!tintsEqual) return false;
-        }
-
-        return false;
-    }
-
-    @Override
-    public ItemStack craft(CraftingRecipeInput craftingRecipeInput, RegistryWrapper.WrapperLookup wrapperLookup) {
-        System.out.println(craftingRecipeInput.getStacks().get(0));
-        return craftingRecipeInput.getStacks().get(0).copyComponentsToNewStack(super.result.getItem(), super.result.getCount());
-    }
-
-    @Override
-    public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return ModRecipes.TINTED_SHAPED;
-    }
-
-    public static class TintedSerializer implements RecipeSerializer<TintedShapedRecipe> {
-        public static final MapCodec<TintedShapedRecipe> CODEC = RecordCodecBuilder.mapCodec(
-                instance -> instance.group(
-                                Codec.STRING.optionalFieldOf("group", "").forGetter(ShapedRecipe::getGroup),
-                                CraftingRecipeCategory.CODEC.fieldOf("category").orElse(CraftingRecipeCategory.MISC).forGetter(ShapedRecipe::getCategory),
-                                RawShapedRecipe.CODEC.forGetter(recipe -> recipe.raw),
-                                ItemStack.VALIDATED_CODEC.fieldOf("result").forGetter(recipe -> recipe.result)
-                        )
-                        .apply(instance, TintedShapedRecipe::new)
-        );
-        public static final PacketCodec<RegistryByteBuf, TintedShapedRecipe> PACKET_CODEC = PacketCodec.ofStatic(
-                TintedSerializer::write, TintedSerializer::read
-        );
-
-        @Override
-        public MapCodec<TintedShapedRecipe> codec() {
-            return CODEC;
-        }
-
-        @Override
-        public PacketCodec<RegistryByteBuf, TintedShapedRecipe> packetCodec() {
-            return PACKET_CODEC;
-        }
-
-        private static TintedShapedRecipe read(RegistryByteBuf buf) {
-            String string = buf.readString();
-            CraftingRecipeCategory craftingRecipeCategory = buf.readEnumConstant(CraftingRecipeCategory.class);
-            RawShapedRecipe rawShapedRecipe = RawShapedRecipe.PACKET_CODEC.decode(buf);
-            ItemStack itemStack = ItemStack.PACKET_CODEC.decode(buf);
-            return new TintedShapedRecipe(string, craftingRecipeCategory, rawShapedRecipe, itemStack);
-        }
-
-        private static void write(RegistryByteBuf buf, TintedShapedRecipe recipe) {
-            buf.writeString(recipe.getGroup());
-            buf.writeEnumConstant(recipe.getCategory());
-            RawShapedRecipe.PACKET_CODEC.encode(buf, recipe.raw);
-            ItemStack.PACKET_CODEC.encode(buf, recipe.result);
-        }
-    }
-    */
 }

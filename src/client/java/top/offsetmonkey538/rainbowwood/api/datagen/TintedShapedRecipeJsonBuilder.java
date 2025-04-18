@@ -1,7 +1,6 @@
 package top.offsetmonkey538.rainbowwood.api.datagen;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.AdvancementRequirements;
@@ -9,13 +8,9 @@ import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
 import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RawShapedRecipe;
-import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -32,7 +27,7 @@ public class TintedShapedRecipeJsonBuilder implements CraftingRecipeJsonBuilder 
     public final Ingredient input;
     public final Item output;
     public final int count;
-    private final List<String> pattern = Lists.<String>newArrayList();
+    private final List<String> pattern = Lists.newArrayList();
     public final Map<String, AdvancementCriterion<?>> criteria = new LinkedHashMap<>();
     @Nullable public String group;
 
