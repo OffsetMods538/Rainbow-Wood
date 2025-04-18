@@ -30,13 +30,16 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
         int forItemCount = 0;
         boolean foundDye = false;
         boolean forItemsEqual = true;
+        ItemStack firstForItem = null;
 
         for (int i = 0; i < input.getStacks().size(); i++) {
             final ItemStack stack = input.getStacks().get(i);
             if (stack.isEmpty()) continue;
 
             if (stack.isOf(forItem)) {
-                forItemsEqual = forItemsEqual && Objects.equals(stack.get(ModComponents.TINT_COLOR), input.getStacks().get(0).get(ModComponents.TINT_COLOR));
+                if (firstForItem == null) firstForItem = stack;
+
+                forItemsEqual = forItemsEqual && Objects.equals(stack.get(ModComponents.TINT_COLOR), firstForItem.get(ModComponents.TINT_COLOR));
                 forItemCount++;
                 continue;
             }
