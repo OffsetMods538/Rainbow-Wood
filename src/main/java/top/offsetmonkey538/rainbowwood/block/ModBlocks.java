@@ -23,6 +23,8 @@ public final class ModBlocks {
 
     public static final Block RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)), "rainbow_log");
     public static final Block STRIPPED_RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.STRIPPED_OAK_LOG)), "stripped_rainbow_log");
+    public static final Block RAINBOW_WOOD = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_WOOD)), "rainbow_wood");
+    public static final Block STRIPPED_RAINBOW_WOOD = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.STRIPPED_OAK_WOOD)), "stripped_rainbow_wood");
     public static final Block RAINBOW_PLANKS = register(new TintedBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
     public static final Block RAINBOW_SLAB = register(new TintedSlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB)), "rainbow_slab");
     public static final Block RAINBOW_BUTTON = register(new TintedButtonBlock(ModBlockSetTypes.RAINBOW, 30, AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)), "rainbow_button");
@@ -38,12 +40,12 @@ public final class ModBlocks {
         // TODO: registry.add(RAINBOW_STAIRS, 5, 20);
         registry.add(RAINBOW_LOG, 5, 5);
         registry.add(STRIPPED_RAINBOW_LOG, 5, 5);
-        // TODO: registry.add(RAINBOW_WOOD, 5, 5);
-        // TODO: registry.add(STRIPPED_RAINBOW_WOOD, 5, 5);
+        registry.add(RAINBOW_WOOD, 5, 5);
+        registry.add(STRIPPED_RAINBOW_WOOD, 5, 5);
 
         // Stripping
         StrippableBlockRegistry.register(RAINBOW_LOG, STRIPPED_RAINBOW_LOG);
-        // TODO: StrippableBlockRegistry.register(RAINBOW_WOOD, STRIPPED_RAINBOW_WOOD);
+        StrippableBlockRegistry.register(RAINBOW_WOOD, STRIPPED_RAINBOW_WOOD);
     }
 
     /*

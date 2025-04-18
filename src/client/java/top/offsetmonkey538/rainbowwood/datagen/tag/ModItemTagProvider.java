@@ -20,7 +20,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        addBlockItemToItemTag(ModItemTags.RAINBOW_LOGS, ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG /* TODO: wood, stripped wood */);
+        addBlockItemToItemTag(ModItemTags.RAINBOW_LOGS, ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_WOOD);
 
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(ModItemTags.RAINBOW_LOGS);
 

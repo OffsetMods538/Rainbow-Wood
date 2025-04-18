@@ -33,6 +33,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         generateLog(ModBlocks.RAINBOW_LOG, TextureMap.sideAndEndForTop(ModBlocks.RAINBOW_LOG), blockStateModelGenerator);
         generateLog(ModBlocks.STRIPPED_RAINBOW_LOG, TextureMap.sideAndEndForTop(ModBlocks.STRIPPED_RAINBOW_LOG), blockStateModelGenerator);
+        generateWood(ModBlocks.RAINBOW_WOOD, ModBlocks.RAINBOW_LOG, blockStateModelGenerator);
+        generateWood(ModBlocks.STRIPPED_RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_LOG, blockStateModelGenerator);
 
         final TextureMap plankTexture = TextureMap.texture(ModBlocks.RAINBOW_PLANKS);
         generateSlab(ModBlocks.RAINBOW_SLAB, plankTexture, blockStateModelGenerator, baseModelId);
@@ -43,6 +45,12 @@ public class ModModelProvider extends FabricModelProvider {
         final Identifier columnId = TINTED_CUBE_COLUMN.upload(logBlock, textures, blockStateModelGenerator.modelCollector);
         final Identifier horizontalId = TINTED_CUBE_COLUMN_HORIZONTAL.upload(logBlock, textures, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createAxisRotatedBlockState(logBlock, columnId, horizontalId));
+    }
+
+    private void generateWood(final Block woodBlock, final Block textureBlock, final BlockStateModelGenerator blockStateModelGenerator) {
+        final TextureMap textures =  new TextureMap().put(TextureKey.SIDE, TextureMap.getId(textureBlock)).put(TextureKey.END, TextureMap.getId(textureBlock)).put(TextureKey.PARTICLE, TextureMap.getId(textureBlock));
+        final Identifier columnId = TINTED_CUBE_COLUMN.upload(woodBlock, textures, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createAxisRotatedBlockState(woodBlock, columnId));
     }
 
     private void generateSlab(final Block slabBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator, final Identifier baseModel) {

@@ -19,7 +19,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(ModBlocks.BLOCKS.toArray(new Block[0]));
 
-        getOrCreateTagBuilder(ModBlockTags.RAINBOW_LOGS).add(ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG /* TODO: wood, stripped wood */);
+        getOrCreateTagBuilder(ModBlockTags.RAINBOW_LOGS).add(ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_WOOD);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(ModBlockTags.RAINBOW_LOGS);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(ModBlocks.RAINBOW_PLANKS);

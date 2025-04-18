@@ -30,6 +30,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_logs", conditionsFromTag(ModItemTags.RAINBOW_LOGS))
                 .offerTo(exporter);
 
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, 3)
+                .pattern("##")
+                .pattern("##")
+                .group("wood")
+                .criterion("has_logs", conditionsFromItem(ModBlocks.RAINBOW_LOG))
+                .offerTo(exporter);
+
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_WOOD, 3)
+                .pattern("##")
+                .pattern("##")
+                .group("stripped_wood")
+                .criterion("has_stripped_logs", conditionsFromItem(ModBlocks.STRIPPED_RAINBOW_LOG))
+                .offerTo(exporter);
+
         TintedShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAINBOW_PLANKS, ModBlocks.RAINBOW_SLAB, 6)
                 .pattern("###")
                 .group("slabs")

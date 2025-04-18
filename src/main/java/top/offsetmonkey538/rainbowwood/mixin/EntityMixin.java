@@ -42,7 +42,7 @@ public abstract class EntityMixin {
     @Unique
     private @Nullable Item rainbow_wood$getMatchingTintableBlockItemFor(final ItemStack item) {
         if (item.getItem() instanceof TintedBlockItem tintedBlockItem) return tintedBlockItem;
-        if (item.isIn(ItemTags.LOGS)) return ModBlocks.RAINBOW_LOG.asItem();
+        if (item.isIn(ItemTags.LOGS)) return ModBlocks.RAINBOW_LOG.asItem(); // TODO: logs tag includes stripped and wood, which are their own blocks
         if (item.isIn(ItemTags.PLANKS)) return ModBlocks.RAINBOW_PLANKS.asItem();
         if (item.isIn(ItemTags.WOODEN_SLABS)) return ModBlocks.RAINBOW_SLAB.asItem();
         //TODO: if (item.isIn(ItemTags.SIGNS)) return ModBlocks.RAINBOW_SIGN.asItem();
