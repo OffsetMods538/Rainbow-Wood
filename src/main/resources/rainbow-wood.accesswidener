@@ -14,3 +14,5 @@ accessible field net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder group 
 accessible field net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder category Lnet/minecraft/recipe/book/RecipeCategory;
 accessible field net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder output Lnet/minecraft/item/Item;
 accessible field net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder count I
+
+accessible field net/minecraft/item/AxeItem STRIPPED_BLOCKS Ljava/util/Map;
