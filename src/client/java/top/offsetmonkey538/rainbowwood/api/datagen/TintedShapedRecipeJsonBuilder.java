@@ -17,35 +17,43 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import top.offsetmonkey538.rainbowwood.recipe.TintedShapedRecipe;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class TintedShapedRecipeJsonBuilder implements CraftingRecipeJsonBuilder {
     public final RecipeCategory category;
-    public final Ingredient input;
     public final Item output;
     public final int count;
     private final List<String> pattern = Lists.newArrayList();
     public final Map<String, AdvancementCriterion<?>> criteria = new LinkedHashMap<>();
     @Nullable public String group;
+    public Map<Character, Ingredient> inputs = new HashMap<>();
 
-    public TintedShapedRecipeJsonBuilder(RecipeCategory category, Ingredient input, ItemConvertible output, int count) {
+    public TintedShapedRecipeJsonBuilder(RecipeCategory category, ItemConvertible output, int count) {
         this.category = category;
-        this.input = input;
         this.output = output.asItem();
         this.count = count;
     }
 
-    public static TintedShapedRecipeJsonBuilder create(RecipeCategory category, TagKey<Item> input, ItemConvertible output, int count) {
-        return create(category, Ingredient.fromTag(input), output, count);
+    public static TintedShapedRecipeJsonBuilder create(RecipeCategory category, ItemConvertible output) {
+        return create(category, output, 1);
     }
-    public static TintedShapedRecipeJsonBuilder create(RecipeCategory category, ItemConvertible input, ItemConvertible output, int count) {
-        return create(category, Ingredient.ofItems(input), output, count);
+    public static TintedShapedRecipeJsonBuilder create(RecipeCategory category, ItemConvertible output, int count) {
+        return new TintedShapedRecipeJsonBuilder(category, output, count);
     }
-    public static TintedShapedRecipeJsonBuilder create(RecipeCategory category, Ingredient input, ItemConvertible output, int count) {
-        return new TintedShapedRecipeJsonBuilder(category, input, output, count);
+
+    public TintedShapedRecipeJsonBuilder input(char character, TagKey<Item> tag) {
+        return input(character, Ingredient.fromTag(tag));
+    }
+
+    public TintedShapedRecipeJsonBuilder input(char character, ItemConvertible itemProvider) {
+        return input(character, Ingredient.ofItems(itemProvider));
+    }
+
+    public TintedShapedRecipeJsonBuilder input(char character, Ingredient input) {
+        if (inputs.containsKey(character)) throw new IllegalArgumentException("Symbol '%s' is already defined!".formatted(character));
+        if (character == ' ') throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+        inputs.put(character, input);
+        return this;
     }
 
     public TintedShapedRecipeJsonBuilder pattern(String pattern) {
@@ -85,7 +93,7 @@ public class TintedShapedRecipeJsonBuilder implements CraftingRecipeJsonBuilder 
                 Objects.requireNonNullElse(group, ""),
                 CraftingRecipeJsonBuilder.toCraftingCategory(category),
                 pattern,
-                input,
+                inputs,
                 output,
                 count
         );
