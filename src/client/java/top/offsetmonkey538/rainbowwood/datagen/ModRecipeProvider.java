@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.ComplexRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -60,6 +61,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("###")
                 .input('#', ModBlocks.RAINBOW_PLANKS)
                 .group("stairs")
+                .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
+                .offerTo(exporter);
+
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.RAINBOW_FENCE, 3)
+                .pattern("#s#")
+                .pattern("#s#")
+                .input('#', ModBlocks.RAINBOW_PLANKS)
+                .input('s', Items.STICK)
                 .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
                 .offerTo(exporter);
 

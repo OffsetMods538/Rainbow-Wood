@@ -24,6 +24,9 @@ public class ModModelProvider extends FabricModelProvider {
     private static final Model TINTED_STAIRS                 = createModel("tinted_stairs"     , ""           , TextureKey.TEXTURE);
     private static final Model TINTED_STAIRS_INNER           = createModel("tinted_stairs"     , "_inner"     , TextureKey.TEXTURE);
     private static final Model TINTED_STAIRS_OUTER           = createModel("tinted_stairs"     , "_outer"     , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_POST             = createModel("tinted_fence"     , "_post"       , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_SIDE             = createModel("tinted_fence"     , "_side"       , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_INVENTORY        = createModel("tinted_fence"     , "_inventory"  , TextureKey.TEXTURE);
 
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -42,6 +45,7 @@ public class ModModelProvider extends FabricModelProvider {
         final TextureMap plankTexture = TextureMap.texture(ModBlocks.RAINBOW_PLANKS);
         generateSlab(ModBlocks.RAINBOW_SLAB, plankTexture, blockStateModelGenerator, baseModelId);
         generateStairs(ModBlocks.RAINBOW_STAIRS, plankTexture, blockStateModelGenerator);
+        generateFence(ModBlocks.RAINBOW_FENCE, plankTexture, blockStateModelGenerator);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
     }
 
@@ -70,6 +74,15 @@ public class ModModelProvider extends FabricModelProvider {
         final Identifier outerId = TINTED_STAIRS_OUTER.upload(stairsBlock, textures, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createStairsBlockState(stairsBlock, innerId, mainId, outerId));
         blockStateModelGenerator.registerParentedItemModel(stairsBlock, mainId);
+    }
+
+    private void generateFence(final Block fenceBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {
+        final Identifier postId = TINTED_FENCE_POST.upload(fenceBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier sideId = TINTED_FENCE_SIDE.upload(fenceBlock, textures, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createFenceBlockState(fenceBlock, postId, sideId));
+
+        final Identifier inventoryId = TINTED_FENCE_INVENTORY.upload(fenceBlock, textures, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.registerParentedItemModel(fenceBlock, inventoryId);
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {

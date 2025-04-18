@@ -20,7 +20,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_LOGS).add(ModBlocks.STRIPPED_RAINBOW_LOG);
         getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_WOODS).add(ModBlocks.STRIPPED_RAINBOW_WOOD);
-        // TODO: getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCES).add(ModBlocks.RAINBOW_FENCE);
+        getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCES).add(ModBlocks.RAINBOW_FENCE);
         // TODO: getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCE_GATES).add(ModBlocks.RAINBOW_FENCE_GATE);
 
 
@@ -32,7 +32,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PLANKS).add(ModBlocks.RAINBOW_PLANKS);
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(ModBlocks.RAINBOW_STAIRS);
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(ModBlocks.RAINBOW_SLAB);
-        // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add();
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(ModBlocks.RAINBOW_FENCE);
         // TODO: getOrCreateTagBuilder(BlockTags.FENCE_GATES).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add();

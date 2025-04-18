@@ -2,10 +2,7 @@ package top.offsetmonkey538.rainbowwood.block;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.StairsBlock;
+import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
@@ -29,7 +26,7 @@ public final class ModBlocks {
     public static final Block RAINBOW_PLANKS = register(new TintedBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
     public static final Block RAINBOW_STAIRS = register(new TintedStairsBlock(RAINBOW_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS)), "rainbow_stairs");
     public static final Block RAINBOW_SLAB = register(new TintedSlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB)), "rainbow_slab");
-    // public static final Block RAINBOW_FENCE = register();
+    public static final Block RAINBOW_FENCE = register(new TintedFenceBlock(AbstractBlock.Settings.copy(Blocks.OAK_FENCE)), "rainbow_fence");
     // public static final Block RAINBOW_FENCE_GATE = register();
     // public static final Block RAINBOW_DOOR = register();
     // public static final Block RAINBOW_TRAPDOOR = register();
@@ -45,7 +42,7 @@ public final class ModBlocks {
         registry.add(RAINBOW_PLANKS, 5, 20);
         registry.add(RAINBOW_SLAB, 5, 20);
         // TODO: registry.add(RAINBOW_FENCE_GATE, 5, 20);
-        // TODO: registry.add(RAINBOW_FENCE, 5, 20);
+        registry.add(RAINBOW_FENCE, 5, 20);
         registry.add(RAINBOW_STAIRS, 5, 20);
         registry.add(RAINBOW_LOG, 5, 5);
         registry.add(STRIPPED_RAINBOW_LOG, 5, 5);

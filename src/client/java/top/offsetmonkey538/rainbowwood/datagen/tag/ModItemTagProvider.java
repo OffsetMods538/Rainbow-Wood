@@ -23,7 +23,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         addBlockItemToItemTag(ConventionalItemTags.STRIPPED_LOGS, ModBlocks.STRIPPED_RAINBOW_LOG);
         addBlockItemToItemTag(ConventionalItemTags.STRIPPED_WOODS, ModBlocks.STRIPPED_RAINBOW_WOOD);
-        // TODO: addBlockItemToItemTag(ConventionalItemTags.WOODEN_FENCES, ModBlocks.RAINBOW_FENCE);
+        addBlockItemToItemTag(ConventionalItemTags.WOODEN_FENCES, ModBlocks.RAINBOW_FENCE);
         // TODO: addBlockItemToItemTag(ConventionalItemTags.WOODEN_FENCE_GATES, ModBlocks.RAINBOW_FENCE_GATE);
 
         addBlockItemToItemTag(ModItemTags.RAINBOW_LOGS, ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_WOOD);
@@ -33,7 +33,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         addBlockItemToItemTag(ItemTags.PLANKS, ModBlocks.RAINBOW_PLANKS);
         addBlockItemToItemTag(ItemTags.WOODEN_STAIRS, ModBlocks.RAINBOW_STAIRS);
         addBlockItemToItemTag(ItemTags.WOODEN_SLABS, ModBlocks.RAINBOW_SLAB);
-        // TODO: addBlockItemToItemTag(ItemTags.WOODEN_FENCES, );
+        addBlockItemToItemTag(ItemTags.WOODEN_FENCES, ModBlocks.RAINBOW_FENCE);
         // TODO: addBlockItemToItemTag(ItemTags.FENCE_GATES, );
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_DOORS, );
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_TRAPDOORS, );
