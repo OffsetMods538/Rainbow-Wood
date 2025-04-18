@@ -2,6 +2,7 @@ package top.offsetmonkey538.rainbowwood.datagen.tag;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -17,8 +18,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+        getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_LOGS).add(ModBlocks.STRIPPED_RAINBOW_LOG);
+        getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_WOODS).add(ModBlocks.STRIPPED_RAINBOW_WOOD);
+        // TODO: getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCES).add(ModBlocks.RAINBOW_FENCE);
+        // TODO: getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCE_GATES).add(ModBlocks.RAINBOW_FENCE_GATE);
+
+
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(ModBlocks.BLOCKS.toArray(new Block[0]));
-//TODO: add to conventiontags as well
+
         getOrCreateTagBuilder(ModBlockTags.RAINBOW_LOGS).add(ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_WOOD);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(ModBlockTags.RAINBOW_LOGS);

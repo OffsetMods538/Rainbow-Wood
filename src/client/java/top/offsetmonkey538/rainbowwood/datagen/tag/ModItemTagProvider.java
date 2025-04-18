@@ -2,6 +2,7 @@ package top.offsetmonkey538.rainbowwood.datagen.tag;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
@@ -20,8 +21,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+        addBlockItemToItemTag(ConventionalItemTags.STRIPPED_LOGS, ModBlocks.STRIPPED_RAINBOW_LOG);
+        addBlockItemToItemTag(ConventionalItemTags.STRIPPED_WOODS, ModBlocks.STRIPPED_RAINBOW_WOOD);
+        // TODO: addBlockItemToItemTag(ConventionalItemTags.WOODEN_FENCES, ModBlocks.RAINBOW_FENCE);
+        // TODO: addBlockItemToItemTag(ConventionalItemTags.WOODEN_FENCE_GATES, ModBlocks.RAINBOW_FENCE_GATE);
+
         addBlockItemToItemTag(ModItemTags.RAINBOW_LOGS, ModBlocks.RAINBOW_LOG, ModBlocks.STRIPPED_RAINBOW_LOG, ModBlocks.RAINBOW_WOOD, ModBlocks.STRIPPED_RAINBOW_WOOD);
-//TODO: add to conventiontags as well
+
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(ModItemTags.RAINBOW_LOGS);
 
         addBlockItemToItemTag(ItemTags.PLANKS, ModBlocks.RAINBOW_PLANKS);
