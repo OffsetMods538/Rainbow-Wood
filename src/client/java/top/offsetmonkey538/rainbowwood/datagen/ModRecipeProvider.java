@@ -32,6 +32,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_logs", conditionsFromTag(ModItemTags.RAINBOW_LOGS))
                 .offerTo(exporter);
 
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RAINBOW_PLANKS, ModBlocks.RAINBOW_SLAB, 6)
+                .pattern("###")
+                .group("slabs")
+                .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
+                .offerTo(exporter);
+
         TintedShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.RAINBOW_PLANKS, ModBlocks.RAINBOW_BUTTON, 1)
                 .pattern("#")
                 .group("buttons")

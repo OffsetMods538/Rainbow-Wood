@@ -26,7 +26,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         addBlockItemToItemTag(ItemTags.PLANKS, ModBlocks.RAINBOW_PLANKS);
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_STAIRS, );
-        // TODO: addBlockItemToItemTag(ItemTags.WOODEN_SLABS, );
+        addBlockItemToItemTag(ItemTags.WOODEN_SLABS, ModBlocks.RAINBOW_SLAB);
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_FENCES, );
         // TODO: addBlockItemToItemTag(ItemTags.FENCE_GATES, );
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_DOORS, );
