@@ -106,7 +106,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
 
     @Override
     public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return null; // TODO: maybe ItemStack.EMPTY?
+        return result.getDefaultStack();
     }
 
     @Override
