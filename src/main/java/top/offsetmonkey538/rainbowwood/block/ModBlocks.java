@@ -23,13 +23,20 @@ public final class ModBlocks {
     public static final List<Block> BLOCKS = new LinkedList<>();
 
     public static final Block RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)), "rainbow_log");
-    public static final Block STRIPPED_RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.STRIPPED_OAK_LOG)), "stripped_rainbow_log");
     public static final Block RAINBOW_WOOD = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_WOOD)), "rainbow_wood");
+    public static final Block STRIPPED_RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.STRIPPED_OAK_LOG)), "stripped_rainbow_log");
     public static final Block STRIPPED_RAINBOW_WOOD = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.STRIPPED_OAK_WOOD)), "stripped_rainbow_wood");
     public static final Block RAINBOW_PLANKS = register(new TintedBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)), "rainbow_planks");
     public static final Block RAINBOW_STAIRS = register(new TintedStairsBlock(RAINBOW_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS)), "rainbow_stairs");
     public static final Block RAINBOW_SLAB = register(new TintedSlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB)), "rainbow_slab");
+    // public static final Block RAINBOW_FENCE = register();
+    // public static final Block RAINBOW_FENCE_GATE = register();
+    // public static final Block RAINBOW_DOOR = register();
+    // public static final Block RAINBOW_TRAPDOOR = register();
+    // public static final Block RAINBOW_PRESSURE_PLATE = register();
     public static final Block RAINBOW_BUTTON = register(new TintedButtonBlock(ModBlockSetTypes.RAINBOW, 30, AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)), "rainbow_button");
+    // public static final Block RAINBOW_SIGN = register();
+    // public static final Block RAINBOW_HANGING_SIGN = register();
 
     static {
         // Flammable
