@@ -21,7 +21,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_LOGS).add(ModBlocks.STRIPPED_RAINBOW_LOG);
         getOrCreateTagBuilder(ConventionalBlockTags.STRIPPED_WOODS).add(ModBlocks.STRIPPED_RAINBOW_WOOD);
         getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCES).add(ModBlocks.RAINBOW_FENCE);
-        // TODO: getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCE_GATES).add(ModBlocks.RAINBOW_FENCE_GATE);
+        getOrCreateTagBuilder(ConventionalBlockTags.WOODEN_FENCE_GATES).add(ModBlocks.RAINBOW_FENCE_GATE);
 
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(ModBlocks.BLOCKS.toArray(new Block[0]));
@@ -33,7 +33,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(ModBlocks.RAINBOW_STAIRS);
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(ModBlocks.RAINBOW_SLAB);
         getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(ModBlocks.RAINBOW_FENCE);
-        // TODO: getOrCreateTagBuilder(BlockTags.FENCE_GATES).add();
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(ModBlocks.RAINBOW_FENCE_GATE);
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add();

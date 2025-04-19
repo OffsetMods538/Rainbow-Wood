@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import top.offsetmonkey538.rainbowwood.block.ModBlockSetTypes;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 
+import top.offsetmonkey538.rainbowwood.block.ModWoodTypes;
 import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
@@ -23,6 +24,7 @@ public class RainbowWood implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModBlockSetTypes.register();
+		ModWoodTypes.register();
 		ModBlocks.register();
 		ModBlockEntities.register();
 		ModComponents.register();

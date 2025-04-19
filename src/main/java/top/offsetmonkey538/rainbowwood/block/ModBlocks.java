@@ -27,7 +27,7 @@ public final class ModBlocks {
     public static final Block RAINBOW_STAIRS = register(new TintedStairsBlock(RAINBOW_PLANKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.OAK_STAIRS)), "rainbow_stairs");
     public static final Block RAINBOW_SLAB = register(new TintedSlabBlock(AbstractBlock.Settings.copy(Blocks.OAK_SLAB)), "rainbow_slab");
     public static final Block RAINBOW_FENCE = register(new TintedFenceBlock(AbstractBlock.Settings.copy(Blocks.OAK_FENCE)), "rainbow_fence");
-    // public static final Block RAINBOW_FENCE_GATE = register();
+    public static final Block RAINBOW_FENCE_GATE = register(new TintedFenceGateBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE)), "rainbow_fence_gate");
     // public static final Block RAINBOW_DOOR = register();
     // public static final Block RAINBOW_TRAPDOOR = register();
     // public static final Block RAINBOW_PRESSURE_PLATE = register();
@@ -41,7 +41,7 @@ public final class ModBlocks {
         final FlammableBlockRegistry registry = FlammableBlockRegistry.getDefaultInstance();
         registry.add(RAINBOW_PLANKS, 5, 20);
         registry.add(RAINBOW_SLAB, 5, 20);
-        // TODO: registry.add(RAINBOW_FENCE_GATE, 5, 20);
+        registry.add(RAINBOW_FENCE_GATE, 5, 20);
         registry.add(RAINBOW_FENCE, 5, 20);
         registry.add(RAINBOW_STAIRS, 5, 20);
         registry.add(RAINBOW_LOG, 5, 5);

@@ -31,7 +31,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.RAINBOW_STAIRS, "Rainbow Stairs");
         translationBuilder.add(ModBlocks.RAINBOW_SLAB, "Rainbow Slab");
         translationBuilder.add(ModBlocks.RAINBOW_FENCE, "Rainbow Fence");
-        //translationBuilder.add(ModBlocks.RAINBOW_FENCE_GATE, "Rainbow Fence Gate");
+        translationBuilder.add(ModBlocks.RAINBOW_FENCE_GATE, "Rainbow Fence Gate");
         //translationBuilder.add(ModBlocks.RAINBOW_DOOR, "Rainbow Door");
         //translationBuilder.add(ModBlocks.RAINBOW_TRAPDOOR, "Rainbow Trapdoor");
         //translationBuilder.add(ModBlocks.RAINBOW_PRESSURE_PLATE, "Rainbow Pressure Plate");

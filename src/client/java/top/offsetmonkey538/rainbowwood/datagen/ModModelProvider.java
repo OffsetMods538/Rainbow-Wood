@@ -24,9 +24,13 @@ public class ModModelProvider extends FabricModelProvider {
     private static final Model TINTED_STAIRS                 = createModel("tinted_stairs"     , ""           , TextureKey.TEXTURE);
     private static final Model TINTED_STAIRS_INNER           = createModel("tinted_stairs"     , "_inner"     , TextureKey.TEXTURE);
     private static final Model TINTED_STAIRS_OUTER           = createModel("tinted_stairs"     , "_outer"     , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_POST             = createModel("tinted_fence"     , "_post"       , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_SIDE             = createModel("tinted_fence"     , "_side"       , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_INVENTORY        = createModel("tinted_fence"     , "_inventory"  , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_POST             = createModel("tinted_fence"      , "_post"      , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_SIDE             = createModel("tinted_fence"      , "_side"      , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_INVENTORY        = createModel("tinted_fence"      , "_inventory" , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE             = createModel("tinted_fence_gate" , ""           , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE_OPEN        = createModel("tinted_fence_gate" , "_open"      , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE_WALL        = createModel("tinted_fence_gate" , "_wall"      , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE_WALL_OPEN   = createModel("tinted_fence_gate" , "_wall_open" , TextureKey.TEXTURE);
 
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -46,6 +50,7 @@ public class ModModelProvider extends FabricModelProvider {
         generateSlab(ModBlocks.RAINBOW_SLAB, plankTexture, blockStateModelGenerator, baseModelId);
         generateStairs(ModBlocks.RAINBOW_STAIRS, plankTexture, blockStateModelGenerator);
         generateFence(ModBlocks.RAINBOW_FENCE, plankTexture, blockStateModelGenerator);
+        generateFenceGate(ModBlocks.RAINBOW_FENCE_GATE, plankTexture, blockStateModelGenerator);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
     }
 
@@ -83,6 +88,15 @@ public class ModModelProvider extends FabricModelProvider {
 
         final Identifier inventoryId = TINTED_FENCE_INVENTORY.upload(fenceBlock, textures, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.registerParentedItemModel(fenceBlock, inventoryId);
+    }
+
+    private void generateFenceGate(final Block fenceGateBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {
+        final Identifier mainId = TINTED_FENCE_GATE.upload(fenceGateBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier mainOpenId = TINTED_FENCE_GATE_OPEN.upload(fenceGateBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier wallId = TINTED_FENCE_GATE_WALL.upload(fenceGateBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier wallOpenId = TINTED_FENCE_GATE_WALL_OPEN.upload(fenceGateBlock, textures, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createFenceGateBlockState(fenceGateBlock, mainOpenId, mainId, wallOpenId, wallId, true));
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {
