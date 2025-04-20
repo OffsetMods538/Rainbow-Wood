@@ -1,16 +1,16 @@
 package top.offsetmonkey538.rainbowwood.item;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SignItem;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 
 import java.util.List;
 
-public class TintedBlockItem extends BlockItem implements ITintedBlockItem {
-    public TintedBlockItem(Block block, Settings settings) {
-        super(block, settings);
+public class TintedSignItem extends SignItem implements ITintedBlockItem {
+    public TintedSignItem(Settings settings, Block standingBlock, Block wallBlock) {
+        super(settings, standingBlock, wallBlock);
     }
 
     @Override

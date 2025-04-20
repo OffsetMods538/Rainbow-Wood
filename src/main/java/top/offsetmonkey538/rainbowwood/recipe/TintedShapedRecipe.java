@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
 
 import java.util.*;
 
@@ -111,7 +111,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
 
                 final ItemStack stack = input.getStackInSlot(x, y);
 
-                if (stack.getItem() instanceof TintedBlockItem) {
+                if (stack.getItem() instanceof ITintedBlockItem) {
                     if (firstTintedItem == null) firstTintedItem = stack;
 
                     if (!Objects.equals(stack.get(ModComponents.TINT_COLOR), firstTintedItem.get(ModComponents.TINT_COLOR))) return false;
@@ -128,7 +128,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
     public ItemStack craft(CraftingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
         boolean found;
         for (final ItemStack stack : input.getStacks()) {
-            found = stack.getItem() instanceof TintedBlockItem;
+            found = stack.getItem() instanceof ITintedBlockItem;
             if (found) return stack.copyComponentsToNewStack(result, resultCount);
         }
         return new ItemStack(result, resultCount);

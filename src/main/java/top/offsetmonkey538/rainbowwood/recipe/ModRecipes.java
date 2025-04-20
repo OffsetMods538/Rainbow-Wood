@@ -6,8 +6,8 @@ import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import top.offsetmonkey538.rainbowwood.block.ModBlocks;
-import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,7 +28,7 @@ public final class ModRecipes {
 
     // Coloring
     static {
-        ModBlocks.BLOCKS.forEach(ModRecipes::registerColoring);
+        ModItems.ITEMS.forEach(ModRecipes::registerColoring);
     }
 
 
@@ -37,14 +37,14 @@ public final class ModRecipes {
     }
 
     private static void registerColoring(ItemConvertible forItem) {
-        if (!(forItem.asItem() instanceof TintedBlockItem tintedForItem)) {
-            throw new IllegalArgumentException("Expected 'Item' for '%s' to be a 'TintedBlockItem', got '%s'!".formatted(forItem, forItem.asItem()));
+        if (!(forItem.asItem() instanceof ITintedBlockItem tintedForItem)) {
+            throw new IllegalArgumentException("Expected 'Item' for '%s' to be a 'ITintedBlockItem', got '%s'!".formatted(forItem, forItem.asItem()));
         }
 
         final Function<CraftingRecipeCategory, SpecialCraftingRecipe> factory = craftingRecipeCategory -> new ColoringRecipe(craftingRecipeCategory, tintedForItem);
-        final String name = COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(tintedForItem).getPath());
+        final String name = COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem.asItem()).getPath());
 
-        COLRING_RECIPES.add(Pair.of(factory, COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(tintedForItem).getPath())));
+        COLRING_RECIPES.add(Pair.of(factory, COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem.asItem()).getPath())));
         register(name, new SpecialRecipeSerializer<>(factory::apply));
     }
 

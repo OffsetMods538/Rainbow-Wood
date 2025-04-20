@@ -9,11 +9,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
-import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
-import top.offsetmonkey538.rainbowwood.block.entity.TintedBlockEntity;
+import top.offsetmonkey538.rainbowwood.block.entity.ITintedBlockEntity;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-
-import java.util.Optional;
 
 public class TintedSlabBlock extends SlabBlock implements ITintedBlock {
 
@@ -39,9 +36,8 @@ public class TintedSlabBlock extends SlabBlock implements ITintedBlock {
         Integer color = context.getStack().get(ModComponents.TINT_COLOR);
         if (color == null) color = -1;
 
-        final Optional<TintedBlockEntity> optionalBlockEntity = context.getWorld().getBlockEntity(context.getBlockPos(), ModBlockEntities.TINTED_BLOCK_ENTITY);
-        if (optionalBlockEntity.isEmpty()) return superResult && color == -1;
+        if (context.getWorld().getBlockEntity(context.getBlockPos()) instanceof ITintedBlockEntity tintedBlockEntity) return superResult && tintedBlockEntity.getTint() == color;
 
-        return superResult && optionalBlockEntity.get().blockTint == color;
+        return superResult && color == -1;
     }
 }

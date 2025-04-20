@@ -42,6 +42,6 @@ public abstract class AxeItemMixin extends MiningToolItem {
     )
     private void rainbow_wood$copyBlockTintNbtToNewBlockEntity(ItemUsageContext context, CallbackInfoReturnable<ActionResult> cir, @Local World world, @Local BlockPos pos, @Share("blockTint") LocalIntRef blockTint) {
         if (!(world.getBlockEntity(pos) instanceof TintedBlockEntity tintedBlockEntity)) return;
-        tintedBlockEntity.blockTint = blockTint.get();
+        tintedBlockEntity.setTint(blockTint.get());
     }
 }

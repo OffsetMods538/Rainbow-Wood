@@ -38,8 +38,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.RAINBOW_TRAPDOOR);
         getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.RAINBOW_PRESSURE_PLATE);
         getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(ModBlocks.RAINBOW_BUTTON);
-        // TODO: getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add();
-        // TODO: getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add();
+        getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add(ModBlocks.RAINBOW_SIGN);
+        getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(ModBlocks.RAINBOW_WALL_SIGN);
         // TODO: getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add();
     }

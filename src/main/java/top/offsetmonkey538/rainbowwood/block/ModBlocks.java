@@ -16,8 +16,11 @@ public final class ModBlocks {
 
     }
     //TODO: figure out if map color can somehow be set to the actual color based on the block entity. No way to get be from block state :( Maybe mixin somewhere?
+    //  Found it, can mixin in AbstractBlock#getMapColor, it has world a block view and pos, though creating the MapColor instance could be a problem... ig map to closest default color?
 
     public static final List<Block> BLOCKS = new LinkedList<>();
+    public static final List<Block> BLOCKS_WITH_DEFAULT_ENTITY = new LinkedList<>();
+    public static final List<Block> BLOCKS_WITH_DEFAULT_ITEM = new LinkedList<>();
 
     public static final Block RAINBOW_LOG = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_LOG)), "rainbow_log");
     public static final Block RAINBOW_WOOD = register(new TintedPillarBlock(AbstractBlock.Settings.copy(Blocks.OAK_WOOD)), "rainbow_wood");
@@ -32,7 +35,8 @@ public final class ModBlocks {
     public static final Block RAINBOW_TRAPDOOR = register(new TintedTrapdoorBlock(ModBlockSetTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR)), "rainbow_trapdoor");
     public static final Block RAINBOW_PRESSURE_PLATE = register(new TintedPressurePlateBlock(ModBlockSetTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE)), "rainbow_pressure_plate");
     public static final Block RAINBOW_BUTTON = register(new TintedButtonBlock(ModBlockSetTypes.RAINBOW, 30, AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)), "rainbow_button");
-    // public static final Block RAINBOW_SIGN = register();
+    public static final Block RAINBOW_SIGN = register(new TintedSignBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_SIGN)), "rainbow_sign", false, false);
+    public static final Block RAINBOW_WALL_SIGN = register(new TintedWallSignBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).dropsLike(RAINBOW_SIGN)), "rainbow_wall_sign", false, false);
     // public static final Block RAINBOW_HANGING_SIGN = register();
 
     static {
@@ -60,7 +64,14 @@ public final class ModBlocks {
      */
 
     private static <T extends Block> T register(T block, String name) {
+        return register(block, name, true, true);
+    }
+
+    private static <T extends Block> T register(T block, String name, boolean addDefaultEntity, boolean addDefaultBlockItem) {
+        if (addDefaultEntity) BLOCKS_WITH_DEFAULT_ENTITY.add(block);
+        if (addDefaultBlockItem) BLOCKS_WITH_DEFAULT_ITEM.add(block);
         BLOCKS.add(block);
+
         return Registry.register(Registries.BLOCK, id(name), block);
     }
 

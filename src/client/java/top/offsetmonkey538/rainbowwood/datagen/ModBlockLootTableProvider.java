@@ -19,6 +19,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         for (Block block : ModBlocks.BLOCKS) {
             if (block == ModBlocks.RAINBOW_DOOR) continue;
+            if (block == ModBlocks.RAINBOW_WALL_SIGN) continue;
 
             this.addDrop(block, this.drops(block).apply(
                     CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY)

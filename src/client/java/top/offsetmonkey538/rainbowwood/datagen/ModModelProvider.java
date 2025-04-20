@@ -68,6 +68,9 @@ public class ModModelProvider extends FabricModelProvider {
         generateDoor(ModBlocks.RAINBOW_DOOR, blockStateModelGenerator);
         generateTrapdoor(ModBlocks.RAINBOW_TRAPDOOR, blockStateModelGenerator);
         generatePressurePlate(ModBlocks.RAINBOW_PRESSURE_PLATE, plankTexture, blockStateModelGenerator);
+
+        generateSign(ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN, plankTexture, blockStateModelGenerator);
+
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
     }
 
@@ -146,6 +149,15 @@ public class ModModelProvider extends FabricModelProvider {
         final Identifier downId = TINTED_PRESSURE_PLATE_DOWN.upload(pressurePlateBlock, textures, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createPressurePlateBlockState(pressurePlateBlock, upId, downId));
         blockStateModelGenerator.registerParentedItemModel(pressurePlateBlock, upId);
+    }
+
+    private void generateSign(final Block signBlock, final Block wallSignBlock, final TextureMap plankTextures, final BlockStateModelGenerator blockStateModelGenerator) {
+        final TextureMap textures = TextureMap.particle(plankTextures.getTexture(TextureKey.TEXTURE));
+
+        blockStateModelGenerator.registerSingleton(signBlock, textures, Models.PARTICLE);
+        blockStateModelGenerator.registerSingleton(wallSignBlock, textures, Models.PARTICLE);
+        blockStateModelGenerator.excludeFromSimpleItemModelGeneration(wallSignBlock);
+        blockStateModelGenerator.registerItemModel(signBlock.asItem());
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {

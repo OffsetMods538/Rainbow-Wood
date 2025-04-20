@@ -7,24 +7,37 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
+
 public final class ModItems {
     private ModItems() {
 
     }
 
+    public static final List<Item> ITEMS = new LinkedList<>();
+
     static {
-        for (Block block : ModBlocks.BLOCKS) {
+        for (Block block : ModBlocks.BLOCKS_WITH_DEFAULT_ITEM) {
             register(new TintedBlockItem(block, new Item.Settings()), Registries.BLOCK.getId(block));
         }
     }
+    public static final TintedSignItem TINTED_SIGN = register(new TintedSignItem(new Item.Settings().maxCount(16), ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN), "rainbow_sign");
 
     /*
      Example usage:
      public static final Item MY_ITEM = register(new Item(new FabricItemSettings()), "my_item");
      */
 
-    private static <T extends Item> void register(T item, Identifier id) {
-        Registry.register(Registries.ITEM, id, item);
+    private static <T extends Item> T register(T item, String name) {
+        return register(item, id(name));
+    }
+
+    private static <T extends Item> T register(T item, Identifier id) {
+        ITEMS.add(item);
+        return Registry.register(Registries.ITEM, id, item);
     }
 
     public static void register() {

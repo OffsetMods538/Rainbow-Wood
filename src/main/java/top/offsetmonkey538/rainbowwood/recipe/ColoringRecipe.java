@@ -11,16 +11,16 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
 
 import java.util.Objects;
 
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
 public class ColoringRecipe extends SpecialCraftingRecipe {
-    private final TintedBlockItem forItem;
+    private final ITintedBlockItem forItem;
 
-    public ColoringRecipe(CraftingRecipeCategory category, TintedBlockItem forItem) {
+    public ColoringRecipe(CraftingRecipeCategory category, ITintedBlockItem forItem) {
         super(category);
         this.forItem = forItem;
     }
@@ -36,7 +36,7 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
             final ItemStack stack = input.getStacks().get(i);
             if (stack.isEmpty()) continue;
 
-            if (stack.isOf(forItem)) {
+            if (stack.isOf(forItem.asItem())) {
                 if (firstForItem == null) firstForItem = stack;
 
                 forItemsEqual = forItemsEqual && Objects.equals(stack.get(ModComponents.TINT_COLOR), firstForItem.get(ModComponents.TINT_COLOR));
@@ -65,7 +65,7 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
         for (int i = 0; i < input.getStacks().size(); i++) {
             final ItemStack stack = input.getStacks().get(i);
 
-            if (stack.isOf(forItem)) {
+            if (stack.isOf(forItem.asItem())) {
                 final Integer color = stack.get(ModComponents.TINT_COLOR);
 
                 if (color == null) {
@@ -105,6 +105,6 @@ public class ColoringRecipe extends SpecialCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return Registries.RECIPE_SERIALIZER.get(id(ModRecipes.COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem).getPath())));
+        return Registries.RECIPE_SERIALIZER.get(id(ModRecipes.COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem.asItem()).getPath())));
     }
 }

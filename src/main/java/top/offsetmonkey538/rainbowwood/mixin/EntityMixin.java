@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.item.TintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
 
 import java.util.Optional;
 
@@ -48,11 +48,11 @@ public abstract class EntityMixin {
 
     @Unique
     private @Nullable Item rainbow_wood$getMatchingTintableBlockItemFor(final ItemStack item) {
-        if (item.getItem() instanceof TintedBlockItem tintedBlockItem) return tintedBlockItem;
+        if (item.getItem() instanceof ITintedBlockItem) return item.getItem();
         if (item.isIn(ItemTags.LOGS)) return rainbow_wood$getMatchingTintableBlockItemForLog(item);
         if (item.isIn(ItemTags.PLANKS)) return ModBlocks.RAINBOW_PLANKS.asItem();
         if (item.isIn(ItemTags.WOODEN_SLABS)) return ModBlocks.RAINBOW_SLAB.asItem();
-        //TODO: if (item.isIn(ItemTags.SIGNS)) return ModBlocks.RAINBOW_SIGN.asItem();
+        if (item.isIn(ItemTags.SIGNS)) return ModBlocks.RAINBOW_SIGN.asItem();
         //TODO: if (item.isIn(ItemTags.HANGING_SIGNS)) return ModBlocks.RAINBOW_HANGING_SIGN.asItem();
         if (item.isIn(ItemTags.WOODEN_BUTTONS)) return ModBlocks.RAINBOW_BUTTON.asItem();
         if (item.isIn(ItemTags.WOODEN_DOORS)) return ModBlocks.RAINBOW_DOOR.asItem();

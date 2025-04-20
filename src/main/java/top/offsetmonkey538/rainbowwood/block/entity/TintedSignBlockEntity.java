@@ -1,20 +1,16 @@
 package top.offsetmonkey538.rainbowwood.block.entity;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
-import org.jetbrains.annotations.Nullable;
 
-public class TintedBlockEntity extends BlockEntity implements ITintedBlockEntity {
+public class TintedSignBlockEntity extends SignBlockEntity implements ITintedBlockEntity {
     private int blockTint = -1;
 
-    public TintedBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.TINTED_BLOCK_ENTITY, pos, state);
+    public TintedSignBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.TINTED_SIGN_BLOCK_ENTITY, pos, state);
     }
 
     public int getTint() {
@@ -36,15 +32,5 @@ public class TintedBlockEntity extends BlockEntity implements ITintedBlockEntity
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         readTintedNbt(nbt, world, pos, getCachedState());
         super.readNbt(nbt, registryLookup);
-    }
-
-    @Override
-    public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
-    }
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
-        return createNbt(registryLookup);
     }
 }
