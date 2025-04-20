@@ -26,7 +26,7 @@ public interface ITintedBlock extends BlockEntityProvider, ItemConvertible {
 
         tintedBlockEntity.setTint(color);
 
-        tintedBlockEntity.markDirty();
+        ((BlockEntity) tintedBlockEntity).markDirty();
         world.updateListeners(pos, state, state, Block.NOTIFY_ALL_AND_REDRAW);
     }
 

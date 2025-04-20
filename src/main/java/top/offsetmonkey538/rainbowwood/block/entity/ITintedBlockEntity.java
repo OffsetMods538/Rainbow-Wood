@@ -2,6 +2,7 @@ package top.offsetmonkey538.rainbowwood.block.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -19,9 +20,7 @@ public interface ITintedBlockEntity {
     default void readTintedNbt(NbtCompound nbt, World world, BlockPos pos, BlockState state) {
         if (!nbt.contains(BLOCK_TINT_KEY)) return;
         setTint(nbt.getInt(BLOCK_TINT_KEY));
-        markDirty();
+        ((BlockEntity) this).markDirty();
         if (world != null) world.updateListeners(pos, state, state, Block.REDRAW_ON_MAIN_THREAD);
     }
-
-    void markDirty();
 }
