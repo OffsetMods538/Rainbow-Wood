@@ -95,6 +95,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
                 .offerTo(exporter);
 
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.RAINBOW_PRESSURE_PLATE)
+                .pattern("##")
+                .input('#', ModBlocks.RAINBOW_PLANKS)
+                .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
+                .offerTo(exporter);
+
         TintedShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.RAINBOW_BUTTON)
                 .pattern("#")
                 .input('#', ModBlocks.RAINBOW_PLANKS)

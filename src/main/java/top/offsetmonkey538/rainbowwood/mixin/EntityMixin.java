@@ -59,7 +59,7 @@ public abstract class EntityMixin {
         if (item.isIn(ItemTags.WOODEN_STAIRS)) return ModBlocks.RAINBOW_STAIRS.asItem();
         if (item.isIn(ItemTags.WOODEN_FENCES)) return ModBlocks.RAINBOW_FENCE.asItem();
         if (item.isIn(ItemTags.FENCE_GATES)) return ModBlocks.RAINBOW_FENCE_GATE.asItem();
-        //TODO: if (item.isIn(ItemTags.WOODEN_PRESSURE_PLATES)) return ModBlocks.RAINBOW_PRESSURE_PLATE.asItem();
+        if (item.isIn(ItemTags.WOODEN_PRESSURE_PLATES)) return ModBlocks.RAINBOW_PRESSURE_PLATE.asItem();
         if (item.isIn(ItemTags.WOODEN_TRAPDOORS)) return ModBlocks.RAINBOW_TRAPDOOR.asItem();
         return null;
     }

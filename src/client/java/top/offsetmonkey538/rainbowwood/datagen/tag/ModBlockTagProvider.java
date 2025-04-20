@@ -36,7 +36,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(ModBlocks.RAINBOW_FENCE_GATE);
         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(ModBlocks.RAINBOW_DOOR);
         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.RAINBOW_TRAPDOOR);
-        // TODO: getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add();
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.RAINBOW_PRESSURE_PLATE);
         getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(ModBlocks.RAINBOW_BUTTON);
         // TODO: getOrCreateTagBuilder(BlockTags.STANDING_SIGNS).add();
         // TODO: getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add();
