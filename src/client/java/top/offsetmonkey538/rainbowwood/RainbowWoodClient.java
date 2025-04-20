@@ -24,6 +24,6 @@ public class RainbowWoodClient implements ClientModInitializer {
 			return tintColor;
 		}, ModBlocks.BLOCKS.toArray(new Block[0]));
 
-		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RAINBOW_DOOR, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.RAINBOW_DOOR, ModBlocks.RAINBOW_TRAPDOOR);
 	}
 }

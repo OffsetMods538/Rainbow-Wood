@@ -39,6 +39,10 @@ public class ModModelProvider extends FabricModelProvider {
     private static final Model TINTED_DOOR_TOP_LEFT_OPEN     = createModel("tinted_door"       , "_top_left_open"    , TextureKey.TOP, TextureKey.BOTTOM);
     private static final Model TINTED_DOOR_TOP_RIGHT         = createModel("tinted_door"       , "_top_right"        , TextureKey.TOP, TextureKey.BOTTOM);
     private static final Model TINTED_DOOR_TOP_RIGHT_OPEN    = createModel("tinted_door"       , "_top_right_open"   , TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_TRAPDOOR_TOP           = createModel("tinted_trapdoor"   , "_top"              , TextureKey.TEXTURE);
+    private static final Model TINTED_TRAPDOOR_BOTTOM        = createModel("tinted_trapdoor"   , "_bottom"           , TextureKey.TEXTURE);
+    private static final Model TINTED_TRAPDOOR_OPEN          = createModel("tinted_trapdoor"   , "_open"             , TextureKey.TEXTURE);
+
 
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -60,6 +64,7 @@ public class ModModelProvider extends FabricModelProvider {
         generateFence(ModBlocks.RAINBOW_FENCE, plankTexture, blockStateModelGenerator);
         generateFenceGate(ModBlocks.RAINBOW_FENCE_GATE, plankTexture, blockStateModelGenerator);
         generateDoor(ModBlocks.RAINBOW_DOOR, blockStateModelGenerator);
+        generateTrapdoor(ModBlocks.RAINBOW_TRAPDOOR, blockStateModelGenerator);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
     }
 
@@ -122,6 +127,15 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createDoorBlockState(doorBlock, bottomLeftId, bottomLeftOpenId, bottomRightId, bottomRightOpenId, topLeftId, topLeftOpenId, topRightId, topRightOpenId));
         blockStateModelGenerator.registerItemModel(doorBlock.asItem());
+    }
+
+    private void generateTrapdoor(final Block trapdoorBlock, final BlockStateModelGenerator blockStateModelGenerator) {
+        final TextureMap textures = TextureMap.texture(trapdoorBlock);
+        final Identifier topId = TINTED_TRAPDOOR_TOP.upload(trapdoorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier bottomId = TINTED_TRAPDOOR_BOTTOM.upload(trapdoorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier openId = TINTED_TRAPDOOR_OPEN.upload(trapdoorBlock, textures, blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createTrapdoorBlockState(trapdoorBlock, topId, bottomId, openId));
+        blockStateModelGenerator.registerParentedItemModel(trapdoorBlock, bottomId);
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {

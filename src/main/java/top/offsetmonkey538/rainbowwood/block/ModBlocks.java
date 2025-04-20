@@ -29,7 +29,7 @@ public final class ModBlocks {
     public static final Block RAINBOW_FENCE = register(new TintedFenceBlock(AbstractBlock.Settings.copy(Blocks.OAK_FENCE)), "rainbow_fence");
     public static final Block RAINBOW_FENCE_GATE = register(new TintedFenceGateBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE)), "rainbow_fence_gate");
     public static final Block RAINBOW_DOOR = register(new TintedDoorBlock(ModBlockSetTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_DOOR)), "rainbow_door");
-    // public static final Block RAINBOW_TRAPDOOR = register();
+    public static final Block RAINBOW_TRAPDOOR = register(new TintedTrapdoorBlock(ModBlockSetTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR)), "rainbow_trapdoor");
     // public static final Block RAINBOW_PRESSURE_PLATE = register();
     public static final Block RAINBOW_BUTTON = register(new TintedButtonBlock(ModBlockSetTypes.RAINBOW, 30, AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)), "rainbow_button");
     // public static final Block RAINBOW_SIGN = register();
