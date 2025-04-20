@@ -35,7 +35,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         addBlockItemToItemTag(ItemTags.WOODEN_SLABS, ModBlocks.RAINBOW_SLAB);
         addBlockItemToItemTag(ItemTags.WOODEN_FENCES, ModBlocks.RAINBOW_FENCE);
         addBlockItemToItemTag(ItemTags.FENCE_GATES, ModBlocks.RAINBOW_FENCE_GATE);
-        // TODO: addBlockItemToItemTag(ItemTags.WOODEN_DOORS, );
+        addBlockItemToItemTag(ItemTags.WOODEN_DOORS, ModBlocks.RAINBOW_DOOR);
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_TRAPDOORS, );
         // TODO: addBlockItemToItemTag(ItemTags.WOODEN_PRESSURE_PLATES, );
         addBlockItemToItemTag(ItemTags.WOODEN_BUTTONS, ModBlocks.RAINBOW_BUTTON);

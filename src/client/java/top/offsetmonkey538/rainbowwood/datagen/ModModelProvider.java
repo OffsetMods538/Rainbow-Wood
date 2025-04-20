@@ -13,24 +13,32 @@ import java.util.Optional;
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
 public class ModModelProvider extends FabricModelProvider {
-    private static final Model TINTED_CUBE_ALL               = createModel("tinted_cube_all"   , ""           , TextureKey.ALL);
-    private static final Model TINTED_CUBE_COLUMN            = createModel("tinted_cube_column", ""           , TextureKey.END, TextureKey.SIDE);
-    private static final Model TINTED_CUBE_COLUMN_HORIZONTAL = createModel("tinted_cube_column", "_horizontal", TextureKey.END, TextureKey.SIDE);
-    private static final Model TINTED_BUTTON                 = createModel("tinted_button"     , ""           , TextureKey.TEXTURE);
-    private static final Model TINTED_BUTTON_PRESSED         = createModel("tinted_button"     , "_pressed"   , TextureKey.TEXTURE);
-    private static final Model TINTED_BUTTON_INVENTORY       = createModel("tinted_button"     , "_inventory" , TextureKey.TEXTURE);
-    private static final Model TINTED_SLAB                   = createModel("tinted_slab"       , ""           , TextureKey.TEXTURE);
-    private static final Model TINTED_SLAB_TOP               = createModel("tinted_slab"       , "_top"       , TextureKey.TEXTURE);
-    private static final Model TINTED_STAIRS                 = createModel("tinted_stairs"     , ""           , TextureKey.TEXTURE);
-    private static final Model TINTED_STAIRS_INNER           = createModel("tinted_stairs"     , "_inner"     , TextureKey.TEXTURE);
-    private static final Model TINTED_STAIRS_OUTER           = createModel("tinted_stairs"     , "_outer"     , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_POST             = createModel("tinted_fence"      , "_post"      , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_SIDE             = createModel("tinted_fence"      , "_side"      , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_INVENTORY        = createModel("tinted_fence"      , "_inventory" , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_GATE             = createModel("tinted_fence_gate" , ""           , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_GATE_OPEN        = createModel("tinted_fence_gate" , "_open"      , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_GATE_WALL        = createModel("tinted_fence_gate" , "_wall"      , TextureKey.TEXTURE);
-    private static final Model TINTED_FENCE_GATE_WALL_OPEN   = createModel("tinted_fence_gate" , "_wall_open" , TextureKey.TEXTURE);
+    private static final Model TINTED_CUBE_ALL               = createModel("tinted_cube_all"   , ""                  , TextureKey.ALL);
+    private static final Model TINTED_CUBE_COLUMN            = createModel("tinted_cube_column", ""                  , TextureKey.END, TextureKey.SIDE);
+    private static final Model TINTED_CUBE_COLUMN_HORIZONTAL = createModel("tinted_cube_column", "_horizontal"       , TextureKey.END, TextureKey.SIDE);
+    private static final Model TINTED_BUTTON                 = createModel("tinted_button"     , ""                  , TextureKey.TEXTURE);
+    private static final Model TINTED_BUTTON_PRESSED         = createModel("tinted_button"     , "_pressed"          , TextureKey.TEXTURE);
+    private static final Model TINTED_BUTTON_INVENTORY       = createModel("tinted_button"     , "_inventory"        , TextureKey.TEXTURE);
+    private static final Model TINTED_SLAB                   = createModel("tinted_slab"       , ""                  , TextureKey.TEXTURE);
+    private static final Model TINTED_SLAB_TOP               = createModel("tinted_slab"       , "_top"              , TextureKey.TEXTURE);
+    private static final Model TINTED_STAIRS                 = createModel("tinted_stairs"     , ""                  , TextureKey.TEXTURE);
+    private static final Model TINTED_STAIRS_INNER           = createModel("tinted_stairs"     , "_inner"            , TextureKey.TEXTURE);
+    private static final Model TINTED_STAIRS_OUTER           = createModel("tinted_stairs"     , "_outer"            , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_POST             = createModel("tinted_fence"      , "_post"             , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_SIDE             = createModel("tinted_fence"      , "_side"             , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_INVENTORY        = createModel("tinted_fence"      , "_inventory"        , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE             = createModel("tinted_fence_gate" , ""                  , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE_OPEN        = createModel("tinted_fence_gate" , "_open"             , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE_WALL        = createModel("tinted_fence_gate" , "_wall"             , TextureKey.TEXTURE);
+    private static final Model TINTED_FENCE_GATE_WALL_OPEN   = createModel("tinted_fence_gate" , "_wall_open"        , TextureKey.TEXTURE);
+    private static final Model TINTED_DOOR_BOTTOM_LEFT       = createModel("tinted_door"       , "_bottom_left"      , TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_DOOR_BOTTOM_LEFT_OPEN  = createModel("tinted_door"       , "_bottom_left_open" , TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_DOOR_BOTTOM_RIGHT      = createModel("tinted_door"       , "_bottom_right"     , TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_DOOR_BOTTOM_RIGHT_OPEN = createModel("tinted_door"       , "_bottom_right_open", TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_DOOR_TOP_LEFT          = createModel("tinted_door"       , "_top_left"         , TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_DOOR_TOP_LEFT_OPEN     = createModel("tinted_door"       , "_top_left_open"    , TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_DOOR_TOP_RIGHT         = createModel("tinted_door"       , "_top_right"        , TextureKey.TOP, TextureKey.BOTTOM);
+    private static final Model TINTED_DOOR_TOP_RIGHT_OPEN    = createModel("tinted_door"       , "_top_right_open"   , TextureKey.TOP, TextureKey.BOTTOM);
 
     public ModModelProvider(FabricDataOutput output) {
         super(output);
@@ -51,6 +59,7 @@ public class ModModelProvider extends FabricModelProvider {
         generateStairs(ModBlocks.RAINBOW_STAIRS, plankTexture, blockStateModelGenerator);
         generateFence(ModBlocks.RAINBOW_FENCE, plankTexture, blockStateModelGenerator);
         generateFenceGate(ModBlocks.RAINBOW_FENCE_GATE, plankTexture, blockStateModelGenerator);
+        generateDoor(ModBlocks.RAINBOW_DOOR, blockStateModelGenerator);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
     }
 
@@ -97,6 +106,22 @@ public class ModModelProvider extends FabricModelProvider {
         final Identifier wallOpenId = TINTED_FENCE_GATE_WALL_OPEN.upload(fenceGateBlock, textures, blockStateModelGenerator.modelCollector);
 
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createFenceGateBlockState(fenceGateBlock, mainOpenId, mainId, wallOpenId, wallId, true));
+    }
+
+    private void generateDoor(final Block doorBlock, final BlockStateModelGenerator blockStateModelGenerator) {
+        final TextureMap textures = TextureMap.topBottom(doorBlock);
+
+        final Identifier bottomLeftId = TINTED_DOOR_BOTTOM_LEFT.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier bottomLeftOpenId = TINTED_DOOR_BOTTOM_LEFT_OPEN.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier bottomRightId = TINTED_DOOR_BOTTOM_RIGHT.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier bottomRightOpenId = TINTED_DOOR_BOTTOM_RIGHT_OPEN.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier topLeftId = TINTED_DOOR_TOP_LEFT.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier topLeftOpenId = TINTED_DOOR_TOP_LEFT_OPEN.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier topRightId = TINTED_DOOR_TOP_RIGHT.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+        final Identifier topRightOpenId = TINTED_DOOR_TOP_RIGHT_OPEN.upload(doorBlock, textures, blockStateModelGenerator.modelCollector);
+
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createDoorBlockState(doorBlock, bottomLeftId, bottomLeftOpenId, bottomRightId, bottomRightOpenId, topLeftId, topLeftOpenId, topRightId, topRightOpenId));
+        blockStateModelGenerator.registerItemModel(doorBlock.asItem());
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {

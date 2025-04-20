@@ -23,6 +23,6 @@ public class TintedStairsBlock extends StairsBlock implements ITintedBlock {
 
     @Override
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
-        return getTintedPickStack(world, pos);
+        return getTintedPickStack(world, state, pos);
     }
 }

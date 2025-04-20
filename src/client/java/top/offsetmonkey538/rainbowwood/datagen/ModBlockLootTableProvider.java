@@ -18,10 +18,17 @@ public class ModBlockLootTableProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         for (Block block : ModBlocks.BLOCKS) {
+            if (block == ModBlocks.RAINBOW_DOOR) continue;
+
             this.addDrop(block, this.drops(block).apply(
                     CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY)
                             .include(ModComponents.TINT_COLOR)
             ));
         }
+
+        this.addDrop(ModBlocks.RAINBOW_DOOR, this.doorDrops(ModBlocks.RAINBOW_DOOR).apply(
+                CopyComponentsLootFunction.builder(CopyComponentsLootFunction.Source.BLOCK_ENTITY)
+                        .include(ModComponents.TINT_COLOR)
+        ));
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
@@ -31,11 +32,17 @@ public interface ITintedBlock extends BlockEntityProvider, ItemConvertible {
         world.updateListeners(pos, state, state, Block.NOTIFY_ALL_AND_REDRAW);
     }
 
-    default ItemStack getTintedPickStack(final WorldView world, final BlockPos pos) {
+    default ItemStack getTintedPickStack(final WorldView world, final BlockState state, final BlockPos pos) {
         if (!(asItem() instanceof TintedBlockItem tintedItem)) return asItem().getDefaultStack();
-        return world.getBlockEntity(pos, ModBlockEntities.TINTED_BLOCK_ENTITY)
-                .map(blockEntity -> tintedItem.getStackWithTint(blockEntity.getTint()))
-                .orElseGet(() -> asItem().getDefaultStack());
+
+        int tint = getTint(world, state, pos);
+
+        if (tint == -1) return asItem().getDefaultStack();
+        return tintedItem.getStackWithTint(tint);
+    }
+
+    default int getTint(final BlockView world, final BlockState state, final BlockPos pos) {
+        return world.getBlockEntity(pos, ModBlockEntities.TINTED_BLOCK_ENTITY).map(TintedBlockEntity::getTint).orElse(-1);
     }
 
     default @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
