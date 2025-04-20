@@ -1,5 +1,6 @@
 package top.offsetmonkey538.rainbowwood.item;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface ITintedBlockItem extends ItemConvertible {
     default ItemStack getStackWithTint(final int tint) {
-        final ItemStack stack = getDefaultStack();
+        final ItemStack stack = ((Item) this).getDefaultStack();
         stack.set(ModComponents.TINT_COLOR, tint);
         return stack;
     }
@@ -20,6 +21,4 @@ public interface ITintedBlockItem extends ItemConvertible {
 
         tooltip.add(Text.translatable("general.rainbow_wood.tooltip.color", Text.literal("#%06X".formatted(tintColor)).withColor(tintColor)));
     }
-
-    ItemStack getDefaultStack();
 }
