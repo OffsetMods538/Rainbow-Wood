@@ -11,7 +11,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 import top.offsetmonkey538.rainbowwood.block.entity.TintedHangingSignBlockEntity;
-import top.offsetmonkey538.rainbowwood.block.entity.TintedSignBlockEntity;
 
 public class TintedWallHangingSignBlock extends WallHangingSignBlock implements ITintedBlock {
 

@@ -5,7 +5,7 @@ public final class SignRenderContext {
 
     }
 
-    public static ThreadLocal<Integer> color = new ThreadLocal<>();
+    public static final ThreadLocal<Integer> color = new ThreadLocal<>();
 
     public static void contextualize(Runnable renderCall, Integer color) {
         SignRenderContext.color.set(color);

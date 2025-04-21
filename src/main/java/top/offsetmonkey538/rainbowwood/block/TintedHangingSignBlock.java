@@ -2,7 +2,6 @@ package top.offsetmonkey538.rainbowwood.block;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HangingSignBlock;
-import net.minecraft.block.SignBlock;
 import net.minecraft.block.WoodType;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -12,7 +11,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 import top.offsetmonkey538.rainbowwood.block.entity.TintedHangingSignBlockEntity;
-import top.offsetmonkey538.rainbowwood.block.entity.TintedSignBlockEntity;
 
 public class TintedHangingSignBlock extends HangingSignBlock implements ITintedBlock {
 

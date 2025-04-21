@@ -6,8 +6,6 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
-import top.offsetmonkey538.rainbowwood.block.TintedHangingSignBlock;
-import top.offsetmonkey538.rainbowwood.block.TintedWallHangingSignBlock;
 
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 

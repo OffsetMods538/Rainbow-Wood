@@ -2,7 +2,6 @@ package top.offsetmonkey538.rainbowwood.block.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.HangingSignBlockEntity;
-import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;

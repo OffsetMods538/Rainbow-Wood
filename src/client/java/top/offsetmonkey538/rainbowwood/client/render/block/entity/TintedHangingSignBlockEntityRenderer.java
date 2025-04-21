@@ -4,10 +4,8 @@ import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.block.entity.HangingSignBlockEntityRenderer;
-import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import top.offsetmonkey538.rainbowwood.block.entity.TintedHangingSignBlockEntity;
-import top.offsetmonkey538.rainbowwood.block.entity.TintedSignBlockEntity;
 
 public class TintedHangingSignBlockEntityRenderer extends HangingSignBlockEntityRenderer {
     private int tint = -1;
