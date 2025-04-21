@@ -165,7 +165,13 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSingleton(hangingSignBlock, textures, Models.PARTICLE);
         blockStateModelGenerator.registerSingleton(wallHangingSignBlock, textures, Models.PARTICLE);
         blockStateModelGenerator.excludeFromSimpleItemModelGeneration(hangingSignBlock);
-        blockStateModelGenerator.registerItemModel(hangingSignBlock.asItem());
+        Models.GENERATED.upload(
+                ModelIds.getItemModelId(hangingSignBlock.asItem()),
+                TextureMap
+                        .layer0(hangingSignBlock.asItem())
+                        .register(TextureKey.LAYER1, TextureMap.getSubId(hangingSignBlock.asItem(), "_layer_1")),
+                blockStateModelGenerator.modelCollector
+        );
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {
