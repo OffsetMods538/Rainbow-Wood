@@ -1,12 +1,12 @@
 package top.offsetmonkey538.rainbowwood.item.group;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.block.MapColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import net.minecraft.util.DyeColor;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
@@ -27,9 +27,12 @@ public final class ModItemGroups {
                             entries.add(item.getDefaultStack());
                         }
 
-                        for (DyeColor dyeColor : DyeColor.values()) {
+                        for (int i = 0; i < MapColor.COLORS.length; i++) {
+                            final MapColor color = MapColor.COLORS[i];
+                            if (color == null || color == MapColor.CLEAR) continue;
+
                             for (Item item : ModItems.ITEMS) {
-                                entries.add(((ITintedBlockItem) item).getStackWithTint(dyeColor.getSignColor()));
+                                entries.add(((ITintedBlockItem) item).getStackWithTint(MapColor.COLORS[i].color));
                             }
                         }
                     })

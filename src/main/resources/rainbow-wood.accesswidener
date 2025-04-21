@@ -17,3 +17,5 @@ accessible field net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder output
 accessible field net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder count I
 
 accessible field net/minecraft/item/AxeItem STRIPPED_BLOCKS Ljava/util/Map;
+
+accessible field net/minecraft/block/MapColor COLORS [Lnet/minecraft/block/MapColor;
