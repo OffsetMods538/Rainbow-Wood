@@ -20,7 +20,7 @@ public final class ModItemGroups {
 
     public static final ItemGroup RAINBOW_WOOD_ITEM_GROUP = register("rainbow_wood_item_group",
             FabricItemGroup.builder()
-                    .icon(() -> ((ITintedBlockItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(0xFF00FF)) // Find some nice color for mod and item group icon.
+                    .icon(() -> ((ITintedBlockItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(0xFF00FF)) // todo: Find some nice color for mod and item group icon.
                     .displayName(Text.translatable("itemGroup.rainbow_wood.main_group"))
                     .entries((displayContext, entries) -> {
                         for (Item item : ModItems.ITEMS) {
