@@ -111,6 +111,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
                 .offerTo(exporter);
 
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.RAINBOW_HANGING_SIGN, 6)
+                .pattern("c c")
+                .pattern("###")
+                .pattern("###")
+                .input('#', ModBlocks.STRIPPED_RAINBOW_LOG)
+                .input('c', Items.CHAIN)
+                .group("hanging_sign")
+                .criterion("has_stripped_logs", conditionsFromItem(ModBlocks.STRIPPED_RAINBOW_LOG))
+                .offerTo(exporter);
+
         TintedShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.RAINBOW_BUTTON)
                 .pattern("#")
                 .input('#', ModBlocks.RAINBOW_PLANKS)

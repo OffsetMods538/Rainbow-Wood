@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import top.offsetmonkey538.rainbowwood.block.ITintedBlock;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
+import top.offsetmonkey538.rainbowwood.client.render.block.entity.TintedHangingSignBlockEntityRenderer;
 import top.offsetmonkey538.rainbowwood.client.render.block.entity.TintedSignBlockEntityRenderer;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
@@ -23,7 +24,10 @@ public class RainbowWoodClient implements ClientModInitializer {
 			return tintedBlock.getTint(world, state, pos);
 		}, ModBlocks.BLOCKS.toArray(new Block[0]));
 
+
+		// Layer 1 doesn't have tint
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+			if (tintIndex == 1) return -1;
 			final Integer tintColor = stack.get(ModComponents.TINT_COLOR);
 			if (tintColor == null) return -1;
 			return tintColor;
@@ -32,5 +36,6 @@ public class RainbowWoodClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.RAINBOW_DOOR, ModBlocks.RAINBOW_TRAPDOOR);
 
 		BlockEntityRendererFactories.register(ModBlockEntities.TINTED_SIGN_BLOCK_ENTITY, TintedSignBlockEntityRenderer::new);
+		BlockEntityRendererFactories.register(ModBlockEntities.TINTED_HANGING_SIGN_BLOCK_ENTITY, TintedHangingSignBlockEntityRenderer::new);
 	}
 }

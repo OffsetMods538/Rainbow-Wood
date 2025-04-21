@@ -68,9 +68,8 @@ public class ModModelProvider extends FabricModelProvider {
         generateDoor(ModBlocks.RAINBOW_DOOR, blockStateModelGenerator);
         generateTrapdoor(ModBlocks.RAINBOW_TRAPDOOR, blockStateModelGenerator);
         generatePressurePlate(ModBlocks.RAINBOW_PRESSURE_PLATE, plankTexture, blockStateModelGenerator);
-
         generateSign(ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN, plankTexture, blockStateModelGenerator);
-
+        generateHangingSign(ModBlocks.RAINBOW_HANGING_SIGN, ModBlocks.RAINBOW_WALL_HANGING_SIGN, TextureMap.texture(ModBlocks.STRIPPED_RAINBOW_LOG), blockStateModelGenerator);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
     }
 
@@ -158,6 +157,15 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSingleton(wallSignBlock, textures, Models.PARTICLE);
         blockStateModelGenerator.excludeFromSimpleItemModelGeneration(wallSignBlock);
         blockStateModelGenerator.registerItemModel(signBlock.asItem());
+    }
+
+    private void generateHangingSign(final Block hangingSignBlock, final Block wallHangingSignBlock, final TextureMap strippedLogTextures, final BlockStateModelGenerator blockStateModelGenerator) {
+        final TextureMap textures = TextureMap.particle(strippedLogTextures.getTexture(TextureKey.TEXTURE));
+
+        blockStateModelGenerator.registerSingleton(hangingSignBlock, textures, Models.PARTICLE);
+        blockStateModelGenerator.registerSingleton(wallHangingSignBlock, textures, Models.PARTICLE);
+        blockStateModelGenerator.excludeFromSimpleItemModelGeneration(hangingSignBlock);
+        blockStateModelGenerator.registerItemModel(hangingSignBlock.asItem());
     }
 
     private void generateButton(final Block buttonBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {

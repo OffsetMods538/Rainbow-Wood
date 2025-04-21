@@ -37,6 +37,6 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.RAINBOW_PRESSURE_PLATE, "Rainbow Pressure Plate");
         translationBuilder.add(ModBlocks.RAINBOW_BUTTON, "Rainbow Button");
         translationBuilder.add(ModBlocks.RAINBOW_SIGN, "Rainbow Sign");
-        //translationBuilder.add(ModBlocks.RAINBOW_HANGING_SIGN, "Rainbow Hanging Sign");
+        translationBuilder.add(ModBlocks.RAINBOW_HANGING_SIGN, "Rainbow Hanging Sign");
     }
 }

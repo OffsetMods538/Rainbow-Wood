@@ -40,7 +40,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         addBlockItemToItemTag(ItemTags.WOODEN_PRESSURE_PLATES, ModBlocks.RAINBOW_PRESSURE_PLATE);
         addBlockItemToItemTag(ItemTags.WOODEN_BUTTONS, ModBlocks.RAINBOW_BUTTON);
         addBlockItemToItemTag(ItemTags.SIGNS, ModBlocks.RAINBOW_SIGN);
-        // TODO: addBlockItemToItemTag(ItemTags.HANGING_SIGNS, );
+        addBlockItemToItemTag(ItemTags.HANGING_SIGNS, ModBlocks.RAINBOW_HANGING_SIGN);
     }
 
     private void addBlockItemToItemTag(final TagKey<Item> tag, @NotNull final Block... blocks) {

@@ -37,7 +37,8 @@ public final class ModBlocks {
     public static final Block RAINBOW_BUTTON = register(new TintedButtonBlock(ModBlockSetTypes.RAINBOW, 30, AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)), "rainbow_button");
     public static final Block RAINBOW_SIGN = register(new TintedSignBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_SIGN)), "rainbow_sign", false, false);
     public static final Block RAINBOW_WALL_SIGN = register(new TintedWallSignBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN).dropsLike(RAINBOW_SIGN)), "rainbow_wall_sign", false, false);
-    // public static final Block RAINBOW_HANGING_SIGN = register();
+    public static final Block RAINBOW_HANGING_SIGN = register(new TintedHangingSignBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN)), "rainbow_hanging_sign", false, false);
+    public static final Block RAINBOW_WALL_HANGING_SIGN = register(new TintedWallHangingSignBlock(ModWoodTypes.RAINBOW, AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN).dropsLike(RAINBOW_HANGING_SIGN)), "rainbow_wall_hanging_sign", false, false);
 
     static {
         // Flammable

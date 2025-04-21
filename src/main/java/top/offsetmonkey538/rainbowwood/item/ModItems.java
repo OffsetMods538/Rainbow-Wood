@@ -1,7 +1,10 @@
 package top.offsetmonkey538.rainbowwood.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.HangingSignItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -25,6 +28,7 @@ public final class ModItems {
         }
     }
     public static final TintedSignItem TINTED_SIGN = register(new TintedSignItem(new Item.Settings().maxCount(16), ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN), "rainbow_sign");
+    public static final TintedHangingSignItem TINTED_HANGING_SIGN = register(new TintedHangingSignItem(ModBlocks.RAINBOW_HANGING_SIGN, ModBlocks.RAINBOW_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)), "rainbow_hanging_sign");
 
     /*
      Example usage:

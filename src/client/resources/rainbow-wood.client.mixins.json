@@ -4,6 +4,7 @@
     "compatibilityLevel": "JAVA_17",
     "client": [
         "AbstractSignEditScreenAccessor",
+        "HangingSignBlockEntityRendererMixin",
         "ModelPartMixin",
         "SignBlockEntityRendererMixin",
         "SignEditScreenMixin"

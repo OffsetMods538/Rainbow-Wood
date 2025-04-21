@@ -6,6 +6,8 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.block.TintedHangingSignBlock;
+import top.offsetmonkey538.rainbowwood.block.TintedWallHangingSignBlock;
 
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
@@ -14,8 +16,9 @@ public final class ModBlockEntities {
 
     }
 
-    public static final BlockEntityType<TintedBlockEntity>     TINTED_BLOCK_ENTITY      = register(TintedBlockEntity::new,     "rainbow_block_entity"     , ModBlocks.BLOCKS_WITH_DEFAULT_ENTITY.toArray(new Block[0]));
-    public static final BlockEntityType<TintedSignBlockEntity> TINTED_SIGN_BLOCK_ENTITY = register(TintedSignBlockEntity::new, "rainbow_sign_block_entity", ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN);
+    public static final BlockEntityType<TintedBlockEntity>            TINTED_BLOCK_ENTITY              = register(TintedBlockEntity::new,            "rainbow_block_entity"             , ModBlocks.BLOCKS_WITH_DEFAULT_ENTITY.toArray(new Block[0]));
+    public static final BlockEntityType<TintedSignBlockEntity>        TINTED_SIGN_BLOCK_ENTITY         = register(TintedSignBlockEntity::new,        "rainbow_sign_block_entity"        , ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN);
+    public static final BlockEntityType<TintedHangingSignBlockEntity> TINTED_HANGING_SIGN_BLOCK_ENTITY = register(TintedHangingSignBlockEntity::new, "rainbow_hanging_sign_block_entity", ModBlocks.RAINBOW_HANGING_SIGN, ModBlocks.RAINBOW_WALL_HANGING_SIGN);
 
     /*
      Example usage:
