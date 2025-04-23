@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 public final class NamedColors {
 
     public static final String NAMED_COLOR_TRANSLATION_KEY_TEMPLATE = "general.rainbow_wood.named_color.%s";
-    private static final NamedColors[] colors = new NamedColors[] {
+    private static final NamedColors[] colors = new NamedColors[]{
             new NamedColors(0xFFFFFF, "White Dye"),
             new NamedColors(0xFF681F, "Orange Dye"),
             new NamedColors(0xFF00FF, "Magenta Dye"),
@@ -125,26 +125,28 @@ public final class NamedColors {
     }
 
     private double distanceTo(int rgb) {
-        // TODO: some stuff can probably be like bytes and shorts and stuff
+        // 0 to 255 is exactly 8 bits aka 1 byte
+        final byte red = (byte) ((rgb >> 16) & 0xFF);
+        final byte green = (byte) ((rgb >> 8) & 0xFF);
+        final byte blue = (byte) (rgb & 0xFF);
 
-        final int red = (rgb >> 16) & 0xFF;
-        final int green = (rgb >> 8) & 0xFF;
-        final int blue = rgb & 0xFF;
+        // 0 to 255 is exactly 8 bits aka 1 byte
+        final byte thisRed = (byte) ((color >> 16) & 0xFF);
+        final byte thisGreen = (byte) ((color >> 8) & 0xFF);
+        final byte thisBlue = (byte) (color & 0xFF);
 
-        final int thisRed = (color >> 16) & 0xFF;
-        final int thisGreen = (color >> 8) & 0xFF;
-        final int thisBlue = color & 0xFF;
+        // both sides have to be the same, so no (0-255) * (255-0) = -65025
+        // min value = (0  -0) * (0  -0) =    0 * 0   = 0
+        // max value = (255-0) * (255-0) =  255 * 255 = 65025
+        //  max 16 bits, short is a *signed* 16-bit value, so the first bit is reserved for
+        //  the sign so only 15-bit positive values fit. BUTTTT Java has the char primitive,
+        //  which is an *unsigned* 16-bit integer and will fit these values perfectly
+        final char deltaRedRoot = (char) ((red - thisRed) * (red - thisRed));
+        final char deltagreenRoot = (char) ((green - thisGreen) * (green - thisGreen));
+        final char deltablueRoot = (char) ((blue - thisBlue) * (blue - thisBlue));
 
-        final int deltaRedRoot   = (red   - thisRed) * (red   - thisRed);
-        final int deltagreenRoot = (green - thisGreen) * (green - thisGreen);
-        final int deltablueRoot  = (blue  - thisBlue) * (blue  - thisBlue);
+        final float meanRed = 0.5f * (red + thisRed);
 
-        final float redWithWeirdLineOnTop = 0.5f * (red + thisRed);
-
-        final double redmeanDistance;
-
-        redmeanDistance = Math.sqrt((2 + (redWithWeirdLineOnTop / 256)) * deltaRedRoot + 4*deltagreenRoot + (2 + ((255 - redWithWeirdLineOnTop) / 256)) * deltablueRoot);
-
-        return redmeanDistance;
+        return Math.sqrt((2 + (meanRed / 256)) * deltaRedRoot + 4 * deltagreenRoot + (2 + ((255 - meanRed) / 256)) * deltablueRoot);
     }
 }
