@@ -105,8 +105,6 @@ public final class NamedColors {
     public static NamedColors getClosestNamedColor(final int color) {
         // TODO: add check for when colors are equal to save calculating the distance.
         //  Good for testing right now as otherwise everything would've looked correct, even tho it thought everything was pink :concern:
-        // TODO: could they be sorted in the array in a way where I could return early?
-        //  If similar colors were next to each-other, could I maybe return once the distance starts getting longer again?
 
         double closestDistance = Double.MAX_VALUE;
         NamedColors closestColor = null;
