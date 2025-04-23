@@ -198,16 +198,6 @@ public final class NamedColor {
             if (comparison == 0) comparison = Float.compare(hsv1[1], hsv2[1]);
             if (comparison == 0) comparison = Float.compare(hsv1[2], hsv2[2]);
             return comparison;
-
-            //final boolean isWhite1 = (hsv1[1] == 0 && hsv1[2] == 1);
-            //final boolean isWhite2 = (hsv2[1] == 0 && hsv2[2] == 1);
-            //if (isWhite1 ^ isWhite2) return isWhite1 ? -1 : 1;
-
-            //final boolean isBlack1 = (hsv1[2] == 0);
-            //final boolean isBlack2 = (hsv2[2] == 0);
-            //if (isBlack1 ^ isBlack2) return isBlack1 ? -1 : 1;
-
-            //return Float.compare(hsv1[0], hsv2[0]);
         }).collect(Collectors.toCollection(ArrayList::new));
 
         try {
