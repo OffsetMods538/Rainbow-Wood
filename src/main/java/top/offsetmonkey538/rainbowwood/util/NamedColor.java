@@ -116,9 +116,6 @@ public final class NamedColor {
     }
 
     public static NamedColor getClosestNamedColor(final int color) {
-        // TODO: add check for when colors are equal to save calculating the distance.
-        //  Good for testing right now as otherwise everything would've looked correct, even tho it thought everything was pink :concern:
-
         double closestDistance = Double.MAX_VALUE;
         NamedColor closestColor = null;
 
@@ -138,6 +135,9 @@ public final class NamedColor {
     }
 
     private double distanceTo(int rgb) {
+        if (rgb == this.color) return 0;
+
+
         // 0 to 255 is exactly 8 bits aka 1 byte, but java byte is signed so next best thing is short
         final short red = (short) ((rgb >> 16) & 0xFF);
         final short green = (short) ((rgb >> 8) & 0xFF);
