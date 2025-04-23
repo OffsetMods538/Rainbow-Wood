@@ -5,8 +5,7 @@
     "mixins": [
         "AxeItemMixin",
         "EntityMixin",
-        "HangingSignBlockEntityMixin",
-        "MapColorMixin"
+        "HangingSignBlockEntityMixin"
     ],
     "injectors": {
         "defaultRequire": 1

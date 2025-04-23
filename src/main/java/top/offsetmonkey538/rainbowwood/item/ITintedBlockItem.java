@@ -27,5 +27,10 @@ public interface ITintedBlockItem extends ItemConvertible {
 
         final NamedColor closestColor = NamedColor.getClosestNamedColor(tintColor);
         tooltip.add(Text.translatable("general.rainbow_wood.tooltip.closest.named_color", Text.translatable(closestColor.translation).withColor(closestColor.color)));
+
+        NamedColor mapColor = closestColor;
+        if (closestColor.mapColorId == null) mapColor = NamedColor.getClosestNamedColorWithMapColor(tintColor);
+
+        tooltip.add(Text.translatable("general.rainbow_wood.tooltip.closest.map_color", Text.translatable(mapColor.translation).withColor(mapColor.color)));
     }
 }

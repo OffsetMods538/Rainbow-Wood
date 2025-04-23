@@ -20,6 +20,7 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add("general.rainbow_wood.tooltip.uncolored", "Uncolored");
         translationBuilder.add("general.rainbow_wood.tooltip.color", "Color: %s");
         translationBuilder.add("general.rainbow_wood.tooltip.closest.named_color", "Closest Named Color: %s");
+        translationBuilder.add("general.rainbow_wood.tooltip.closest.map_color", "Closest Map Color: %s");
 
         generateMapColors(translationBuilder);
 
