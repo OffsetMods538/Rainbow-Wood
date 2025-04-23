@@ -2,10 +2,13 @@ package top.offsetmonkey538.rainbowwood.util;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+import java.util.Arrays;
+
 public final class NamedColors {
 
     public static final String NAMED_COLOR_TRANSLATION_KEY_TEMPLATE = "general.rainbow_wood.named_color.%s";
-    private static final NamedColors[] colors = new NamedColors[]{
+    private static final NamedColors[] colors = generateSortedColorArray(new NamedColors[]{
             new NamedColors(0xFFFFFF, "White Dye"),
             new NamedColors(0xFF681F, "Orange Dye"),
             new NamedColors(0xFF00FF, "Magenta Dye"),
@@ -82,7 +85,7 @@ public final class NamedColors {
             new NamedColors(0x646464, "DEEPSLATE_GRAY"),
             new NamedColors(0xD8AF93, "RAW_IRON_PINK"),
             new NamedColors(0x7FA796, "LICHEN_GREEN")
-    };
+    });
 
     static {
         for (NamedColors color : colors) {
@@ -148,5 +151,14 @@ public final class NamedColors {
         final float meanRed = 0.5f * (red + thisRed);
 
         return Math.sqrt((2 + (meanRed / 256)) * deltaRedRoot + 4 * deltagreenRoot + (2 + ((255 - meanRed) / 256)) * deltablueRoot);
+    }
+
+    private static NamedColors[] generateSortedColorArray(NamedColors[] colors) {
+        return Arrays.stream(colors).sorted((color1, color2) -> {
+            final float hue1 = Color.RGBtoHSB( (color1.color >> 16) & 0xFF, (color1.color >> 8) & 0xFF, (color1.color & 0xFF), null)[0];
+            final float hue2 = Color.RGBtoHSB( (color2.color >> 16) & 0xFF, (color2.color >> 8) & 0xFF, (color2.color & 0xFF), null)[0];
+
+            return Float.compare(hue1, hue2);
+        }).toArray(NamedColors[]::new);
     }
 }
