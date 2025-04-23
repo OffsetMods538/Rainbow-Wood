@@ -3,12 +3,18 @@ package top.offsetmonkey538.rainbowwood.util;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.util.Arrays;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static top.offsetmonkey538.rainbowwood.RainbowWood.LOGGER;
 
 public final class NamedColors {
 
     public static final String NAMED_COLOR_TRANSLATION_KEY_TEMPLATE = "general.rainbow_wood.named_color.%s";
     private static final NamedColors[] colors = generateSortedColorArray(new NamedColors[]{
+            // Dyes
             new NamedColors(0xFFFFFF, "White Dye"),
             new NamedColors(0xFF681F, "Orange Dye"),
             new NamedColors(0xFF00FF, "Magenta Dye"),
@@ -26,6 +32,7 @@ public final class NamedColors {
             new NamedColors(0xFF0000, "Red Dye"),
             new NamedColors(0x000000, "Black Dye"),
 
+            // Map Colors
             new NamedColors(0x7FB238, "PALE_GREEN"),
             new NamedColors(0xF7E9A3, "PALE_YELLOW"),
             new NamedColors(0xC7C7C7, "WHITE_GRAY"),
@@ -84,7 +91,12 @@ public final class NamedColors {
             new NamedColors(0x14B485, "BRIGHT_TEAL"),
             new NamedColors(0x646464, "DEEPSLATE_GRAY"),
             new NamedColors(0xD8AF93, "RAW_IRON_PINK"),
-            new NamedColors(0x7FA796, "LICHEN_GREEN")
+            new NamedColors(0x7FA796, "LICHEN_GREEN"),
+
+            // // Manual
+            // new NamedColors(0x32CD32, "Lime Green"),
+            // new NamedColors(0xFF4500, "Orange Red"),
+            // new NamedColors(0xB22222, "Fire Brick")
     });
 
     static {
@@ -145,20 +157,51 @@ public final class NamedColors {
         //  the sign so only 15-bit positive values fit. BUTTTT Java has the char primitive,
         //  which is an *unsigned* 16-bit integer and will fit these values perfectly
         final char deltaRedRoot = (char) ((red - thisRed) * (red - thisRed));
-        final char deltagreenRoot = (char) ((green - thisGreen) * (green - thisGreen));
-        final char deltablueRoot = (char) ((blue - thisBlue) * (blue - thisBlue));
+        final char deltaGreenRoot = (char) ((green - thisGreen) * (green - thisGreen));
+        final char deltaBlueRoot = (char) ((blue - thisBlue) * (blue - thisBlue));
 
         final float meanRed = 0.5f * (red + thisRed);
 
-        return Math.sqrt((2 + (meanRed / 256)) * deltaRedRoot + 4 * deltagreenRoot + (2 + ((255 - meanRed) / 256)) * deltablueRoot);
+        return Math.sqrt((2 + (meanRed / 256)) * deltaRedRoot + 4 * deltaGreenRoot + (2 + ((255 - meanRed) / 256)) * deltaBlueRoot);
     }
 
     private static NamedColors[] generateSortedColorArray(NamedColors[] colors) {
-        return Arrays.stream(colors).sorted((color1, color2) -> {
-            final float hue1 = Color.RGBtoHSB( (color1.color >> 16) & 0xFF, (color1.color >> 8) & 0xFF, (color1.color & 0xFF), null)[0];
-            final float hue2 = Color.RGBtoHSB( (color2.color >> 16) & 0xFF, (color2.color >> 8) & 0xFF, (color2.color & 0xFF), null)[0];
+        List<NamedColors> sortedColors = Arrays.stream(colors).sorted((color1, color2) -> {
+            final float[] hsv1 = Color.RGBtoHSB( (color1.color >> 16) & 0xFF, (color1.color >> 8) & 0xFF, (color1.color & 0xFF), null);
+            final float[] hsv2 = Color.RGBtoHSB( (color2.color >> 16) & 0xFF, (color2.color >> 8) & 0xFF, (color2.color & 0xFF), null);
 
-            return Float.compare(hue1, hue2);
-        }).toArray(NamedColors[]::new);
+            int comparison = Float.compare(hsv1[0], hsv2[0]);
+            if (comparison == 0) comparison = Float.compare(hsv1[1], hsv2[1]);
+            if (comparison == 0) comparison = Float.compare(hsv1[2], hsv2[2]);
+            return comparison;
+
+            //final boolean isWhite1 = (hsv1[1] == 0 && hsv1[2] == 1);
+            //final boolean isWhite2 = (hsv2[1] == 0 && hsv2[2] == 1);
+            //if (isWhite1 ^ isWhite2) return isWhite1 ? -1 : 1;
+
+            //final boolean isBlack1 = (hsv1[2] == 0);
+            //final boolean isBlack2 = (hsv2[2] == 0);
+            //if (isBlack1 ^ isBlack2) return isBlack1 ? -1 : 1;
+
+            //return Float.compare(hsv1[0], hsv2[0]);
+        }).collect(Collectors.toCollection(ArrayList::new));
+
+        try {
+            //noinspection unchecked
+            sortedColors = (List<NamedColors>) sortedColors.getClass().getMethod("reversed").invoke(sortedColors);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            LOGGER.warn("Failed to find List.reversed() method. Must be running on JVM < 21, using own implementation...", e);
+            for (int i = 0; i < sortedColors.size() / 2; i++) {
+                final NamedColors color = sortedColors.get(1);
+                sortedColors.set(i, sortedColors.get(sortedColors.size() - 1 - i));
+                sortedColors.set(sortedColors.size() - 1 - i, color);
+            }
+        }
+
+        return sortedColors.toArray(NamedColors[]::new);
+    }
+
+    public static void initialize() {
+        // Initializes colors array by loading class
     }
 }
