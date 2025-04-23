@@ -100,12 +100,6 @@ public final class NamedColor {
             new NamedColor(0x0072CE, "Estonian Blue"),
     });
 
-    static {
-        for (NamedColor color : colors) {
-            System.out.printf("%s:                            #%06X%n", color.name, color.color);
-        }
-    }
-
     public final int color;
     public final @NotNull String name;
     public final @NotNull String translation;
