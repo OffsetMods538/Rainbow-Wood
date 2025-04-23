@@ -140,15 +140,15 @@ public final class NamedColors {
     }
 
     private double distanceTo(int rgb) {
-        // 0 to 255 is exactly 8 bits aka 1 byte
-        final byte red = (byte) ((rgb >> 16) & 0xFF);
-        final byte green = (byte) ((rgb >> 8) & 0xFF);
-        final byte blue = (byte) (rgb & 0xFF);
+        // 0 to 255 is exactly 8 bits aka 1 byte, but java byte is signed so next best thing is short
+        final short red = (short) ((rgb >> 16) & 0xFF);
+        final short green = (short) ((rgb >> 8) & 0xFF);
+        final short blue = (short) (rgb & 0xFF);
 
-        // 0 to 255 is exactly 8 bits aka 1 byte
-        final byte thisRed = (byte) ((color >> 16) & 0xFF);
-        final byte thisGreen = (byte) ((color >> 8) & 0xFF);
-        final byte thisBlue = (byte) (color & 0xFF);
+        // 0 to 255 is exactly 8 bits aka 1 byte, but java byte is signed so next best thing is short
+        final short thisRed = (short) ((color >> 16) & 0xFF);
+        final short thisGreen = (short) ((color >> 8) & 0xFF);
+        final short thisBlue = (short) (color & 0xFF);
 
         // both sides have to be the same, so no (0-255) * (255-0) = -65025
         // min value = (0  -0) * (0  -0) =    0 * 0   = 0
