@@ -28,6 +28,7 @@ public abstract class HangingSignEditScreenMixin extends AbstractSignEditScreen 
             int tint = tintedSignBlockEntity.getTint();
             float[] originalColor = RenderSystem.getShaderColor();
 
+            // fixme: for some reason this also changes the text color when the text is colored??? But I'm setting it back to the original??????!?!?!?!?!?
             RenderSystem.setShaderColor(((tint >> 16) & 0xFF) / 255f, ((tint >> 8) & 0xFF) / 255f, (tint & 0xFF) / 255f, 1f);
             original.call(drawContext, texture, x, y, u, v, width, height, textureWidth, textureHeight);
             RenderSystem.setShaderColor(originalColor[0], originalColor[1], originalColor[2], originalColor[3]);
