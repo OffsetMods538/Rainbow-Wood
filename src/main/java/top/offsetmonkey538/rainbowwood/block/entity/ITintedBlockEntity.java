@@ -11,7 +11,6 @@ public interface ITintedBlockEntity {
     String BLOCK_TINT_KEY = "BlockTint";
 
     int getTint();
-    // TODO: Add to component as well cause loot table uses copy components and when the tint is set by the axe mixin, stripped blocks don't drop the tinted variant
     void setTint(int newTint);
 
     default void writeTintedNbt(NbtCompound nbt) {

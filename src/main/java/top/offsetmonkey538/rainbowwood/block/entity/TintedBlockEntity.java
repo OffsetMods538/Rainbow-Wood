@@ -2,6 +2,7 @@ package top.offsetmonkey538.rainbowwood.block.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.ComponentMap;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -9,6 +10,7 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
+import top.offsetmonkey538.rainbowwood.component.ModComponents;
 
 public class TintedBlockEntity extends BlockEntity implements ITintedBlockEntity {
     private int blockTint = -1;
@@ -24,6 +26,12 @@ public class TintedBlockEntity extends BlockEntity implements ITintedBlockEntity
     @Override
     public void setTint(int newTint) {
         blockTint = newTint;
+    }
+
+    @Override
+    protected void addComponents(ComponentMap.Builder componentMapBuilder) {
+        super.addComponents(componentMapBuilder);
+        componentMapBuilder.add(ModComponents.TINT_COLOR, blockTint);
     }
 
     @Override
