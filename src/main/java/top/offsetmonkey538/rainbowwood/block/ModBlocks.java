@@ -15,8 +15,6 @@ public final class ModBlocks {
     private ModBlocks() {
 
     }
-    //TODO: figure out if map color can somehow be set to the actual color based on the block entity. No way to get be from block state :( Maybe mixin somewhere?
-    //  Found it, can mixin in AbstractBlock#getMapColor, it has world a block view and pos, though creating the MapColor instance could be a problem... ig map to closest default color?
 
     public static final List<Block> BLOCKS = new LinkedList<>();
     public static final List<Block> BLOCKS_WITH_DEFAULT_ENTITY = new LinkedList<>();
