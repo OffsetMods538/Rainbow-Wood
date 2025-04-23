@@ -16,7 +16,7 @@ import top.offsetmonkey538.rainbowwood.item.group.ModItemGroups;
 import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
 import top.offsetmonkey538.rainbowwood.tag.ModBlockTags;
 import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
-import top.offsetmonkey538.rainbowwood.util.NamedColors;
+import top.offsetmonkey538.rainbowwood.util.NamedColor;
 
 public class RainbowWood implements ModInitializer {
 	public static final String MOD_ID = "rainbow-wood";
@@ -24,7 +24,7 @@ public class RainbowWood implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		NamedColors.initialize();
+		NamedColor.initialize();
 
 		ModBlockSetTypes.register();
 		ModWoodTypes.register();

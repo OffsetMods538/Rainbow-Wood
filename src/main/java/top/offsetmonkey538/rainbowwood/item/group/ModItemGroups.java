@@ -9,7 +9,7 @@ import net.minecraft.text.Text;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
-import top.offsetmonkey538.rainbowwood.util.NamedColors;
+import top.offsetmonkey538.rainbowwood.util.NamedColor;
 
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
@@ -27,7 +27,7 @@ public final class ModItemGroups {
                             entries.add(item.getDefaultStack());
                         }
 
-                        for (final NamedColors color : NamedColors.getAllColors()) {
+                        for (final NamedColor color : NamedColor.getAllColors()) {
                             for (Item item : ModItems.ITEMS) {
                                 entries.add(((ITintedBlockItem) item).getStackWithTint(color.color));
                             }

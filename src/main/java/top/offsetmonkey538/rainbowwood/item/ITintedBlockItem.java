@@ -5,7 +5,7 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.util.NamedColors;
+import top.offsetmonkey538.rainbowwood.util.NamedColor;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public interface ITintedBlockItem extends ItemConvertible {
 
         tooltip.add(Text.translatable("general.rainbow_wood.tooltip.color", Text.literal("#%06X".formatted(tintColor)).withColor(tintColor)));
 
-        final NamedColors closestColor = NamedColors.getClosestNamedColor(tintColor);
+        final NamedColor closestColor = NamedColor.getClosestNamedColor(tintColor);
         tooltip.add(Text.translatable("general.rainbow_wood.tooltip.closest.named_color", Text.translatable(closestColor.translation).withColor(closestColor.color)));
     }
 }

@@ -15,7 +15,7 @@ public final class MapColorMapHolder {
     private static final TreeMap<Integer, String> mapColorReverseMap = new TreeMap<>();
 
     public static void addMapColor(final @NotNull MapColor mapColor) {
-        mapColorReverseMap.put(mapColor.color, NamedColors.NAMED_COLOR_TRANSLATION_KEY_TEMPLATE.formatted(mapColor.color));
+        mapColorReverseMap.put(mapColor.color, NamedColor.NAMED_COLOR_TRANSLATION_KEY_TEMPLATE.formatted(mapColor.color));
     }
 
     public static int getClosestMapColor(final int color) {
