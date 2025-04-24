@@ -4,11 +4,12 @@
     "compatibilityLevel": "JAVA_17",
     "client": [
         "gui.AbstractSignEditScreenAccessor",
-        "render.block.entity.HangingSignBlockEntityRendererMixin",
+        "gui.CreativeInventoryScreenMixin",
         "gui.HangingSignEditScreenMixin",
-        "render.model.ModelPartMixin",
+        "gui.SignEditScreenMixin",
+        "render.block.entity.HangingSignBlockEntityRendererMixin",
         "render.block.entity.SignBlockEntityRendererMixin",
-        "gui.SignEditScreenMixin"
+        "render.model.ModelPartMixin"
     ],
     "injectors": {
         "defaultRequire": 1

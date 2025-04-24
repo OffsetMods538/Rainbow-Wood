@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.util.NamedColor;
@@ -42,9 +41,11 @@ public final class ModItemGroups {
 
     public static final ItemGroup RAINBOW_WOOD_ITEM_GROUP = register("rainbow_wood_item_group",
             FabricItemGroup.builder()
-                    .icon(() -> ((ITintedBlockItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(0xFF00FF)) // todo: Find some nice color for mod and item group icon.
+                    // Icon set in CreativeInventoryScreenMixin
                     .displayName(Text.translatable("itemGroup.rainbow_wood.main_group"))
                     .entries((displayContext, entries) -> {
+                        // Probably better (or at least fine) to loop through an array and add each one myself
+                        //  rather than storing a List and having addAll use the lists forEach method?
                         for (ItemStack item : RAINBOW_WOOD_ITEM_GROUP_CONTENT) {
                             entries.add(item);
                         }
