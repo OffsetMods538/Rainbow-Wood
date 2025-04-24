@@ -6,6 +6,7 @@
         "block.entity.HangingSignBlockEntityMixin",
         "block.state.AbstractBlockStateMixin",
         "entity.EntityMixin",
+        "item.AxeItemAccessor",
         "item.AxeItemMixin",
         "recipe.RawShapedRecipeAccessor",
         "recipe.RawShapedRecipeDataAccessor"
