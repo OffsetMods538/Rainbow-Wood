@@ -24,6 +24,9 @@
 		],
 		"client": [
 			"top.offsetmonkey538.rainbowwood.RainbowWoodClient"
+		],
+		"emi": [
+			"top.offsetmonkey538.rainbowwood.compat.emi.ModEmiPlugin"
 		]
 	},
 	"mixins": [
@@ -37,5 +40,8 @@
 	"depends": {
 		"fabric-api": "*",
 		"minecraft": "${supportedMinecraftVersions}"
+	},
+	"suggests": {
+		"emi": "*"
 	}
 }
