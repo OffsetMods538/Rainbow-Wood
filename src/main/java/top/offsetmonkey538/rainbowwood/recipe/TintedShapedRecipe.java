@@ -23,6 +23,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.mixin.recipe.RawShapedRecipeAccessor;
+import top.offsetmonkey538.rainbowwood.mixin.recipe.RawShapedRecipeDataAccessor;
 
 import java.util.*;
 
@@ -59,7 +61,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
     }
 
     private DefaultedList<Ingredient> createIngredientList(final List<String> paddedPattern, final Map<Character, Ingredient> ingredientMap) {
-        final String[] pattern = RawShapedRecipe.removePadding(paddedPattern);
+        final String[] pattern = RawShapedRecipeAccessor.removePadding(paddedPattern);
         this.width = pattern[0].length();
         this.height = pattern.length;
         final DefaultedList<Ingredient> result = DefaultedList.ofSize(width * height, Ingredient.EMPTY);
@@ -155,7 +157,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
                                 Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
                                 CraftingRecipeCategory.CODEC.fieldOf("category").orElse(CraftingRecipeCategory.MISC).forGetter(recipe -> recipe.category),
                                 Codec.STRING.listOf().fieldOf("pattern").forGetter(recipe -> recipe.patternn),
-                                Codecs.strictUnboundedMap(RawShapedRecipe.Data.KEY_ENTRY_CODEC, Ingredient.DISALLOW_EMPTY_CODEC).fieldOf("ingredients").forGetter(recipe -> recipe.ingredientMap),
+                                Codecs.strictUnboundedMap(RawShapedRecipeDataAccessor.getKEY_ENTRY_CODEC(), Ingredient.DISALLOW_EMPTY_CODEC).fieldOf("ingredients").forGetter(recipe -> recipe.ingredientMap),
                                 Registries.ITEM.getCodec().fieldOf("result").forGetter(recipe -> recipe.result),
                                 Codec.INT.fieldOf("resultCount").forGetter(recipe -> recipe.resultCount)
                         )
