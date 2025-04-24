@@ -3,8 +3,6 @@ accessWidener    v1    named
 ## TODO: Should probably use accessor mixins for this stuff? if it works, it works ¯\_(ツ)_/¯
 
 
-accessible method net/minecraft/block/BlockSetType register (Lnet/minecraft/block/BlockSetType;)Lnet/minecraft/block/BlockSetType;
-
 accessible method net/minecraft/recipe/RawShapedRecipe removePadding (Ljava/util/List;)[Ljava/lang/String;
 accessible field net/minecraft/recipe/RawShapedRecipe$Data KEY_ENTRY_CODEC Lcom/mojang/serialization/Codec;
 
