@@ -1,6 +1,2 @@
 accessWidener    v1    named
 
-## TODO: Should probably use accessor mixins for this stuff? if it works, it works ¯\_(ツ)_/¯
-
-
-accessible field net/minecraft/block/MapColor COLORS [Lnet/minecraft/block/MapColor;
