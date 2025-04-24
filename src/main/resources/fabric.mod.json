@@ -3,13 +3,13 @@
 	"id": "rainbow-wood",
 	"version": "${modVersion}",
 	"name": "Rainbow Wood",
-	"description": "Allows coloring wood like leather armor",
+	"description": "Adds tintable wooden blocks which you can color with dyes",
 	"authors": [
 		"OffsetMonkey538"
 	],
 	"contact": {
-		"sources": "git@github.com:OffsetMods538/Rainbow-Wood",
-		"issues": "git@github.com:OffsetMods538/Rainbow-Wood/issues",
+		"sources": "https://github.com/OffsetMods538/Rainbow-Wood",
+		"issues": "https://github.com/OffsetMods538/Rainbow-Wood/issues",
 		"homepage": "https://modrinth.com/mod/rainbow-wood"
 	},
 	"license": "MIT",
