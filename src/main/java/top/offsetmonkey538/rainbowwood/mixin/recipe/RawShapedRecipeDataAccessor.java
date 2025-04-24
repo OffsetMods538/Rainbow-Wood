@@ -4,9 +4,6 @@ import com.mojang.serialization.Codec;
 import net.minecraft.recipe.RawShapedRecipe;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
-import org.spongepowered.asm.mixin.gen.Invoker;
-
-import java.util.List;
 
 @Mixin(RawShapedRecipe.Data.class)
 public interface RawShapedRecipeDataAccessor {
