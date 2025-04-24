@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin;
+package top.offsetmonkey538.rainbowwood.mixin.block.state;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.block.AbstractBlock;

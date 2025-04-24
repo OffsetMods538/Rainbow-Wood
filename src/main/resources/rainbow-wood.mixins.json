@@ -3,10 +3,13 @@
     "package": "top.offsetmonkey538.rainbowwood.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-        "AbstractBlockStateMixin",
-        "AxeItemMixin",
-        "EntityMixin",
-        "HangingSignBlockEntityMixin"
+        "block.entity.HangingSignBlockEntityMixin",
+        "block.state.AbstractBlockStateMixin",
+        "entity.EntityMixin",
+        "item.AxeItemAccessor",
+        "item.AxeItemMixin",
+        "recipe.RawShapedRecipeAccessor",
+        "recipe.RawShapedRecipeDataAccessor"
     ],
     "injectors": {
         "defaultRequire": 1

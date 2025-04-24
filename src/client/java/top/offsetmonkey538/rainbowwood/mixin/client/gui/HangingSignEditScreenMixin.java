@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin.client;
+package top.offsetmonkey538.rainbowwood.mixin.client.gui;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;

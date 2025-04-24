@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin.client;
+package top.offsetmonkey538.rainbowwood.mixin.client.gui;
 
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;

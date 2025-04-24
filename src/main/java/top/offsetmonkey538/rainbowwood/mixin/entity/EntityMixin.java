@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin;
+package top.offsetmonkey538.rainbowwood.mixin.entity;
 
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.block.Block;
@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.mixin.item.AxeItemAccessor;
 
 import java.util.Optional;
 
@@ -71,7 +71,7 @@ public abstract class EntityMixin {
 
         if (!(item.getItem() instanceof BlockItem blockItem)) return ModBlocks.RAINBOW_LOG.asItem();
 
-        final Optional<Block> optionalStrippedVariant = Optional.ofNullable(AxeItem.STRIPPED_BLOCKS.get(blockItem.getBlock()));
+        final Optional<Block> optionalStrippedVariant = Optional.ofNullable(AxeItemAccessor.getSTRIPPED_BLOCKS().get(blockItem.getBlock()));
         if (optionalStrippedVariant.isEmpty()) return ModBlocks.RAINBOW_LOG.asItem();
 
         if (optionalStrippedVariant.get().asItem().getDefaultStack().isIn(ConventionalItemTags.STRIPPED_WOODS)) return ModBlocks.RAINBOW_WOOD.asItem();

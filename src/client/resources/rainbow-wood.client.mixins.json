@@ -3,12 +3,12 @@
     "package": "top.offsetmonkey538.rainbowwood.mixin.client",
     "compatibilityLevel": "JAVA_17",
     "client": [
-        "AbstractSignEditScreenAccessor",
-        "HangingSignBlockEntityRendererMixin",
-        "HangingSignEditScreenMixin",
-        "ModelPartMixin",
-        "SignBlockEntityRendererMixin",
-        "SignEditScreenMixin"
+        "gui.AbstractSignEditScreenAccessor",
+        "render.block.entity.HangingSignBlockEntityRendererMixin",
+        "gui.HangingSignEditScreenMixin",
+        "render.model.ModelPartMixin",
+        "render.block.entity.SignBlockEntityRendererMixin",
+        "gui.SignEditScreenMixin"
     ],
     "injectors": {
         "defaultRequire": 1
