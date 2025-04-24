@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin;
+package top.offsetmonkey538.rainbowwood.mixin.entity;
 
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.block.Block;

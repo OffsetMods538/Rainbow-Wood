@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin;
+package top.offsetmonkey538.rainbowwood.mixin.block.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
@@ -20,7 +20,7 @@ public class HangingSignBlockEntityMixin {
             ),
             index = 0
     )
-    private static BlockEntityType<?>rainbow_wood$changeBlockEntityTypeToTintedWhenStateIsTinted(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
+    private static BlockEntityType<?> rainbow_wood$changeBlockEntityTypeToTintedWhenStateIsTinted(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         if (blockState.getBlock() instanceof ITintedBlock) return ModBlockEntities.TINTED_HANGING_SIGN_BLOCK_ENTITY;
         return blockEntityType;
     }

@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin;
+package top.offsetmonkey538.rainbowwood.mixin.item;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.Share;
@@ -28,7 +28,7 @@ public abstract class AxeItemMixin extends MiningToolItem {
                     target = "Lnet/minecraft/item/ItemUsageContext;getPlayer()Lnet/minecraft/entity/player/PlayerEntity;"
             )
     )
-    private void rainbow_wood$copyBlockTintNbtFromNewBlockEntity(ItemUsageContext context, CallbackInfoReturnable<ActionResult> cir, @Local World world, @Local BlockPos pos, @Share("blockTint") LocalIntRef blockTint) {
+    private void rainbow_wood$copyBlockTintNbtFromOldBlockEntity(ItemUsageContext context, CallbackInfoReturnable<ActionResult> cir, @Local World world, @Local BlockPos pos, @Share("blockTint") LocalIntRef blockTint) {
         if (!(world.getBlockEntity(pos) instanceof TintedBlockEntity tintedBlockEntity)) return;
         blockTint.set(tintedBlockEntity.getTint());
     }
