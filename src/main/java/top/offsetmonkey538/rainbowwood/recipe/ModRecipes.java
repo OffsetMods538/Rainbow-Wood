@@ -22,7 +22,7 @@ public final class ModRecipes {
 
     public static final String COLORING_ID_FORMATTING = "coloring/%s";
 
-    public static final List<Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String>> COLRING_RECIPES = new LinkedList<>();
+    public static final List<Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String>> COLORING_RECIPES = new LinkedList<>();
 
     public static final RecipeSerializer<TintedShapedRecipe> TINTED_SHAPED = register("crafting_tinted_shaped", new TintedShapedRecipe.Serializer());
 
@@ -44,7 +44,7 @@ public final class ModRecipes {
         final Function<CraftingRecipeCategory, SpecialCraftingRecipe> factory = craftingRecipeCategory -> new ColoringRecipe(craftingRecipeCategory, tintedForItem);
         final String name = COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem.asItem()).getPath());
 
-        COLRING_RECIPES.add(Pair.of(factory, COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem.asItem()).getPath())));
+        COLORING_RECIPES.add(Pair.of(factory, COLORING_ID_FORMATTING.formatted(Registries.ITEM.getId(forItem.asItem()).getPath())));
         register(name, new SpecialRecipeSerializer<>(factory::apply));
     }
 

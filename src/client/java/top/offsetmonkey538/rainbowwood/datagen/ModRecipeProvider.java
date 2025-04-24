@@ -128,7 +128,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
                 .offerTo(exporter);
 
-        for (Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String> recipeInfo : ModRecipes.COLRING_RECIPES) {
+        for (Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String> recipeInfo : ModRecipes.COLORING_RECIPES) {
             ComplexRecipeJsonBuilder
                     .create(craftingRecipeCategory -> recipeInfo.getFirst().apply(craftingRecipeCategory))
                     .offerTo(exporter, recipeInfo.getSecond());
