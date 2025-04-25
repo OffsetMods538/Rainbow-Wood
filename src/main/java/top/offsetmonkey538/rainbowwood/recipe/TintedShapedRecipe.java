@@ -34,7 +34,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
     private final CraftingRecipeCategory category;
     private final List<String> patternn;
     private final @Nullable Map<Character, Ingredient> ingredientMap;
-    private int width, height;
+    private final int width, height;
     private final DefaultedList<Ingredient> ingredients;
     private final Item result;
     private final int resultCount;
@@ -45,9 +45,13 @@ public class TintedShapedRecipe implements CraftingRecipe {
         this.category = category;
         this.patternn = pattern;
         this.ingredientMap = ingredientMap;
-        this.ingredients = createIngredientList(pattern, ingredientMap);
         this.result = result;
         this.resultCount = resultCount;
+
+        final String[] unpaddedPattern = RawShapedRecipeAccessor.removePadding(pattern);
+        this.width = unpaddedPattern[0].length();
+        this.height = unpaddedPattern.length;
+        this.ingredients = createIngredientList(unpaddedPattern, ingredientMap);
     }
 
     private TintedShapedRecipe(String group, CraftingRecipeCategory category, List<String> pattern, DefaultedList<Ingredient> ingredients, Item result, int resultCount) {
@@ -58,18 +62,19 @@ public class TintedShapedRecipe implements CraftingRecipe {
         this.ingredients = ingredients;
         this.result = result;
         this.resultCount = resultCount;
+
+        final String[] unpaddedPattern = RawShapedRecipeAccessor.removePadding(pattern);
+        this.width = unpaddedPattern[0].length();
+        this.height = unpaddedPattern.length;
     }
 
-    private DefaultedList<Ingredient> createIngredientList(final List<String> paddedPattern, final Map<Character, Ingredient> ingredientMap) {
-        final String[] pattern = RawShapedRecipeAccessor.removePadding(paddedPattern);
-        this.width = pattern[0].length();
-        this.height = pattern.length;
+    private DefaultedList<Ingredient> createIngredientList(final String[] noPadPattern, final Map<Character, Ingredient> ingredientMap) {
         final DefaultedList<Ingredient> result = DefaultedList.ofSize(width * height, Ingredient.EMPTY);
         final CharSet charSet = new CharArraySet(ingredientMap.keySet());
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                char character = pattern[y].charAt(x);
+                char character = noPadPattern[y].charAt(x);
                 final Ingredient ingredient = character == ' ' ? Ingredient.EMPTY : ingredientMap.get(character);
 
                 if (ingredient == null) throw new IllegalArgumentException("Pattern references symbol '%s' but it's not defined".formatted(character));
@@ -149,6 +154,27 @@ public class TintedShapedRecipe implements CraftingRecipe {
     @Override
     public RecipeSerializer<?> getSerializer() {
         return ModRecipes.TINTED_SHAPED;
+    }
+
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public DefaultedList<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public Item getResult() {
+        return result;
+    }
+
+    public int getResultCount() {
+        return resultCount;
     }
 
     public static class Serializer implements RecipeSerializer<TintedShapedRecipe> {
