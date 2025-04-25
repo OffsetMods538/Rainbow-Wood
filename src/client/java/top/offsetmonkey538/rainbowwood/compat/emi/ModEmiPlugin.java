@@ -2,24 +2,10 @@ package top.offsetmonkey538.rainbowwood.compat.emi;
 
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
-import dev.emi.emi.api.recipe.EmiCraftingRecipe;
-import dev.emi.emi.api.recipe.EmiWorldInteractionRecipe;
-import dev.emi.emi.api.stack.EmiIngredient;
-import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.recipe.*;
 import net.minecraft.recipe.input.RecipeInput;
-import net.minecraft.util.Identifier;
-import top.offsetmonkey538.rainbowwood.block.ITintedBlock;
 import top.offsetmonkey538.rainbowwood.compat.emi.recipe.EmiTintedShapedRecipe;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
-import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
 import top.offsetmonkey538.rainbowwood.recipe.TintedShapedRecipe;
-import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
-
-import java.util.List;
 
 import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 

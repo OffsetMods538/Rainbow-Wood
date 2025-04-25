@@ -1,34 +1,22 @@
 package top.offsetmonkey538.rainbowwood.compat.emi.recipe;
 
 import com.google.common.collect.Lists;
-import dev.emi.emi.api.recipe.EmiCraftingRecipe;
 import dev.emi.emi.api.recipe.EmiPatternCraftingRecipe;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.GeneratedSlotWidget;
 import dev.emi.emi.api.widget.SlotWidget;
-import net.minecraft.component.type.DyedColorComponent;
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.ShapedRecipe;
-import net.minecraft.recipe.input.CraftingRecipeInput;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
 import top.offsetmonkey538.rainbowwood.recipe.TintedShapedRecipe;
-import top.offsetmonkey538.rainbowwood.util.NamedColor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class EmiTintedShapedRecipe extends EmiPatternCraftingRecipe {
     private final ITintedBlockItem outputItem;
