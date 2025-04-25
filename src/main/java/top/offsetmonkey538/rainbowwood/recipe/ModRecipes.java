@@ -6,7 +6,7 @@ import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 
 import java.util.LinkedList;
@@ -37,7 +37,7 @@ public final class ModRecipes {
     }
 
     private static void registerColoring(ItemConvertible forItem) {
-        if (!(forItem.asItem() instanceof ITintedBlockItem tintedForItem)) {
+        if (!(forItem.asItem() instanceof ITintedItem tintedForItem)) {
             throw new IllegalArgumentException("Expected 'Item' for '%s' to be a 'ITintedBlockItem', got '%s'!".formatted(forItem, forItem.asItem()));
         }
 

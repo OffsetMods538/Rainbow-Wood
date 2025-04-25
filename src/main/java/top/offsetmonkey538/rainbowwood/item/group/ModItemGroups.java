@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.util.NamedColor;
 
@@ -32,7 +32,7 @@ public final class ModItemGroups {
 
         for (final NamedColor color : NamedColor.getAllColors()) {
             for (Item item : ModItems.ITEMS) {
-                content.add(((ITintedBlockItem) item).getStackWithTint(color.color));
+                content.add(((ITintedItem) item).getStackWithTint(color.color));
             }
         }
 

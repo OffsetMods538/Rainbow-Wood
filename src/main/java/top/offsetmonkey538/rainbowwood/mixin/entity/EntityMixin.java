@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 import top.offsetmonkey538.rainbowwood.mixin.item.AxeItemAccessor;
 
 import java.util.Optional;
@@ -48,7 +48,7 @@ public abstract class EntityMixin {
 
     @Unique
     private @Nullable Item rainbow_wood$getMatchingTintableBlockItemFor(final ItemStack item) {
-        if (item.getItem() instanceof ITintedBlockItem) return item.getItem();
+        if (item.getItem() instanceof ITintedItem) return item.getItem();
         if (item.isIn(ItemTags.LOGS)) return rainbow_wood$getMatchingTintableBlockItemForLog(item);
         if (item.isIn(ItemTags.PLANKS)) return ModBlocks.RAINBOW_PLANKS.asItem();
         if (item.isIn(ItemTags.WOODEN_SLABS)) return ModBlocks.RAINBOW_SLAB.asItem();

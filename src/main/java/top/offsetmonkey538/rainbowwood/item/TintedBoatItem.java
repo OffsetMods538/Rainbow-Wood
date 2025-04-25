@@ -1,16 +1,16 @@
 package top.offsetmonkey538.rainbowwood.item;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.item.BoatItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 
 import java.util.List;
 
-public class TintedBlockItem extends BlockItem implements ITintedItem {
-    public TintedBlockItem(Block block, Settings settings) {
-        super(block, settings);
+public class TintedBoatItem extends BoatItem implements ITintedItem {
+    public TintedBoatItem(boolean chest, BoatEntity.Type type, Settings settings) {
+        super(chest, type, settings);
     }
 
     @Override
