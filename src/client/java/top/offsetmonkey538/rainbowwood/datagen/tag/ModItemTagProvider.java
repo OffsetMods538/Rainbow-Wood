@@ -5,11 +5,13 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import org.jetbrains.annotations.NotNull;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -41,6 +43,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         addBlockItemToItemTag(ItemTags.WOODEN_BUTTONS, ModBlocks.RAINBOW_BUTTON);
         addBlockItemToItemTag(ItemTags.SIGNS, ModBlocks.RAINBOW_SIGN);
         addBlockItemToItemTag(ItemTags.HANGING_SIGNS, ModBlocks.RAINBOW_HANGING_SIGN);
+
+        this.getOrCreateTagBuilder(ItemTags.BOATS).add(ModItems.TINTED_BOAT);
+        this.getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(ModItems.TINTED_CHEST_BOAT);
     }
 
     private void addBlockItemToItemTag(final TagKey<Item> tag, @NotNull final Block... blocks) {

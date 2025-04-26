@@ -3,6 +3,7 @@ package top.offsetmonkey538.rainbowwood.datagen;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.ComplexRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Items;
@@ -12,6 +13,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import top.offsetmonkey538.rainbowwood.api.datagen.TintedShapedRecipeJsonBuilder;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
 import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
 
@@ -127,6 +129,39 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .group("buttons")
                 .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
                 .offerTo(exporter);
+
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.TRANSPORTATION, ModItems.TINTED_BOAT)
+                .pattern("# #")
+                .pattern("###")
+                .input('#', ModBlocks.RAINBOW_PLANKS)
+                .group("boat")
+                .criterion("in_water", requireEnteringFluid(Blocks.WATER))
+                .offerTo(exporter);
+
+        // Don't have a TintedShapelessRecipe and can't be bothered to make one so just recipes for each direction (not horizontal thoo)
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.TRANSPORTATION, ModItems.TINTED_CHEST_BOAT)
+                .pattern("#c")
+                .input('#', ModItems.TINTED_BOAT)
+                .input('c', Blocks.CHEST)
+                .group("chest_boat")
+                .criterion("has_tinted_boat", conditionsFromItem(ModItems.TINTED_BOAT))
+                .offerTo(exporter, "horizontal");
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.TRANSPORTATION, ModItems.TINTED_CHEST_BOAT)
+                .pattern("#")
+                .pattern("c")
+                .input('#', ModItems.TINTED_BOAT)
+                .input('c', Blocks.CHEST)
+                .group("chest_boat")
+                .criterion("has_tinted_boat", conditionsFromItem(ModItems.TINTED_BOAT))
+                .offerTo(exporter, "vertical_bottom");
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.TRANSPORTATION, ModItems.TINTED_CHEST_BOAT)
+                .pattern("c")
+                .pattern("#")
+                .input('#', ModItems.TINTED_BOAT)
+                .input('c', Blocks.CHEST)
+                .group("chest_boat")
+                .criterion("has_tinted_boat", conditionsFromItem(ModItems.TINTED_BOAT))
+                .offerTo(exporter, "vertical_top");
 
         for (Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String> recipeInfo : ModRecipes.COLORING_RECIPES) {
             ComplexRecipeJsonBuilder
