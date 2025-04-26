@@ -37,14 +37,13 @@ public class TintedBoatItem extends BoatItem implements ITintedItem {
         final Vec3d pos = hitResult.getPos();
         final BoatEntity boatEntity = isChest ? new TintedChestBoatEntity(world, pos.x, pos.y, pos.z) : new TintedBoatEntity(world, pos.x, pos.y, pos.z);
 
+        if (!(world instanceof ServerWorld serverWorld)) return boatEntity;
 
-        if (world instanceof ServerWorld serverWorld) {
-            EntityType.copier(serverWorld, stack, player).accept(boatEntity);
-            // TODO: maybe to client as well? if not then at least invert this as a guard vlause
 
-            final Integer tint = stack.get(ModComponents.TINT_COLOR);
-            if (tint != null) ((ITintedEntity) boatEntity).setTint(tint);
-        }
+        EntityType.copier(serverWorld, stack, player).accept(boatEntity);
+
+        final Integer tint = stack.get(ModComponents.TINT_COLOR);
+        if (tint != null) ((ITintedEntity) boatEntity).setTint(tint);
 
         return boatEntity;
     }
