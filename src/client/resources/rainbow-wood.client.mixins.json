@@ -9,6 +9,9 @@
         "gui.SignEditScreenMixin",
         "render.block.entity.HangingSignBlockEntityRendererMixin",
         "render.block.entity.SignBlockEntityRendererMixin",
+        "render.model.ChestBoatEntityModelMixin",
+        "render.model.ModelMixin",
+        "render.model.ModelPartAccessor",
         "render.model.ModelPartMixin"
     ],
     "injectors": {
