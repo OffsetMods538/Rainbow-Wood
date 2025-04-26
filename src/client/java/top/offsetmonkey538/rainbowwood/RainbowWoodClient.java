@@ -3,6 +3,7 @@ package top.offsetmonkey538.rainbowwood;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -12,7 +13,9 @@ import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
 import top.offsetmonkey538.rainbowwood.client.render.block.entity.TintedHangingSignBlockEntityRenderer;
 import top.offsetmonkey538.rainbowwood.client.render.block.entity.TintedSignBlockEntityRenderer;
+import top.offsetmonkey538.rainbowwood.client.render.entity.TintedBoatEntityRenderer;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
+import top.offsetmonkey538.rainbowwood.entity.ModEntityTypes;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 
 public class RainbowWoodClient implements ClientModInitializer {
@@ -37,5 +40,8 @@ public class RainbowWoodClient implements ClientModInitializer {
 
 		BlockEntityRendererFactories.register(ModBlockEntities.TINTED_SIGN_BLOCK_ENTITY, TintedSignBlockEntityRenderer::new);
 		BlockEntityRendererFactories.register(ModBlockEntities.TINTED_HANGING_SIGN_BLOCK_ENTITY, TintedHangingSignBlockEntityRenderer::new);
+
+		EntityRendererRegistry.register(ModEntityTypes.TINTED_BOAT, ctx -> new TintedBoatEntityRenderer(ctx, false));
+		EntityRendererRegistry.register(ModEntityTypes.TINTED_CHEST_BOAT, ctx -> new TintedBoatEntityRenderer(ctx, true));
 	}
 }

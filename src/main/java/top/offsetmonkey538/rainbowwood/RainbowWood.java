@@ -11,6 +11,7 @@ import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.block.ModWoodTypes;
 import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
+import top.offsetmonkey538.rainbowwood.entity.ModEntityTypes;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.item.group.ModItemGroups;
 import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
@@ -36,6 +37,7 @@ public class RainbowWood implements ModInitializer {
 		ModRecipes.register();
 		ModBlockTags.register();
 		ModItemTags.register();
+		ModEntityTypes.register();
 	}
 
 	public static Identifier id(String path) {
