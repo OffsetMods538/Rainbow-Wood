@@ -27,8 +27,8 @@ public final class ModItems {
     }
     public static final TintedSignItem TINTED_SIGN = register(new TintedSignItem(new Item.Settings().maxCount(16), ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN), "rainbow_sign");
     public static final TintedHangingSignItem TINTED_HANGING_SIGN = register(new TintedHangingSignItem(ModBlocks.RAINBOW_HANGING_SIGN, ModBlocks.RAINBOW_WALL_HANGING_SIGN, new Item.Settings().maxCount(16)), "rainbow_hanging_sign");
-    public static final TintedBoatItem TINTED_BOAT = register(new TintedBoatItem(false, RainbowWoodEarlyRiser.getRainbowType(), new Item.Settings().maxCount(1)), "tinted_boat");
-    public static final TintedBoatItem TINTED_CHEST_BOAT = register(new TintedBoatItem(true, RainbowWoodEarlyRiser.getRainbowType(), new Item.Settings().maxCount(1)), "tinted_chest_boat");
+    public static final TintedBoatItem TINTED_BOAT = register(new TintedBoatItem(false, RainbowWoodEarlyRiser.getRainbowType(), new Item.Settings().maxCount(1)), "rainbow_boat");
+    public static final TintedBoatItem TINTED_CHEST_BOAT = register(new TintedBoatItem(true, RainbowWoodEarlyRiser.getRainbowType(), new Item.Settings().maxCount(1)), "rainbow_chest_boat");
 
     /*
      Example usage:
