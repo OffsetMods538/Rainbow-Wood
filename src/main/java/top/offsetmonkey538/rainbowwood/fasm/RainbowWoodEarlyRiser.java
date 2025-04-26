@@ -7,6 +7,8 @@ import net.minecraft.entity.vehicle.BoatEntity;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 
 public class RainbowWoodEarlyRiser implements Runnable {
+    private static BoatEntity.Type rainbowType;
+
     @Override
     public void run() {
         final MappingResolver remapper = FabricLoader.getInstance().getMappingResolver();
@@ -18,6 +20,7 @@ public class RainbowWoodEarlyRiser implements Runnable {
     }
 
     public static BoatEntity.Type getRainbowType() {
-        return ClassTinkerers.getEnum(BoatEntity.Type.class, "RAINBOW");
+        if (rainbowType == null) rainbowType = ClassTinkerers.getEnum(BoatEntity.Type.class, "RAINBOW");
+        return rainbowType;
     }
 }
