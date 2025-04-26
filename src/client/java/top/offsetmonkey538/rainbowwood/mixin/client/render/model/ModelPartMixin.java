@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import top.offsetmonkey538.rainbowwood.util.SignRenderContext;
+import top.offsetmonkey538.rainbowwood.util.TintedRenderContext;
 
 import java.util.*;
 
@@ -32,7 +32,7 @@ public abstract class ModelPartMixin {
             index = 4
     )
     private int rainbow_wood$setColorForRainbowSign(int originalColor) {
-        final Integer color = SignRenderContext.color.get();
+        final Integer color = TintedRenderContext.color.get();
         return color == null ? originalColor : color;
     }
 
@@ -44,7 +44,7 @@ public abstract class ModelPartMixin {
             )
     )
     private void rainbow_wood$dontSetColorForChainsOfRainbowHangingSign(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color, Operation<Void> original) {
-        if (SignRenderContext.color.get() == null) {
+        if (TintedRenderContext.color.get() == null) {
             original.call(instance, matrices, vertices, light, overlay, color);
             return;
         }
@@ -57,6 +57,6 @@ public abstract class ModelPartMixin {
         }
         final String name = rainbow_wood$reverseChildrenMap.get(instance);
 
-        original.call(instance, matrices, vertices, light, overlay, name.toUpperCase().contains("CHAIN") ? -1 : SignRenderContext.color.get());
+        original.call(instance, matrices, vertices, light, overlay, name.toUpperCase().contains("CHAIN") ? -1 : TintedRenderContext.color.get());
     }
 }
