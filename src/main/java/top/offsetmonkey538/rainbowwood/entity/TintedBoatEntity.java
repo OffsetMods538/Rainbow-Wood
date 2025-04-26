@@ -5,6 +5,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
 
 public class TintedBoatEntity extends BoatEntity implements ITintedEntity {
@@ -36,5 +37,17 @@ public class TintedBoatEntity extends BoatEntity implements ITintedEntity {
     @Override
     public Integer getTint() {
         return dataTracker.get(ENTITY_TINT);
+    }
+
+    @Override
+    protected void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        writeTintedCustomDataToNbt(nbt);
+    }
+
+    @Override
+    protected void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        readTintedCustomDataFromNbt(nbt);
     }
 }
