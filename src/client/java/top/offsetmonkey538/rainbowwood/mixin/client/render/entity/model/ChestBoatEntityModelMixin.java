@@ -1,4 +1,4 @@
-package top.offsetmonkey538.rainbowwood.mixin.client.render.model;
+package top.offsetmonkey538.rainbowwood.mixin.client.render.entity.model;
 
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BoatEntityModel;
