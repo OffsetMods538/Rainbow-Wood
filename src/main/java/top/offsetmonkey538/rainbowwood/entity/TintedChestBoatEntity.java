@@ -5,8 +5,10 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 
 public class TintedChestBoatEntity extends ChestBoatEntity implements ITintedEntity {
     private static final TrackedData<Integer> ENTITY_TINT = DataTracker.registerData(TintedChestBoatEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -49,5 +51,10 @@ public class TintedChestBoatEntity extends ChestBoatEntity implements ITintedEnt
     protected void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         readTintedCustomDataFromNbt(nbt);
+    }
+
+    @Override
+    public Item asItem() {
+        return ModItems.TINTED_CHEST_BOAT;
     }
 }
