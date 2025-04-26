@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import top.offsetmonkey538.rainbowwood.access.client.ChestBoatEntityModelChestPartsGetter;
+import top.offsetmonkey538.rainbowwood.util.TintedRenderContext;
 
 import java.util.Set;
 import java.util.function.Consumer;
@@ -43,11 +44,13 @@ public abstract class CompositeEntityModelMixin {
             )
     )
     private static void rainbow_wood$setColorForRainbowBoat(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color, Operation<Void> original) {
-        if (rainbow_wood$ignoredParts != null && rainbow_wood$ignoredParts.contains(instance)) {
+        final Integer tint = TintedRenderContext.color.get();
+        if ((rainbow_wood$ignoredParts != null && rainbow_wood$ignoredParts.contains(instance)) || tint == null) {
             original.call(instance, matrices, vertices, light, overlay, color);
             return;
         }
 
-        original.call(instance, matrices, vertices, light, overlay, 0x00FFFF);
+        //noinspection UnnecessaryUnboxing: MCDev is concerned that tint is an Integer, not an int.
+        original.call(instance, matrices, vertices, light, overlay, tint.intValue());
     }
 }
