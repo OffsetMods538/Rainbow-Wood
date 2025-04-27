@@ -28,12 +28,13 @@ public class RainbowWoodClient implements ClientModInitializer {
 		}, ModBlocks.BLOCKS.toArray(new Block[0]));
 
 
-		// Layer 1 doesn't have tint
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+			// Layer 1 doesn't have tint
 			if (tintIndex == 1) return -1;
+
 			final Integer tintColor = stack.get(ModComponents.TINT_COLOR);
 			if (tintColor == null) return -1;
-			return tintColor;
+			return tintColor | 0xFF000000; // Only required by the boats for some reason, no idea why other items don't care about the alpha value lol
 		}, ModItems.ITEMS.toArray(new Item[0]));
 
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.RAINBOW_DOOR, ModBlocks.RAINBOW_TRAPDOOR);
