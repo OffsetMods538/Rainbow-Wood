@@ -13,7 +13,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import top.offsetmonkey538.rainbowwood.block.entity.TintedSignBlockEntity;
-import top.offsetmonkey538.rainbowwood.util.SignRenderContext;
+import top.offsetmonkey538.rainbowwood.util.TintedRenderContext;
 
 @Mixin(SignEditScreen.class)
 public abstract class SignEditScreenMixin extends AbstractSignEditScreen {
@@ -27,6 +27,6 @@ public abstract class SignEditScreenMixin extends AbstractSignEditScreen {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelPart;render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;II)V")
     )
     private void rainbow_wood$setColorForModelPartRenderWhenRainbowSign(ModelPart instance, MatrixStack matrices, VertexConsumer vertices, int light, int overlay, Operation<Void> original, DrawContext context, BlockState state) {
-        SignRenderContext.contextualize(() -> original.call(instance, matrices, vertices, light, overlay), ((AbstractSignEditScreenAccessor) this).getBlockEntity() instanceof TintedSignBlockEntity tintedSignBlockEntity ? tintedSignBlockEntity.getTint() : null);
+        TintedRenderContext.contextualize(() -> original.call(instance, matrices, vertices, light, overlay), ((AbstractSignEditScreenAccessor) this).getBlockEntity() instanceof TintedSignBlockEntity tintedSignBlockEntity ? tintedSignBlockEntity.getTint() : null);
     }
 }

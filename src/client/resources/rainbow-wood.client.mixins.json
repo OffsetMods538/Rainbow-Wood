@@ -9,7 +9,11 @@
         "gui.SignEditScreenMixin",
         "render.block.entity.HangingSignBlockEntityRendererMixin",
         "render.block.entity.SignBlockEntityRendererMixin",
-        "render.model.ModelPartMixin"
+        "render.entity.BoatEntityRendererMixin",
+        "render.entity.model.ChestBoatEntityModelMixin",
+        "render.entity.model.CompositeEntityModelMixin",
+        "render.entity.model.ModelPartAccessor",
+        "render.entity.model.ModelPartMixin"
     ],
     "injectors": {
         "defaultRequire": 1

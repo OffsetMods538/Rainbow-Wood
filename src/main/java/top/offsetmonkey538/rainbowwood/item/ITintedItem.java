@@ -9,7 +9,7 @@ import top.offsetmonkey538.rainbowwood.util.NamedColor;
 
 import java.util.List;
 
-public interface ITintedBlockItem extends ItemConvertible {
+public interface ITintedItem extends ItemConvertible {
     default ItemStack getStackWithTint(final int tint) {
         final ItemStack stack = ((Item) this).getDefaultStack();
         stack.set(ModComponents.TINT_COLOR, tint);

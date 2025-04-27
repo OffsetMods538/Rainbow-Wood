@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 
 import java.util.List;
 
-public class TintedBlockItem extends BlockItem implements ITintedBlockItem {
+public class TintedBlockItem extends BlockItem implements ITintedItem {
     public TintedBlockItem(Block block, Settings settings) {
         super(block, settings);
     }

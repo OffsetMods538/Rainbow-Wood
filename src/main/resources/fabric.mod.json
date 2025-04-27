@@ -24,6 +24,9 @@
 		],
 		"client": [
 			"top.offsetmonkey538.rainbowwood.RainbowWoodClient"
+		],
+		"mm:early_risers": [
+			"top.offsetmonkey538.rainbowwood.fasm.RainbowWoodEarlyRiser"
 		]
 	},
 	"mixins": [

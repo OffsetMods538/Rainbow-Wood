@@ -11,7 +11,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import top.offsetmonkey538.rainbowwood.client.render.block.entity.TintedHangingSignBlockEntityRenderer;
-import top.offsetmonkey538.rainbowwood.util.SignRenderContext;
+import top.offsetmonkey538.rainbowwood.util.TintedRenderContext;
 
 @Mixin(HangingSignBlockEntityRenderer.class)
 public abstract class HangingSignBlockEntityRendererMixin {
@@ -26,6 +26,6 @@ public abstract class HangingSignBlockEntityRendererMixin {
             return;
         }
 
-        SignRenderContext.contextualize(() -> original.call(instance, matrices, vertices, light, overlay), tintedEntityRenderer.getTint());
+        TintedRenderContext.contextualize(() -> original.call(instance, matrices, vertices, light, overlay), tintedEntityRenderer.getTint());
     }
 }

@@ -13,7 +13,7 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 
 import java.util.Objects;
 
@@ -21,9 +21,9 @@ import static top.offsetmonkey538.rainbowwood.RainbowWood.id;
 
 public class ColoringRecipe extends SpecialCraftingRecipe {
     private static final Ingredient ADDITION_MODIFIER = Ingredient.fromTag(ConventionalItemTags.IRON_INGOTS); // Maybe some other item?
-    private final ITintedBlockItem forItem;
+    private final ITintedItem forItem;
 
-    public ColoringRecipe(CraftingRecipeCategory category, ITintedBlockItem forItem) {
+    public ColoringRecipe(CraftingRecipeCategory category, ITintedItem forItem) {
         super(category);
         this.forItem = forItem;
     }

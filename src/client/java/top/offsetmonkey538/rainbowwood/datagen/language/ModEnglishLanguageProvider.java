@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.tag.ModBlockTags;
 import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
 import top.offsetmonkey538.rainbowwood.util.NamedColor;
@@ -44,6 +45,9 @@ public class ModEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.RAINBOW_BUTTON, "Rainbow Button");
         translationBuilder.add(ModBlocks.RAINBOW_SIGN, "Rainbow Sign");
         translationBuilder.add(ModBlocks.RAINBOW_HANGING_SIGN, "Rainbow Hanging Sign");
+
+        translationBuilder.add(ModItems.TINTED_BOAT, "Rainbow Boat");
+        translationBuilder.add(ModItems.TINTED_CHEST_BOAT, "Rainbow Boat with Chest");
     }
 
     private void generateMapColors(TranslationBuilder translationBuilder) {
