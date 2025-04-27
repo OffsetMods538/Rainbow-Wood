@@ -6,7 +6,9 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 
@@ -42,6 +44,31 @@ public class TintedBoatEntity extends BoatEntity implements ITintedEntity {
     }
 
     @Override
+    public ItemStack pickBlockStack() {
+        return super.getPickBlockStack();
+    }
+
+    @Override
+    public void runKill() {
+        kill();
+    }
+
+    @Override
+    public World world() {
+        return getWorld();
+    }
+
+    @Override
+    public Text customName() {
+        return getCustomName();
+    }
+
+    @Override
+    public void runDropStack(ItemStack stack) {
+        dropStack(stack);
+    }
+
+    @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         writeTintedCustomDataToNbt(nbt);
@@ -51,6 +78,16 @@ public class TintedBoatEntity extends BoatEntity implements ITintedEntity {
     protected void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         readTintedCustomDataFromNbt(nbt);
+    }
+
+    @Override
+    public ItemStack getPickBlockStack() {
+        return getTintedPickBlockStack();
+    }
+
+    @Override
+    public void killAndDropItem(Item selfAsItem) {
+        killAndDropTintedItem(selfAsItem);
     }
 
     @Override
