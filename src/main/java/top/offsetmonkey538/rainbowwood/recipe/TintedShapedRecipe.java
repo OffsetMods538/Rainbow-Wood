@@ -32,7 +32,7 @@ import java.util.*;
 public class TintedShapedRecipe implements CraftingRecipe {
     private final String group;
     private final CraftingRecipeCategory category;
-    private final List<String> patternn;
+    private final List<String> pattern;
     private final @Nullable Map<Character, Ingredient> ingredientMap;
     private int width, height;
     private final DefaultedList<Ingredient> ingredients;
@@ -43,7 +43,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
     public TintedShapedRecipe(String group, CraftingRecipeCategory category, List<String> pattern, @NotNull Map<Character, Ingredient> ingredientMap, Item result, int resultCount) {
         this.group = group;
         this.category = category;
-        this.patternn = pattern;
+        this.pattern = pattern;
         this.ingredientMap = ingredientMap;
         this.ingredients = createIngredientList(pattern, ingredientMap);
         this.result = result;
@@ -53,7 +53,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
     private TintedShapedRecipe(String group, CraftingRecipeCategory category, List<String> pattern, DefaultedList<Ingredient> ingredients, Item result, int resultCount) {
         this.group = group;
         this.category = category;
-        this.patternn = pattern;
+        this.pattern = pattern;
         this.ingredientMap = null;
         this.ingredients = ingredients;
         this.result = result;
@@ -138,12 +138,12 @@ public class TintedShapedRecipe implements CraftingRecipe {
 
     @Override
     public boolean fits(int width, int height) {
-        return height == patternn.size() && width == patternn.get(0).length();
+        return height == pattern.size() && width == pattern.get(0).length();
     }
 
     @Override
     public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return result.getDefaultStack();
+        return result.getDefaultStack().copyWithCount(resultCount);
     }
 
     @Override
@@ -156,7 +156,7 @@ public class TintedShapedRecipe implements CraftingRecipe {
                 instance -> instance.group(
                                 Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
                                 CraftingRecipeCategory.CODEC.fieldOf("category").orElse(CraftingRecipeCategory.MISC).forGetter(recipe -> recipe.category),
-                                Codec.STRING.listOf().fieldOf("pattern").forGetter(recipe -> recipe.patternn),
+                                Codec.STRING.listOf().fieldOf("pattern").forGetter(recipe -> recipe.pattern),
                                 Codecs.strictUnboundedMap(RawShapedRecipeDataAccessor.getKEY_ENTRY_CODEC(), Ingredient.DISALLOW_EMPTY_CODEC).fieldOf("ingredients").forGetter(recipe -> recipe.ingredientMap),
                                 Registries.ITEM.getCodec().fieldOf("result").forGetter(recipe -> recipe.result),
                                 Codec.INT.fieldOf("resultCount").forGetter(recipe -> recipe.resultCount)
@@ -173,8 +173,8 @@ public class TintedShapedRecipe implements CraftingRecipe {
             buf.writeString(recipe.group);
             buf.writeEnumConstant(recipe.category);
 
-            buf.writeInt(recipe.patternn.size());
-            for (final String patternLine : recipe.patternn) {
+            buf.writeInt(recipe.pattern.size());
+            for (final String patternLine : recipe.pattern) {
                 buf.writeString(patternLine);
             }
 

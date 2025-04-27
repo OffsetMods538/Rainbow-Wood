@@ -25,6 +25,7 @@ public final class ModRecipes {
     public static final List<Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String>> COLORING_RECIPES = new LinkedList<>();
 
     public static final RecipeSerializer<TintedShapedRecipe> TINTED_SHAPED = register("crafting_tinted_shaped", new TintedShapedRecipe.Serializer());
+    public static final RecipeSerializer<TintedShapelessRecipe> TINTED_SHAPELESS = register("crafting_tinted_shapeless", new TintedShapelessRecipe.Serializer());
 
     // Coloring
     static {
