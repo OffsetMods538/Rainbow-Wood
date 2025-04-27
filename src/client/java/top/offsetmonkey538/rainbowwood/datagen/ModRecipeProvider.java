@@ -16,7 +16,6 @@ import top.offsetmonkey538.rainbowwood.api.datagen.TintedShapelessRecipeJsonBuil
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
-import top.offsetmonkey538.rainbowwood.recipe.TintedShapelessRecipe;
 import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
 
 import java.util.concurrent.CompletableFuture;

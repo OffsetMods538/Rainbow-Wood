@@ -17,11 +17,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.world.World;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.item.ITintedItem;
-import top.offsetmonkey538.rainbowwood.mixin.recipe.RawShapedRecipeDataAccessor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +33,6 @@ public class TintedShapelessRecipe implements CraftingRecipe {
     private final DefaultedList<Ingredient> ingredients;
     private final Item result;
     private final int resultCount;
-
-    //public TintedShapelessRecipe(String group, CraftingRecipeCategory category, Item result, int resultCount) {
-    //    this.group = group;
-    //    this.category = category;
-    //    this.ingredients = createIngredientList(pattern, ingredientMap);
-    //    this.result = result;
-    //    this.resultCount = resultCount;
-    //}
 
     public TintedShapelessRecipe(String group, CraftingRecipeCategory category, DefaultedList<Ingredient> ingredients, Item result, int resultCount) {
         this.group = group;
@@ -61,20 +51,7 @@ public class TintedShapelessRecipe implements CraftingRecipe {
     public boolean matches(CraftingRecipeInput input, World world) {
         if (input.getStackCount() != this.ingredients.size()) return false;
 
-
         return input.getSize() == 1 && this.ingredients.size() == 1 ? ingredients.get(0).test(input.getStackInSlot(0)) : matches(input);
-
-
-
-        //if (input.getStackCount() != ingredients.stream().filter(ingredient -> !ingredient.isEmpty()).count()) return false;
-
-        //if (input.getWidth() == width && input.getHeight() == height) {
-        //    if (!Util.isSymmetrical(width, height, ingredients) && this.matches(input, true)) return true;
-
-        //    return this.matches(input, false);
-        //}
-
-        //return false;
     }
 
     private boolean matches(CraftingRecipeInput input) {

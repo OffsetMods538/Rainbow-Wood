@@ -1,6 +1,5 @@
 package top.offsetmonkey538.rainbowwood.api.datagen;
 
-import com.google.common.collect.Lists;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.AdvancementRequirements;
@@ -16,7 +15,6 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import org.jetbrains.annotations.Nullable;
-import top.offsetmonkey538.rainbowwood.recipe.TintedShapedRecipe;
 import top.offsetmonkey538.rainbowwood.recipe.TintedShapelessRecipe;
 
 import java.util.*;

@@ -3,10 +3,7 @@ package top.offsetmonkey538.rainbowwood;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.BoatDispenserBehavior;
-import net.minecraft.block.dispenser.DispenserBehavior;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPointer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
