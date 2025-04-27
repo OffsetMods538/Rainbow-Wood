@@ -1,7 +1,12 @@
 package top.offsetmonkey538.rainbowwood;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.BoatDispenserBehavior;
+import net.minecraft.block.dispenser.DispenserBehavior;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPointer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +17,7 @@ import top.offsetmonkey538.rainbowwood.block.ModWoodTypes;
 import top.offsetmonkey538.rainbowwood.block.entity.ModBlockEntities;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
 import top.offsetmonkey538.rainbowwood.entity.ModEntityTypes;
+import top.offsetmonkey538.rainbowwood.fasm.RainbowWoodEarlyRiser;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.item.group.ModItemGroups;
 import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
@@ -38,6 +44,9 @@ public class RainbowWood implements ModInitializer {
 		ModBlockTags.register();
 		ModItemTags.register();
 		ModEntityTypes.register();
+
+		DispenserBlock.registerBehavior(ModItems.TINTED_BOAT, new BoatDispenserBehavior(RainbowWoodEarlyRiser.getRainbowType()));
+		DispenserBlock.registerBehavior(ModItems.TINTED_CHEST_BOAT, new BoatDispenserBehavior(RainbowWoodEarlyRiser.getRainbowType(), true));
 	}
 
 	public static Identifier id(String path) {
