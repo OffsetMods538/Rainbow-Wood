@@ -90,6 +90,13 @@ repositories {
 			includeGroup "me.djtheredstoner"
 		}
 	}
+	maven {
+		name = "JitPack"
+		url = "https://jitpack.io"
+		content {
+			includeGroup "com.github.Chocohead"
+		}
+	}
 }
 
 dependencies {
@@ -101,6 +108,8 @@ dependencies {
 	modLocalRuntime "me.djtheredstoner:DevAuth-fabric:${devauth_version}"
 	// Fabric API
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fapi_version}"
+	// Fabric ASM
+	modImplementation "com.github.Chocohead:Fabric-ASM:${project.fasm_version}"
 
 	// Uncomment for including a module of fabric api
 	// includeModImplementation fabricApi.module("fabric-api-base", project.fapi_version)

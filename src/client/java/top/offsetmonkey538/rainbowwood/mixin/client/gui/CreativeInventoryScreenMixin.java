@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 import top.offsetmonkey538.rainbowwood.item.group.ModItemGroups;
 
 import java.util.Arrays;
@@ -23,7 +23,7 @@ import java.util.List;
 public abstract class CreativeInventoryScreenMixin {
 
     @Unique
-    private static final List<ItemStack> rainbow_wood$stacksToLoopThrough = Arrays.stream(DyeColor.values()).filter(color -> color != DyeColor.WHITE && color != DyeColor.BLACK).map(color -> ((ITintedBlockItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(color.getSignColor())).toList();
+    private static final List<ItemStack> rainbow_wood$stacksToLoopThrough = Arrays.stream(DyeColor.values()).filter(color -> color != DyeColor.WHITE && color != DyeColor.BLACK).map(color -> ((ITintedItem) ModBlocks.RAINBOW_PLANKS.asItem()).getStackWithTint(color.getSignColor())).toList();
     @Unique
     private static final ThreadLocal<Float> rainbow_wood$delta = ThreadLocal.withInitial(() -> 0f);
     @Unique

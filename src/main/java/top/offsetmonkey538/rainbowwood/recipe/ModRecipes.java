@@ -6,7 +6,7 @@ import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 import top.offsetmonkey538.rainbowwood.item.ModItems;
 
 import java.util.LinkedList;
@@ -25,6 +25,7 @@ public final class ModRecipes {
     public static final List<Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String>> COLORING_RECIPES = new LinkedList<>();
 
     public static final RecipeSerializer<TintedShapedRecipe> TINTED_SHAPED = register("crafting_tinted_shaped", new TintedShapedRecipe.Serializer());
+    public static final RecipeSerializer<TintedShapelessRecipe> TINTED_SHAPELESS = register("crafting_tinted_shapeless", new TintedShapelessRecipe.Serializer());
 
     // Coloring
     static {
@@ -37,7 +38,7 @@ public final class ModRecipes {
     }
 
     private static void registerColoring(ItemConvertible forItem) {
-        if (!(forItem.asItem() instanceof ITintedBlockItem tintedForItem)) {
+        if (!(forItem.asItem() instanceof ITintedItem tintedForItem)) {
             throw new IllegalArgumentException("Expected 'Item' for '%s' to be a 'ITintedBlockItem', got '%s'!".formatted(forItem, forItem.asItem()));
         }
 

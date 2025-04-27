@@ -3,6 +3,7 @@ package top.offsetmonkey538.rainbowwood.datagen;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.ComplexRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Items;
@@ -11,7 +12,9 @@ import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import top.offsetmonkey538.rainbowwood.api.datagen.TintedShapedRecipeJsonBuilder;
+import top.offsetmonkey538.rainbowwood.api.datagen.TintedShapelessRecipeJsonBuilder;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.recipe.ModRecipes;
 import top.offsetmonkey538.rainbowwood.tag.ModItemTags;
 
@@ -126,6 +129,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('#', ModBlocks.RAINBOW_PLANKS)
                 .group("buttons")
                 .criterion("has_planks", conditionsFromItem(ModBlocks.RAINBOW_PLANKS))
+                .offerTo(exporter);
+
+        TintedShapedRecipeJsonBuilder.create(RecipeCategory.TRANSPORTATION, ModItems.TINTED_BOAT)
+                .pattern("# #")
+                .pattern("###")
+                .input('#', ModBlocks.RAINBOW_PLANKS)
+                .group("boat")
+                .criterion("in_water", requireEnteringFluid(Blocks.WATER))
+                .offerTo(exporter);
+
+        TintedShapelessRecipeJsonBuilder.create(RecipeCategory.TRANSPORTATION, ModItems.TINTED_CHEST_BOAT)
+                .input(ModItems.TINTED_BOAT)
+                .input(Blocks.CHEST)
+                .group("chest_boat")
+                .criterion("has_tinted_boat", conditionsFromItem(ModItems.TINTED_BOAT))
                 .offerTo(exporter);
 
         for (Pair<Function<CraftingRecipeCategory, ? extends SpecialCraftingRecipe>, String> recipeInfo : ModRecipes.COLORING_RECIPES) {

@@ -21,7 +21,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 import top.offsetmonkey538.rainbowwood.mixin.item.AxeItemAccessor;
 
 import java.util.Optional;
@@ -48,7 +49,7 @@ public abstract class EntityMixin {
 
     @Unique
     private @Nullable Item rainbow_wood$getMatchingTintableBlockItemFor(final ItemStack item) {
-        if (item.getItem() instanceof ITintedBlockItem) return item.getItem();
+        if (item.getItem() instanceof ITintedItem) return item.getItem();
         if (item.isIn(ItemTags.LOGS)) return rainbow_wood$getMatchingTintableBlockItemForLog(item);
         if (item.isIn(ItemTags.PLANKS)) return ModBlocks.RAINBOW_PLANKS.asItem();
         if (item.isIn(ItemTags.WOODEN_SLABS)) return ModBlocks.RAINBOW_SLAB.asItem();
@@ -61,6 +62,8 @@ public abstract class EntityMixin {
         if (item.isIn(ItemTags.FENCE_GATES)) return ModBlocks.RAINBOW_FENCE_GATE.asItem();
         if (item.isIn(ItemTags.WOODEN_PRESSURE_PLATES)) return ModBlocks.RAINBOW_PRESSURE_PLATE.asItem();
         if (item.isIn(ItemTags.WOODEN_TRAPDOORS)) return ModBlocks.RAINBOW_TRAPDOOR.asItem();
+        if (item.isIn(ItemTags.CHEST_BOATS)) return ModItems.TINTED_CHEST_BOAT.asItem(); // First check chest_boats specifically, as normal boats contains chest_boats
+        if (item.isIn(ItemTags.BOATS)) return ModItems.TINTED_BOAT.asItem();
         return null;
     }
 

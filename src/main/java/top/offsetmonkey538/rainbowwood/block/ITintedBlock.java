@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import top.offsetmonkey538.rainbowwood.block.entity.ITintedBlockEntity;
 import top.offsetmonkey538.rainbowwood.block.entity.TintedBlockEntity;
 import top.offsetmonkey538.rainbowwood.component.ModComponents;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 
 public interface ITintedBlock extends BlockEntityProvider, ItemConvertible {
     default void placeTinted(World world, BlockPos pos, BlockState state, ItemStack itemStack) {
@@ -31,7 +31,7 @@ public interface ITintedBlock extends BlockEntityProvider, ItemConvertible {
     }
 
     default ItemStack getTintedPickStack(final WorldView world, final BlockState state, final BlockPos pos) {
-        if (!(asItem() instanceof ITintedBlockItem tintedItem)) return asItem().getDefaultStack();
+        if (!(asItem() instanceof ITintedItem tintedItem)) return asItem().getDefaultStack();
 
         int tint = getTint(world, state, pos);
 
