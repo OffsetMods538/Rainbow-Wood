@@ -7,6 +7,7 @@ import net.minecraft.data.client.*;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import top.offsetmonkey538.rainbowwood.block.ModBlocks;
+import top.offsetmonkey538.rainbowwood.item.ModItems;
 
 import java.util.Optional;
 
@@ -50,6 +51,7 @@ public class ModModelProvider extends FabricModelProvider {
         super(output);
     }
 
+    @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         final Identifier baseModelId = TINTED_CUBE_ALL.upload(ModBlocks.RAINBOW_PLANKS, TextureMap.all(ModBlocks.RAINBOW_PLANKS), blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(ModBlocks.RAINBOW_PLANKS, baseModelId));
@@ -71,6 +73,18 @@ public class ModModelProvider extends FabricModelProvider {
         generateSign(ModBlocks.RAINBOW_SIGN, ModBlocks.RAINBOW_WALL_SIGN, plankTexture, blockStateModelGenerator);
         generateHangingSign(ModBlocks.RAINBOW_HANGING_SIGN, ModBlocks.RAINBOW_WALL_HANGING_SIGN, TextureMap.texture(ModBlocks.STRIPPED_RAINBOW_LOG), blockStateModelGenerator);
         generateButton(ModBlocks.RAINBOW_BUTTON, plankTexture, blockStateModelGenerator);
+    }
+
+    @Override
+    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.TINTED_BOAT, Models.GENERATED);
+        Models.GENERATED.upload(
+                ModelIds.getItemModelId(ModItems.TINTED_CHEST_BOAT),
+                TextureMap
+                        .layer0(ModItems.TINTED_CHEST_BOAT)
+                        .register(TextureKey.LAYER1, TextureMap.getSubId(ModItems.TINTED_CHEST_BOAT, "_layer_1")),
+                itemModelGenerator.writer
+        );
     }
 
     private void generateLog(final Block logBlock, final TextureMap textures, final BlockStateModelGenerator blockStateModelGenerator) {
@@ -181,11 +195,6 @@ public class ModModelProvider extends FabricModelProvider {
 
         final Identifier inventoryId = TINTED_BUTTON_INVENTORY.upload(buttonBlock, textures, blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.registerParentedItemModel(buttonBlock, inventoryId);
-    }
-
-    @Override
-    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
     }
 
     private static Model createModel(final String id, final @NotNull String variant, final TextureKey... textureKeys) {

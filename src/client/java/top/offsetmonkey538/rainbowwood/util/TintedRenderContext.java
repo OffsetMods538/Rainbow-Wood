@@ -1,15 +1,15 @@
 package top.offsetmonkey538.rainbowwood.util;
 
-public final class SignRenderContext {
-    private SignRenderContext() {
+public final class TintedRenderContext {
+    private TintedRenderContext() {
 
     }
 
     public static final ThreadLocal<Integer> color = new ThreadLocal<>();
 
     public static void contextualize(Runnable renderCall, Integer color) {
-        SignRenderContext.color.set(color);
+        TintedRenderContext.color.set(color);
         renderCall.run();
-        SignRenderContext.color.remove();
+        TintedRenderContext.color.remove();
     }
 }

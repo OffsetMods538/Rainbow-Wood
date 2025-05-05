@@ -91,6 +91,13 @@ repositories {
 		}
 	}
 	maven {
+		name = "JitPack"
+		url = "https://jitpack.io"
+		content {
+			includeGroup "com.github.Chocohead"
+		}
+	}
+	maven {
 		name = "TerraformersMC"
 		url = "https://maven.terraformersmc.com"
 		content {
@@ -109,6 +116,9 @@ dependencies {
 
 	// Fabric API
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fapi_version}"
+
+    // Fabric ASM
+	includeModImplementation "com.github.Chocohead:Fabric-ASM:${project.fasm_version}"
 
 	// EMI
 	modCompileOnly  "dev.emi:emi-fabric:${project.emi_version}:api"

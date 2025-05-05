@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 
 import java.util.List;
 
-public class TintedHangingSignItem extends HangingSignItem implements ITintedBlockItem {
+public class TintedHangingSignItem extends HangingSignItem implements ITintedItem {
     public TintedHangingSignItem(Block hangingSign, Block wallHangingSign, Settings settings) {
         super(hangingSign, wallHangingSign, settings);
     }
