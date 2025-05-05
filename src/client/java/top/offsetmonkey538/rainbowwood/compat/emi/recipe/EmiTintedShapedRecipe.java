@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
-import top.offsetmonkey538.rainbowwood.item.ITintedBlockItem;
+import top.offsetmonkey538.rainbowwood.item.ITintedItem;
 import top.offsetmonkey538.rainbowwood.recipe.TintedShapedRecipe;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Random;
 
 public class EmiTintedShapedRecipe extends EmiPatternCraftingRecipe {
-    private final ITintedBlockItem outputItem;
+    private final ITintedItem outputItem;
     private final DefaultedList<Ingredient> ingredients;
 
     public EmiTintedShapedRecipe(TintedShapedRecipe recipe, Identifier id) {
@@ -28,7 +28,7 @@ public class EmiTintedShapedRecipe extends EmiPatternCraftingRecipe {
 
         ingredients = recipe.getIngredients();
 
-        if (!(recipe.getResult() instanceof ITintedBlockItem tintedBlockItem)) throw new IllegalStateException("Result '%s' for recipe '%s' not instance of ITintedBlockItem".formatted(recipe.getResult(), id));
+        if (!(recipe.getResult() instanceof ITintedItem tintedBlockItem)) throw new IllegalStateException("Result '%s' for recipe '%s' not instance of ITintedBlockItem".formatted(recipe.getResult(), id));
         outputItem = tintedBlockItem;
     }
 
@@ -42,14 +42,14 @@ public class EmiTintedShapedRecipe extends EmiPatternCraftingRecipe {
         boolean isTinted = false;
         for (Item item : items) {
 
-            if (item instanceof ITintedBlockItem && !item.getDefaultStack().isEmpty()) isTinted = true;
+            if (item instanceof ITintedItem && !item.getDefaultStack().isEmpty()) isTinted = true;
             else if (isTinted) throw new IllegalStateException("Some candidate input items of recipe '%s' slot '%s' are tinted, but some are not. Input items for slot: '%s'".formatted(id, slot, String.join(", ", items.stream().map(Item::toString).toList())));
             else isTinted = false;
         }
 
         if (isTinted) return new GeneratedSlotWidget(random -> {
             // TODO: don't think it's possible to make TagIngredients tinted
-            return EmiIngredient.of(items.stream().filter(item -> !item.getDefaultStack().isEmpty()).map(item -> ((ITintedBlockItem) item).getStackWithTint(getColor(random))).map(EmiStack::of).toList());
+            return EmiIngredient.of(items.stream().filter(item -> !item.getDefaultStack().isEmpty()).map(item -> ((ITintedItem) item).getStackWithTint(getColor(random))).map(EmiStack::of).toList());
         }, unique, x, y);
 
 
